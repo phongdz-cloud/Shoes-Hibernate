@@ -1,0 +1,16 @@
+
+Wjavascript:S1481";Remove the declaration of the unused 'textRemove' variable.(»Œ’ˆ
+Tjavascript:S1854"8Remove this useless assignment to variable "textRemove".(»Œ’ˆ
+Wjavascript:S1481
+";Remove the declaration of the unused 'datepicker' variable.(Ûæú©
+Tjavascript:S1854
+"8Remove this useless assignment to variable "datepicker".(Ûæú©
+[javascript:S1481":Remove the declaration of the unused 'quillSnow' variable.(†Ðê‹ÿÿÿÿÿ
+Xjavascript:S1854"7Remove this useless assignment to variable "quillSnow".(†Ðê‹ÿÿÿÿÿ
+Zjavascript:S1481"9Remove the declaration of the unused 'lightbox' variable.(¸·ÜÛûÿÿÿÿ
+Wjavascript:S1854"6Remove this useless assignment to variable "lightbox".(¸·ÜÛûÿÿÿÿ
+hjavascript:S41380"LExpected a `for-of` loop instead of a `for` loop with this simple iteration.(Ô›°†
+hjavascript:S4138G"LExpected a `for-of` loop instead of a `for` loop with this simple iteration.(‚é±«
+Jjavascript:S1117N".'file' is already declared in the upper scope.(¢­‰Ó
+Pjavascript:S1117N"4'totalSteps' is already declared in the upper scope.(¢­‰Ó
+Jjavascript:S1117N".'step' is already declared in the upper scope.(¢­‰Ó

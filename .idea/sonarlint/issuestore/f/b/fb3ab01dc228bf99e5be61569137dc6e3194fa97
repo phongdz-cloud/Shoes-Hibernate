@@ -1,0 +1,7 @@
+
+P
+java:S1118":Add a private constructor to hide the implicit public one.(Ω‘∫ï
+t
+java:S1104"^Make isCheckNewPassword a static final constant or non-public and provide accessors if needed.( À√¥
+N
+java:S1444"8Make this "public static isCheckNewPassword" field final( À√¥

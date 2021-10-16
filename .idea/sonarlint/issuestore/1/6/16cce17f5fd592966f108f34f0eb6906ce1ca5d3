@@ -1,0 +1,19 @@
+
+P
+java:S1118":Add a private constructor to hide the implicit public one.(šÏ¢ù
+N	java:S106$"9Replace this use of System.out or System.err by a logger.(ÂÁ©ì
+q
+java:S1192E"[Define a constant instead of duplicating this literal "                    </tr>
+" 6 times.(ÑÍ¢
+u
+java:S1192K"_Define a constant instead of duplicating this literal "                        </td>
+" 3 times.(ÿµĞÃ
+u
+java:S1192C"ZDefine a constant instead of duplicating this literal "                    <tr>
+" 7 times.(½èØŠúÿÿÿÿ
+
+java:S1192T"fDefine a constant instead of duplicating this literal "                                <tr>
+" 3 times.(½èØŠúÿÿÿÿ
+}
+java:S1192V"gDefine a constant instead of duplicating this literal "                                </tr>
+" 3 times.(ÑÍ¢

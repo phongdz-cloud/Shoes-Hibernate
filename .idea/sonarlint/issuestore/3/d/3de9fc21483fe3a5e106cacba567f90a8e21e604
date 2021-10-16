@@ -1,0 +1,35 @@
+
+o
+java:S1989"ZHandle the following exception that could be thrown by "parseLong": NumberFormatException.(¿Ä¿
+‚
+java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À
+
+java:S1989!"Handle the following exceptions that could be thrown by "writeValue": IOException, JsonGenerationException, JsonMappingException.(ÛŸàüÿÿÿÿ
+q
+java:S1989!"VHandle the following exception that could be thrown by "getOutputStream": IOException.(ÛŸàüÿÿÿÿ
+‚
+java:S1989("lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À
+k
+java:S1989*"PHandle the following exception that could be thrown by "getReader": IOException.(Äøš¥ùÿÿÿÿ
+Ÿ
+java:S1989+"Handle the following exceptions that could be thrown by "writeValue": IOException, JsonGenerationException, JsonMappingException.(ÀÄ‘ğ8¿±ŸÇ/
+s
+java:S1989+"VHandle the following exception that could be thrown by "getOutputStream": IOException.(ÀÄ‘ğ8Á±ŸÇ/
+v
+java:S19891"ZHandle the following exception that could be thrown by "parseLong": NumberFormatException.(¿Ä¿8Í±ŸÇ/
+‰
+java:S19893"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À8Ï±ŸÇ/
+k
+java:S19895"PHandle the following exception that could be thrown by "getReader": IOException.(Äøš¥ùÿÿÿÿ
+¤
+java:S19897"Handle the following exceptions that could be thrown by "writeValue": IOException, JsonGenerationException, JsonMappingException.(öÙ×Ôúÿÿÿÿ8Ñ±ŸÇ/
+x
+java:S19897"VHandle the following exception that could be thrown by "getOutputStream": IOException.(öÙ×Ôúÿÿÿÿ8Ò±ŸÇ/
+u
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Ş¶ò­8İ±ŸÇ/
+O
+java:S1068"2Remove this unused "resourceBundle" private field.(Ş¶ò­8İ±ŸÇ/
+s
+java:S1192"QDefine a constant instead of duplicating this literal "application/json" 3 times.(›ı’Àøÿÿÿÿ8ß±ŸÇ/
+\
+java:S1192"FDefine a constant instead of duplicating this literal "UTF-8" 3 times.(±Œ©À

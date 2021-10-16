@@ -1,0 +1,19 @@
+
+H
+java:S1168R"+Return an empty collection instead of null.(•πÔç8 Ñªñ»/
+H
+java:S1168V"+Return an empty collection instead of null.(•πÔç8 Ñªñ»/
+S
+java:S49777"=Rename "T" which hides a type parameter from the outer scope.(”âΩÏ
+K
+java:S1143R"5Remove this return statement from this finally block.(•πÔç
+L
+java:S1143õ"5Remove this return statement from this finally block.(•πÔç
+L
+java:S1143‹"5Remove this return statement from this finally block.(î∑≥õ
+f
+java:S2095ß"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¯∑ìˇ
+M
+java:S2589k"7Remove this expression which always evaluates to "true"(§Ú™£
+N
+java:S2589¥"7Remove this expression which always evaluates to "true"(§Ú™£
