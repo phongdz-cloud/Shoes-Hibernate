@@ -1,0 +1,23 @@
+
+C
+java:S1481!"(Remove this unused "url" local variable.(Œ¿¤ªøÿÿÿÿ
+w
+java:S1989*"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ó˜•Ô
+n
+java:S1989-"SHandle the following exception that could be thrown by "sendRedirect": IOException.(µÒÑªøÿÿÿÿ
+w
+java:S19892"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ó˜•Ô
+C
+java:S1481:"(Remove this unused "url" local variable.(Œ¿¤ªøÿÿÿÿ
+i
+java:S1989E"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ò«ŸÎ
+n
+java:S1989H"SHandle the following exception that could be thrown by "sendRedirect": IOException.(—Œ»üøÿÿÿÿ
+i
+java:S1989K"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ãÄëá
+S
+java:S1128"6Remove this unused import 'javax.servlet.http.Cookie'.(«Þªü8ŒéŠ¸È/
+n
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Þ¶ò­
+^
+java:S1192"HDefine a constant instead of duplicating this literal "message" 3 times.(Þ¶ò­

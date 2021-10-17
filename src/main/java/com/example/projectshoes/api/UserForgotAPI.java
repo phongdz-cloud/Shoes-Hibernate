@@ -60,7 +60,6 @@ public class UserForgotAPI extends HttpServlet {
       mapper.writeValue(resp.getOutputStream(), true);
     } else {
       mapper.writeValue(resp.getOutputStream(), false);
-
     }
   }
 }
