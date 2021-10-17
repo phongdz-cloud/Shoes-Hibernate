@@ -13,8 +13,6 @@ c
 3src/main/webapp/template/web/js/jquery-3.4.1.min.js,6\e\6ebcb92c312e8bd24081860603a3c399ac002989
 c
 3src/main/webapp/template/web/js/owl.carousel.min.js,6\a\6a74323e168fb72c1a3301cb6aadec99baf12fbd
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 Y
 )src/main/webapp/template/web/js/custom.js,1\0\109a0ab6b580bba96a53ab9d0d583a2423d8802e
 Q
@@ -81,8 +79,6 @@ p
 @src/main/webapp/template/web/css/fonts/fontawesome-webfont.woff2,1\7\17d0dfe8fac6b74c67fd10a7c65dcbb82abf9866
 e
 5src/main/webapp/template/web/css/font-awesome.min.css,e\1\e18be76100875bb8c73a962ece03c986f19b8138
-Q
-!src/main/webapp/WEB-INF/beans.xml,8\3\83008b1a88ba03a2548bb5b9ad0768c6c307d36c
 V
 &src/main/webapp/WEB-INF/decorators.xml,7\1\711f89b3d33e125a63fbfd0fee317d5364aa7f97
 t
@@ -123,8 +119,6 @@ p
 Ksrc/main/java/com/example/projectshoes/controller/admin/HomeController.java,5\f\5f604525822df9e811fec22e1b9f364c505d4045
 X
 (src/main/webapp/views/web/gmailLogin.jsp,d\1\d1bebd5c93554a29e783c4b9471a5896639e84f3
-O
-src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 V
 &src/main/webapp/views/web/register.jsp,6\8\68df0c5be86341afbb7ae4368553968b5e2d3287
 k

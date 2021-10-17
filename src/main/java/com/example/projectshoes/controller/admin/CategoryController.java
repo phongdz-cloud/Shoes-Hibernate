@@ -15,7 +15,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/admin-category")
 public class CategoryController extends HttpServlet {
-  @Inject
+//  @Inject
 //  ICategoryService categoryService;
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
