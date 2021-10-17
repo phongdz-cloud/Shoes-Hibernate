@@ -1,0 +1,17 @@
+
+‚
+java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±©ΐ
+e
+java:S1989"PHandle the following exception that could be thrown by "getReader": IOException.(ώ―r
+
+java:S1989!"Handle the following exceptions that could be thrown by "writeValue": IOException, JsonGenerationException, JsonMappingException.(†―„·
+l
+java:S1989!"VHandle the following exception that could be thrown by "getOutputStream": IOException.(†―„·
+‚
+java:S1989)"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±©ΐ
+e
+java:S1989+"PHandle the following exception that could be thrown by "getReader": IOException.(ώ―r
+
+java:S19892"Handle the following exceptions that could be thrown by "writeValue": IOException, JsonGenerationException, JsonMappingException.(γÒ½θύÿÿÿÿ
+q
+java:S19892"VHandle the following exception that could be thrown by "getOutputStream": IOException.(γÒ½θύÿÿÿÿ
