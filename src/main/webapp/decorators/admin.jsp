@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="<c:url value='/template/web/css/bootstrap.min.css' />" />
     <!-- Google fonts - Popppins for copy-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;display=swap"
@@ -25,6 +26,11 @@
     <!-- Favicon-->
     <link rel="shortcut icon"
           href="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type='text/javascript' src='<c:url value="/template/admin/js/jquery-2.2.3.min.js" />'></script>
+    <script src="<c:url value='/template/admin/js/jquery.2.1.1.min.js' />"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 <%@include file="/common/admin/header.jsp" %>
@@ -39,8 +45,9 @@
 </div>
 <script src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script src="<c:url value='/template/web/js/bootstrap.min.js'/>"></script>
 <!-- Data Tables-->
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"></script>
+<script src="<c:url value="/template/admin/js/datatable.js"/>"></script>
 <!-- CMS Category JS-->
 <script src="<c:url value="/template/admin/js/e-commerce-products.ab70c491.js"/>">
 </script>
@@ -53,6 +60,8 @@
 <script src="<c:url value="/template/admin/js/e-commerce-product-new.edd4e2e3.js"/>"></script>
 <script src="<c:url value="/template/admin/js/e-commerce-orders.f8b9685e.js"/>"></script>
 <!-- Prism for syntax highlighting-->
+<script src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
+
 <script src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/vendor/prismjs/prism.js"></script>
 <script src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/vendor/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
 <script src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/vendor/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
@@ -66,10 +75,9 @@
     'right-trim': true,
   });
 </script>
-<!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous">
+<!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
 </body>
 </html>
