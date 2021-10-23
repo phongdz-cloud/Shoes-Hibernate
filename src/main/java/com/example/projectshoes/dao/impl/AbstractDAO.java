@@ -45,6 +45,9 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         } else if (obj instanceof Timestamp) {
           statement.setTimestamp(index, (Timestamp) obj);
         }
+        else if (obj instanceof Float){
+          statement.setFloat(index, (Float) obj);
+        }
       }
     } catch (Exception e) {
       e.printStackTrace();
