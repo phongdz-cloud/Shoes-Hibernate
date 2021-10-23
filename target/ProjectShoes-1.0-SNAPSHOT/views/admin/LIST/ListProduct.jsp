@@ -1,6 +1,10 @@
+<%@include file="/common/taglib.jsp"%>
+<c:url var="APIProduct" value="/api-product"/>
+<html>
+<body>
 <div class="page-breadcrumb">
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="/admin-home">Home</a></li>
         <li class="breadcrumb-item active">Products </li>
     </ul>
 </div>
@@ -21,196 +25,141 @@
         <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Drafts</a></li>
         <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Out of stock</a></li>
     </ul>
-    <div class="card card-table">
-        <div class="preload-wrapper">
-            <table class="table table-hover table-borderless align-middle mb-0" id="productsDatatable">
-                <thead>
-                <tr>
-                    <th>Product Id</th>
-                    <th style="min-width: 300px;">Name</th>
-                    <th>Price</th>
-                    <th>In Stock</th>
-                    <th>Last Ordered</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="align-middle">
-                    <td>#2568</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-1.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Round grey hanging decor</strong></a></td>
-                    <td>$22.00</td>
-                    <td>43</td>
-                    <td class="text-muted">2021/02/31</td>
-                    <td>
-                        <label class="badge badge-primary-light">New Arrival</label>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2569</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-2.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>silver black round Ipod</strong></a></td>
-                    <td>$22.00</td>
-                    <td>44</td>
-                    <td class="text-muted">2021/02/03</td>
-                    <td>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2570</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-3.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>White USB cable</strong></a></td>
-                    <td>$22.00</td>
-                    <td>45</td>
-                    <td class="text-muted">2021/12/17</td>
-                    <td>
-                        <label class="badge badge-info-light">Trending</label>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2571</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-4.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Sony PS 4 game controller</strong></a></td>
-                    <td>$22.00</td>
-                    <td>46</td>
-                    <td class="text-muted">2021/06/13</td>
-                    <td>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2572</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-5.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Kui Ye Chen’s AirPods</strong></a></td>
-                    <td>$22.00</td>
-                    <td>47</td>
-                    <td class="text-muted">2021/01/28</td>
-                    <td>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2573</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-6.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Black camera lens</strong></a></td>
-                    <td>$22.00</td>
-                    <td>48</td>
-                    <td class="text-muted">2021/06/28</td>
-                    <td>
-                        <label class="badge badge-success-light">Hot</label>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2574</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-7.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Apple wireless keyboard</strong></a></td>
-                    <td>$22.00</td>
-                    <td>49</td>
-                    <td class="text-muted">2021/05/07</td>
-                    <td>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2575</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-8.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Black Canon EOS camera</strong></a></td>
-                    <td>$22.00</td>
-                    <td>50</td>
-                    <td class="text-muted">2021/10/08</td>
-                    <td>
-                        <label class="badge badge-danger-light">Soldout</label>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2576</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-9.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Silver round analog watch</strong></a></td>
-                    <td>$22.00</td>
-                    <td>51</td>
-                    <td class="text-muted">2021/04/22</td>
-                    <td>
-                        <label class="badge badge-primary-light">New Arrival</label>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2577</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-10.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Apple Watch</strong></a></td>
-                    <td>$22.00</td>
-                    <td>52</td>
-                    <td class="text-muted">2021/10/27</td>
-                    <td>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2578</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-11.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Joemalone Women prefume</strong></a></td>
-                    <td>$22.00</td>
-                    <td>53</td>
-                    <td class="text-muted">2021/11/10</td>
-                    <td>
-                        <label class="badge badge-info-light">Trending</label>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2579</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-12.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Nike air max 95</strong></a></td>
-                    <td>$22.00</td>
-                    <td>54</td>
-                    <td class="text-muted">2021/06/25</td>
-                    <td>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2580</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-13.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Red digital smartwatch</strong></a></td>
-                    <td>$22.00</td>
-                    <td>55</td>
-                    <td class="text-muted">2021/04/28</td>
-                    <td>
-                        <label class="badge badge-danger-light">Soldout</label>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2581</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-14.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Air Jordan 12 gym red</strong></a></td>
-                    <td>$22.00</td>
-                    <td>56</td>
-                    <td class="text-muted">2021/09/27</td>
-                    <td>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2582</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-15.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Kui Ye Chen’s AirPods</strong></a></td>
-                    <td>$22.00</td>
-                    <td>57</td>
-                    <td class="text-muted">2021/01/06</td>
-                    <td>
-                        <label class="badge badge-warning-light">Hot</label>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                <tr class="align-middle">
-                    <td>#2583</td>
-                    <td> <img class="card-table-img img-fluid me-3" src="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/product/product-10.jpg" alt="" width="80"><a class="text-reset text-decoration-none" href="#!"><strong>Apple watch</strong></a></td>
-                    <td>$22.00</td>
-                    <td>58</td>
-                    <td class="text-muted">2021/11/15</td>
-                    <td>
-                    </td>
-                    <td><a class="me-3 text-lg text-success" href="#!"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!"><i class="far fa-trash-alt"></i></a></td>
-                </tr>
-                </tbody>
-            </table><span class="me-2" id="categoryBulkAction">
-                  <select class="form-select form-select-sm d-inline w-auto" name="categoryBulkAction">
-                    <option>Bulk Actions</option>
-                    <option>Delete</option>
-                  </select>
-                  <button class="btn btn-sm btn-outline-primary align-top">Apply</button></span>
+    <form id="formsubmit" action="<c:url value="/admin-product"/>" method="get">
+        <div class="card card-table">
+            <div class="preload-wrapper">
+                <table class="table table-hover table-borderless align-middle mb-0" id="productsDatatable">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th style="min-width: 200px;">Product Name</th>
+                        <th>Price</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                        <th>Category_ID</th>
+                        <th>Createddate</th>
+                        <th>CreatedBy</th>
+                        <th>ModifiedBy</th>
+                        <th>ModifiedDate</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="item" items="${productModel.listResult}">
+                        <tr class="align-middle">
+                            <td>
+                                <span class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check${item.id}" value="${item.id}">
+                                    <label class="form-check-label" for="check${item.id}">${item.id}</label>
+                                </span>
+                            </td>
+                            <td>${item.name}</td>
+                            <td>${item.price}</td>
+                            <td>${item.size}</td>
+                            <td>${item.quantity}</td>
+                            <td>${item.categoryId}</td>
+                            <td class="text-muted">${item.createdDate}</td>
+                            <td class="text-muted">${item.createdBy}</td>
+                            <td class="text-muted">${item.modifiedBy}</td>
+                            <td class="text-muted">${item.modifiedDate}</td>
+                            <td><a class="me-3 text-lg text-success"
+                                   href="/admin-product?action=edit&&productid=${item.id}"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!">
+                                <i class="far fa-trash-alt"></i></a></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <span class="me-2" id="categoryBulkAction">
+                <label>Sort</label>
+                <select id="sort" onchange="Sort(this)" class="form-select form-select-sm d-inline w-auto" name="categoryBulkAction">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option>A-Z</option>
+                    <option>Price</option>
+                </select>
+                <button id="btndelete" class="btn btn-sm btn-outline-primary align-top">Delete</button>
+            </span>
+            </div>
         </div>
-    </div>
+        <input type="hidden" value="" id="page" name="page"/>
+        <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
+    </form>
 </section>
+<div style="margin-left: 415px"><ul class="pagination" id="pagination"></ul></div>
+
+<script>
+    $("#btndelete").click(function() {
+        var data = {};
+        var ids = $('tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        data['ids'] = ids;
+        deleteProduct(data);
+    });
+    function deleteProduct(data) {
+        $.ajax({
+            url: '${APIProduct}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('#notification').html(`
+                    <div class="alert alert-success">
+                            Congratulations,Delete Product success
+                    </div>`)
+                window.location.href = "/admin-product";
+            },
+            error: function (error) {
+                console.log("Error")
+            }
+        });
+    }
+    function Sort(param) {
+        var message = document.getElementById('sort');
+        var value = param.value;
+        if (value === 'A-Z'){
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("productsDatatable");
+            switching=true;
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    // Start by saying there should be no switching:
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[1];
+                    y = rows[i + 1].getElementsByTagName("TD")[1];
+                    // Check if the two rows should switch place:
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+    }
+    var totalPages = ${productModel.totalPage};
+    var currentPage = ${productModel.page};
+    var limit = 2;
+    $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: totalPages,
+            visiblePages: 3,
+            startPage: currentPage,
+            onPageClick: function (event, page) {
+                if (currentPage != page) {
+                    $('#maxPageItem').val(limit);
+                    $('#page').val(page);
+                    $('#formsubmit').submit();
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
