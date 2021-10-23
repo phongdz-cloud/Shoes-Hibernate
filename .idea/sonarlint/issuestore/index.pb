@@ -13,8 +13,6 @@ c
 3src/main/webapp/template/web/js/jquery-3.4.1.min.js,6\e\6ebcb92c312e8bd24081860603a3c399ac002989
 c
 3src/main/webapp/template/web/js/owl.carousel.min.js,6\a\6a74323e168fb72c1a3301cb6aadec99baf12fbd
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 Y
 )src/main/webapp/template/web/js/custom.js,1\0\109a0ab6b580bba96a53ab9d0d583a2423d8802e
 Q
