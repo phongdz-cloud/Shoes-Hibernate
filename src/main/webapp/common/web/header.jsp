@@ -14,7 +14,7 @@
                     <div class="menu">
                         <ul>
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="<c:url value="/trang-chu-api"/>">Home</a>
                             </li>
                             <li class="dropdown">
                                 <span class="opener plus"></span>
@@ -145,9 +145,26 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <a href="<c:url value="/error-page"/>">Contact</a>
-                            </li>
+                            <c:if test="${not empty sessionScope.get('USERMODEL')}">
+                                <li class="dropdown">
+                                    <span class="opener plus"></span>
+                                    <a href="<c:url value="/error-page"/>">Account</a>
+                                    <div class="megamenu">
+                                        <div class="megamenu-inner">
+                                            <ul>
+                                                <li><a href="<c:url value="/error-page"/>">My
+                                                    account</a>
+                                                </li>
+                                                <li><a href="<c:url value="/error-page"/>">Blog</a>
+                                                </li>
+                                                <li>
+                                                    <a href='<c:url value="/thoat?action=logout"/>'>Logout</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </c:if>
                         </ul>
                     </div>
                 </div>
@@ -165,9 +182,27 @@
                     <ul class="login-cart">
                         <li>
                             <div class="login-head">
-                                <a href="<c:url value="/dang-nhap?action=login"/>"><i
-                                        class="fa fa-user-o"
-                                        aria-hidden="true"></i></a>
+                                <c:if test="${empty sessionScope.get('USERMODEL')}">
+                                    <a href="<c:url value="/dang-nhap?action=login"/>"><i
+                                            class="fa fa-user-o"
+                                            aria-hidden="true"></i></a>
+                                </c:if>
+                                <c:if test="${not empty sessionScope.get('USERMODEL')}">
+                                    <div class="cart-menu">
+                                        <div class="cart-icon position-r">
+                                            <c:if test="${not empty sessionScope.get('USERMODEL').avatar}">
+                                                <img src="${sessionScope.get('USERMODEL').avatar}"
+                                                     style="width: 50px;height: 50px;border-radius: 50%"
+                                                     class="position-r transition" alt="cart">
+                                            </c:if>
+                                            <c:if test="${empty sessionScope.get('USERMODEL').avatar}">
+                                                <img src="<c:url value="/template/web/images/userdefault.jpg"/> "
+                                                     style="width: 50px;height: 50px;border-radius: 50%"
+                                                     class="position-r transition" alt="cart">
+                                            </c:if>
+                                        </div>
+                                    </div>
+                                </c:if>
                             </div>
                         </li>
                         <li>
@@ -251,3 +286,4 @@
         </div>
     </div>
 </header>
+

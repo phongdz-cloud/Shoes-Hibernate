@@ -34,11 +34,12 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
   @Override
   public Long save(UserModel userModel) {
-    StringBuilder sql = new StringBuilder("INSERT INTO user (username, password, email,");
-    sql.append("createddate, createdby, role_id)");
-    sql.append(" VALUES (?, ?, ?, ?, ?, ?)");
+    StringBuilder sql = new StringBuilder("INSERT INTO user (username, password, email, avatar,");
+    sql.append(" createddate, createdby, role_id)");
+    sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?)");
     return insert(sql.toString(), userModel.getUsername(), userModel.getPassword(),
-        userModel.getEmail(), userModel.getCreatedDate(), userModel.getCreatedBy(),
+        userModel.getEmail(), userModel.getAvatar(), userModel.getCreatedDate(),
+        userModel.getCreatedBy(),
         userModel.getRoleId());
   }
 

@@ -29,21 +29,7 @@
       <artifactId>jstl</artifactId>
       <version>${jstl.version}</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version>
-      <scope>provided</scope>
-    </dependency>
 
-    <!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>${jsp-api.version}</version>
-      <scope>provided</scope>
-    </dependency>
 
     <!-- sitemesh decorator -->
     <dependency>
@@ -51,12 +37,14 @@
       <artifactId>sitemesh</artifactId>
       <version>2.4.2</version>
     </dependency>
+
     <!--mysql-->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>${mysql.version}</version>
     </dependency>
+
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -86,21 +74,11 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
+
 
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
       <artifactId>jackson-mapper-asl</artifactId>
-      <version>1.9.13</version>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-core-asl</artifactId>
       <version>1.9.13</version>
     </dependency>
     <!--end json -->
@@ -131,7 +109,6 @@
       <artifactId>mail</artifactId>
       <version>1.4.7</version>
     </dependency>
-
   </dependencies>
 
   <build>

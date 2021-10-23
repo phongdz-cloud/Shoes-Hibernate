@@ -3,7 +3,6 @@ package com.example.projectshoes.controller.web;
 import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.IUserService;
-import com.example.projectshoes.utils.CookieUtil;
 import com.example.projectshoes.utils.FormUtil;
 import com.example.projectshoes.utils.SessionUtil;
 import java.io.IOException;
@@ -12,12 +11,11 @@ import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap"})
+@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap","/thoat"})
 public class HomeController extends HttpServlet {
 
   @Inject
@@ -25,12 +23,10 @@ public class HomeController extends HttpServlet {
 
   private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
-
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     String action = req.getParameter("action");
-    String url = "";
     if (action != null && action.equals("login")) {
       String message = req.getParameter("message");
       String alert = req.getParameter("alert");
@@ -55,7 +51,6 @@ public class HomeController extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     String action = req.getParameter("action");
-    String url = "";
     if (action != null && action.equals("login")) {
       UserModel userModel = FormUtil.toModel(UserModel.class, req);
       userModel = userService.findByUsernameAndPassword(
@@ -64,10 +59,7 @@ public class HomeController extends HttpServlet {
       if (userModel != null) {
         SessionUtil.getInstance().putValue(req, "USERMODEL", userModel);
         if (userModel.getRole().getCode().equals(SystemConstant.USER)) {
-          CookieUtil.getInstance().putValue(resp, "username", userModel.getUsername());
-          CookieUtil.getInstance().putValue(resp, "email", userModel.getEmail());
-          resp.sendRedirect(
-              req.getContextPath() + "/trang-chu?user=" + userModel.getId().toString());
+          resp.sendRedirect(req.getContextPath() + "/trang-chu");
         } else if (userModel.getRole().getCode().equals(SystemConstant.ADMIN)) {
           resp.sendRedirect(req.getContextPath() + "/admin-home");
         }

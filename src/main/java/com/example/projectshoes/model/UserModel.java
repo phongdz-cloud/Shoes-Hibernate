@@ -6,6 +6,7 @@ public class UserModel extends AbstractModel<UserModel> {
   private String password;
   private String repassword;
   private String email;
+  private String avatar;
   private Long roleId;
   private RoleModel role = new RoleModel();
 
@@ -55,5 +56,13 @@ public class UserModel extends AbstractModel<UserModel> {
 
   public void setRepassword(String repassword) {
     this.repassword = repassword;
+  }
+
+  public String getAvatar() {
+    return avatar;
+  }
+
+  public void setAvatar(String avatar) {
+    this.avatar = avatar;
   }
 }
