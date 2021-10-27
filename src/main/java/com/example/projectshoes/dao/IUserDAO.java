@@ -5,7 +5,7 @@ import com.example.projectshoes.model.UserModel;
 import java.util.List;
 
 public interface IUserDAO extends GenericDAO<UserModel> {
-  List<UserModel> findAll();
+
   UserModel findByUsernameAndPassword(String username, String password);
 
   UserModel findByUserName(String username);
@@ -17,5 +17,7 @@ public interface IUserDAO extends GenericDAO<UserModel> {
   Long save(UserModel userModel);
 
   void update(UserModel userModel);
+
+  List<UserModel> findAll();
 
 }

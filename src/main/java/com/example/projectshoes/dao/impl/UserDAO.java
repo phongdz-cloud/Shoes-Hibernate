@@ -11,12 +11,6 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
 
   @Override
-  public List<UserModel> findAll() {
-    StringBuilder sql= new StringBuilder("SELECT * FROM User");
-    return query(sql.toString(),new UserMapper());
-  }
-
-  @Override
   public UserModel findByUsernameAndPassword(String username, String password) {
     StringBuilder sql = new StringBuilder("SELECT * FROM user AS u");
     sql.append(" INNER JOIN role AS r ON r.id = u.role_id");
@@ -66,4 +60,14 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     StringBuilder sql = new StringBuilder("UPDATE user SET password = ? WHERE id = ?");
     update(sql.toString(), userModel.getPassword(), userModel.getId());
   }
+
+
+
+
+  @Override
+  public List<UserModel> findAll() {
+    StringBuilder sql= new StringBuilder("SELECT * FROM User");
+    return query(sql.toString(),new UserMapper());
+  }
+
 }

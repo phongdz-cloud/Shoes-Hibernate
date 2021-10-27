@@ -12,14 +12,14 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
     @Override
     public ProductModel findOne(Long id) {
-        StringBuilder sql=new StringBuilder("SELECT * FROM Product Where id=?");
+        StringBuilder sql=new StringBuilder("SELECT * FROM product Where id=?");
         List<ProductModel> productModels= query(sql.toString(),new ProductMapper(),id);
         return productModels.isEmpty() ?null :productModels.get(0);
     }
 
     @Override
     public Long save(ProductModel productModel) {
-        StringBuilder sql=new StringBuilder("INSERT INTO Product (name,price,category_id,size,quantity,");
+        StringBuilder sql=new StringBuilder("INSERT INTO product (name,price,category_id,size,quantity,");
         sql.append("createddate,modifieddate, createdby,modifiedby)");
         sql.append(" VALUES (?,?,?,?,?,?,?,?,?)");
         return insert(sql.toString(),productModel.getName(),productModel.getPrice(),productModel.getCategoryId(),
@@ -28,7 +28,7 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
     @Override
     public List<ProductModel> findAll(Pageble pageble) {
-        StringBuilder sql=new StringBuilder("SELECT * FROM Product");
+        StringBuilder sql=new StringBuilder("SELECT * FROM product");
         if (pageble.getOffset() != null && pageble.getLimit() != null) {
             sql.append(" LIMIT "+pageble.getOffset()+", "+pageble.getLimit()+"");
         }
@@ -40,12 +40,12 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     }
     @Override
     public void delete(long id) {
-        StringBuilder sql=new StringBuilder("DELETE FROM Product WHERE id = ?");
+        StringBuilder sql=new StringBuilder("DELETE FROM product WHERE id = ?");
         update(sql.toString(),id);
     }
     @Override
     public void update(ProductModel productModel) {
-        StringBuilder sql=new StringBuilder("UPDATE Product set name=?,price=?,category_id=?,size=?,quantity=?,");
+        StringBuilder sql=new StringBuilder("UPDATE product set name=?,price=?,category_id=?,size=?,quantity=?,");
         sql.append("modifieddate=?,modifiedby=? WHERE id=?");
         update(sql.toString(),productModel.getName(),productModel.getPrice(),productModel.getCategoryId(),
                 productModel.getSize(),productModel.getQuantity(),productModel.getModifiedDate(),productModel.getModifiedBy(),productModel.getId());
@@ -61,7 +61,7 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     }
     @Override
     public int getTotalItem() {
-        String sql="SELECT count(*) FROM Product";
+        String sql="SELECT count(*) FROM product";
         return count(sql);
     }
 }
