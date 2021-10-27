@@ -14,6 +14,11 @@ public class UserService implements IUserService {
 
 
   @Override
+  public UserModel findById(Long id) {
+    return userDAO.findById(id);
+  }
+
+  @Override
   public UserModel findByUsernameAndPassword(String username, String password) {
     return userDAO.findByUsernameAndPassword(username, password);
   }

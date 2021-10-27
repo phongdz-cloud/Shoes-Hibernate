@@ -83,8 +83,8 @@
                     <div class="dropdown-header text-gray-700">
                         <h6 class="text-uppercase font-weight-bold">Mark Stephen</h6><small>Web Developer</small>
                     </div>
-                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity log       </a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item" href="login.html">Logout</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity log</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="/thoat?action=logout">Logout</a>
                 </div>
             </li>
         </ul>

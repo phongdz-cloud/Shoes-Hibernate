@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IUserDAO extends GenericDAO<UserModel> {
 
+  UserModel findById(Long id);
+
   UserModel findByUsernameAndPassword(String username, String password);
 
   UserModel findByUserName(String username);

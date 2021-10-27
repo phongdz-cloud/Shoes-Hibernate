@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css"
           href="<c:url value='/template/web/css/owl.carousel.css'/> ">
     <link rel="stylesheet" type="text/css"
+          href="<c:url value="/template/web/css/glass-case.css"/>">
+    <link rel="stylesheet" type="text/css"
           href="<c:url value='/template/web/css/bootstrap.min.css'/> ">
     <link rel="stylesheet" type="text/css"
           href="<c:url value='/template/web/css/magnific-popup.css'/> ">
@@ -65,6 +67,7 @@
 <script src="<c:url value='/template/web/js/jquery.magnific-popup.min.js'/>"></script>
 <script src="<c:url value='/template/web/js/owl.carousel.min.js'/>"></script>
 <script src="<c:url value='/template/web/js/custom.js'/>"></script>
+<script src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
 <script>
   /* ------------ Newslater-popup JS Start ------------- */
   $(window).on('load', function () {
@@ -81,6 +84,7 @@
     }, 10000)
   });
   /* ------------ Newslater-popup JS End ------------- */
+
 </script>
 </body>
 

@@ -103,26 +103,22 @@
                                                 </ul>
                                             </div>
                                             <div class="col-xl-3 col-lg-3 col-md-12">
-                                                <a href="<c:url value="/error-page"/>"
+                                                <a href="<c:url value="/shop"/>"
                                                    class="megamenu-title">Product
                                                     Types</a>
                                                 <ul>
-                                                    <li><a href="<c:url value="/error-page"/>">Hessian
+                                                    <li><a href="<c:url value="/product/van"/>">Van
                                                         Shoes</a></li>
-                                                    <li><a href="<c:url value="/error-page"/>">Postillion
+                                                    <li><a href="<c:url value="/product/mlb"/>">MLB
                                                         Shoes</a>
                                                     </li>
-                                                    <li><a href="<c:url value="/error-page"/>">Cowboy
+                                                    <li><a href="<c:url value="/product/convert"/>">Convert
                                                         Shoes</a></li>
                                                     <li><a href="<c:url value="/error-page"/>">Paddock
                                                         Shoes</a></li>
                                                     <li><a href="<c:url value="/error-page"/>">Postillion
                                                         Shoes</a>
                                                     </li>
-                                                    <li><a href="<c:url value="/error-page"/>">Cowboy
-                                                        Shoes</a></li>
-                                                    <li><a href="<c:url value="/error-page"/>">Paddock
-                                                        Shoes</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -273,7 +269,7 @@
                                     </p>
                                     <div class="clearfix"></div>
                                     <div class="mt-20">
-                                        <a href="<c:url value="/error-page"/>" class="btn">Cart</a>
+                                        <a href="<c:url value="/cart"/>" class="btn">Cart</a>
                                         <a href="<c:url value="/error-page"/>"
                                            class="btn btn-color right-side">Checkout</a>
                                     </div>

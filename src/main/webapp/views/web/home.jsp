@@ -1,4 +1,6 @@
 <%@include file="/common/taglib.jsp" %>
+<html>
+<body>
 <section class="home-banner">
     <div class="container">
         <div class="home-slider owl-carousel">
@@ -76,458 +78,32 @@
         </div>
         <div class="tab-content">
             <div role="tabpanel" class="row tab-pane fade active show" id="all">
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-1.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="new-label">
-                            <span class="text-uppercase">New</span>
+                <c:forEach var="item" items="${productModel.listResult}">
+                    <div class="featured-product mb-25">
+                        <div class="product-img transition mb-15">
+                            <a href="<c:url value="/product?productid=${item.id}"/>">
+                                <img src="<c:url value='/template/web/images/product-1.jpg'/>"
+                                     alt="product" class="transition">
+                            </a>
+                            <div class="new-label">
+                                <span class="text-uppercase">New</span>
+                            </div>
+                            <div class="product-details-btn text-uppercase text-center transition">
+                                <a href="<c:url value="/product?productid=${item.id}"/>" class="quick-popup mfp-iframe">Quick
+                                    View</a>
+                            </div>
                         </div>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup mfp-iframe">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">men's
-                            harpoon 2 eye boot</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-2.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
+                        <div class="product-desc">
+                            <a href="<c:url value="/product?productid=${item.id}"/>" class="product-name text-uppercase">${item.name}</a>
+                            <span class="product-pricce">$${item.price}"</span>
                         </div>
                     </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">AENEAN
-                            EU
-                            TRISTIQUE</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-3.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="sale-label">
-                            <span class="text-uppercase">sale</span>
-                        </div>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">AENEAN
-                            SAGITTIS</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-4.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">ALIQUAM
-                            LOBORTIS EST</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-5.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">AUCTOR
-                            GRAVIDA ENIM</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-6.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">BLIQUAM
-                            LOBORTIS</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-7.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="new-label">
-                            <span class="text-uppercase">New</span>
-                        </div>
-                        <div class="sale-label">
-                            <span class="text-uppercase">sale</span>
-                        </div>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">BUSCIPIT
-                            AT MAGNA</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-8.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">CONDIMENTUM
-                            POSUERE</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-9.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="new-label">
-                            <span class="text-uppercase">New</span>
-                        </div>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">DIGNISSIM
-                            VENENATIS</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-10.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">ELEIFEND
-                            ARCU</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="row tab-pane fade" id="shoes">
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-4.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc" data-category="accessories">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">ALIQUAM
-                            LOBORTIS EST</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-5.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">AUCTOR
-                            GRAVIDA ENIM</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-6.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">BLIQUAM
-                            LOBORTIS</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-7.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="new-label">
-                            <span class="text-uppercase">New</span>
-                        </div>
-                        <div class="sale-label">
-                            <span class="text-uppercase">sale</span>
-                        </div>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">BUSCIPIT
-                            AT MAGNA</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-8.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">CONDIMENTUM
-                            POSUERE</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-9.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="new-label">
-                            <span class="text-uppercase">New</span>
-                        </div>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">DIGNISSIM
-                            VENENATIS</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-10.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">ELEIFEND
-                            ARCU</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="row tab-pane fade" id="women">
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-3.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="sale-label">
-                            <span class="text-uppercase">sale</span>
-                        </div>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">AENEAN
-                            SAGITTIS</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-4.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc" data-category="accessories">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">ALIQUAM
-                            LOBORTIS EST</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-5.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">AUCTOR
-                            GRAVIDA ENIM</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-6.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">BLIQUAM
-                            LOBORTIS</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-7.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="new-label">
-                            <span class="text-uppercase">New</span>
-                        </div>
-                        <div class="sale-label">
-                            <span class="text-uppercase">sale</span>
-                        </div>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">BUSCIPIT
-                            AT MAGNA</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="row tab-pane fade" id="accessories">
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-5.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">AUCTOR
-                            GRAVIDA ENIM</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
-                <div class="featured-product mb-25">
-                    <div class="product-img transition mb-15">
-                        <a href="<c:url value="/error-page"/>">
-                            <img src="<c:url value='/template/web/images/product-6.jpg'/>"
-                                 alt="product" class="transition">
-                        </a>
-                        <div class="product-details-btn text-uppercase text-center transition">
-                            <a href="<c:url value="/error-page"/>" class="quick-popup">Quick
-                                View</a>
-                        </div>
-                    </div>
-                    <div class="product-desc">
-                        <a href="<c:url value="/error-page"/>" class="product-name text-uppercase">BLIQUAM
-                            LOBORTIS</a>
-                        <span class="product-pricce">$478.00</span>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
         </div>
     </div>
 </section>
+
 <%--Feture--%>
 
 <%--Offer banner--%>
@@ -929,3 +505,26 @@
         </div>
     </div>
 </div>
+    <%--var totalPages = ${productModel.totalPage};--%>
+    <%--var currentPage = ${productModel.page};--%>
+    <%--var limit=10;--%>
+    <%--$(function () {--%>
+    <%--    window.pagObj = $('#pagination').twbsPagination({--%>
+    <%--        totalPages: totalPages,--%>
+    <%--        visiblePages: 3,--%>
+    <%--        startPage: currentPage,--%>
+    <%--        onPageClick: function (event, page) {--%>
+    <%--            if (currentPage != page) {--%>
+    <%--                $('#maxPageItem').val(limit);--%>
+    <%--                $('#page').val(page);--%>
+    <%--                $('#formproduct').submit();--%>
+    <%--            }--%>
+    <%--        }--%>
+    <%--    });--%>
+    <%--});--%>
+    <%--function abc() {--%>
+    <%--    console.log(1);--%>
+    <%--}--%>
+</body>
+</html>
+

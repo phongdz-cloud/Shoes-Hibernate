@@ -53,6 +53,7 @@
                            required>
                     <span id="user_password" style="color: red"></span>
 
+
                 </div>
                 <div class="form-group">
                     <label class="form-label">Re-enter Password</label>

@@ -7,6 +7,10 @@
             <svg class="svg-icon svg-icon-md me-3">
                 <use xlink:href="icons/orion-svg-sprite.57a86639.svg#real-estate-1"> </use>
             </svg><span class="sidebar-link-title active text-muted">Dashboard</span></a></li>
+        <li class="sidebar-list-item"><a class="sidebar-link text-muted" href="/trang-chu">
+            <svg class="svg-icon svg-icon-md me-3">
+                <use xlink:href="icons/orion-svg-sprite.57a86639.svg#real-estate-1"> </use>
+            </svg><span class="sidebar-link-title active text-muted">Home</span></a></li>
         <li class="sidebar-list-item"><a class="sidebar-link text-muted" href="#" data-bs-target="#cmsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse">
             <svg class="svg-icon svg-icon-md me-3">
                 <use xlink:href="icons/orion-svg-sprite.57a86639.svg#reading-1"> </use>

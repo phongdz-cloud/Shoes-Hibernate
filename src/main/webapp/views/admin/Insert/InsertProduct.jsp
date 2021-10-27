@@ -59,6 +59,7 @@
                         <input type="hidden" value="${productModel.id}" id="id" name="id"/>
                         <c:if test="${empty productModel}">
                             <button id="btnAddOrUpdate" style="margin-top: 10px" class="btn btn-outline-primary mb-4">Add Product</button>
+                            <button style="margin-top: 10px" class="btn btn-outline-primary mb-4" onclick="clear()">Clear</button>
                         </c:if>
                         <c:if test="${not empty productModel}">
                             <button id="btnAddOrUpdate" style="margin-top: 10px" class="btn btn-outline-primary mb-4">Update</button>
@@ -112,6 +113,7 @@
         var id = $('#id').val();
         if (id == "") {
             addProduct(data);
+            $('#formproduct')[0].reset();
         } else {
             updateProduct(data);
         }
@@ -151,6 +153,9 @@
                 window.location.href = "${NewURL}?type=list&maxPageItem=2&page=1&message=error_system";
             }
         });
+    }
+    function clear(){
+        $('#formproduct')[0].reset();
     }
 </script>
 </body>

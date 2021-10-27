@@ -1,7 +1,11 @@
 package com.example.projectshoes.controller.web;
 
 import com.example.projectshoes.constant.SystemConstant;
+import com.example.projectshoes.model.ProductModel;
 import com.example.projectshoes.model.UserModel;
+import com.example.projectshoes.paging.PageRequest;
+import com.example.projectshoes.paging.Pageble;
+import com.example.projectshoes.service.IProductService;
 import com.example.projectshoes.service.IUserService;
 import com.example.projectshoes.utils.FormUtil;
 import com.example.projectshoes.utils.SessionUtil;
@@ -15,12 +19,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap","/thoat"})
+@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat"})
 public class HomeController extends HttpServlet {
 
   @Inject
   IUserService userService;
-
+  @Inject
+  IProductService productService;
   private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
   @Override
@@ -40,6 +45,10 @@ public class HomeController extends HttpServlet {
       SessionUtil.getInstance().removeValue(req, "USERMODEL");
       resp.sendRedirect(req.getContextPath() + "/trang-chu");
     } else {
+      ProductModel productModel=new ProductModel();
+      Pageble pageble=new PageRequest(1,10);
+      productModel.setListResult(productService.findAll(pageble));
+      req.setAttribute("productModel",productModel);
       String userSuccess = req.getParameter("user");
       req.setAttribute("user", userSuccess);
       RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
