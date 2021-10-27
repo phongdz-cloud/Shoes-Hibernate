@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/forgot-password")
+@WebServlet(urlPatterns = {"/forgot-password"})
 public class ForgotPasswordController extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     RequestDispatcher rq = req.getRequestDispatcher("/views/web/forgotpassword.jsp");
-    rq.forward(req,resp);
+    rq.forward(req, resp);
   }
 }
