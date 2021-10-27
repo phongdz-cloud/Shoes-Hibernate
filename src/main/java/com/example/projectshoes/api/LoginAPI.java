@@ -28,6 +28,7 @@ public class LoginAPI extends HttpServlet {
     UserModel checkUser = userService.findByUserName(userModel.getUsername());
     if (checkUser == null) {
       userModel.setPassword("");
+      userModel.setEmail("");
       userService.save(userModel);
     }
     mapper.writeValue(resp.getOutputStream(), userModel);

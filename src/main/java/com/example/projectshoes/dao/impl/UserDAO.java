@@ -8,6 +8,13 @@ import java.util.List;
 public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
   @Override
+  public UserModel findById(Long id) {
+    StringBuilder sql = new StringBuilder("SELECT * FROM user WHERE id = ?");
+    List<UserModel> userModels = query(sql.toString(), new UserMapper(), id);
+    return userModels.isEmpty() ? null : userModels.get(0);
+  }
+
+  @Override
   public UserModel findByUsernameAndPassword(String username, String password) {
     StringBuilder sql = new StringBuilder("SELECT * FROM user AS u");
     sql.append(" INNER JOIN role AS r ON r.id = u.role_id");
