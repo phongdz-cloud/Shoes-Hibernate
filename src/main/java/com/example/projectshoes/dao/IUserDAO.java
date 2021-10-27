@@ -1,6 +1,5 @@
 package com.example.projectshoes.dao;
 
-import com.example.projectshoes.model.CategoryModel;
 import com.example.projectshoes.model.UserModel;
 import java.util.List;
 
