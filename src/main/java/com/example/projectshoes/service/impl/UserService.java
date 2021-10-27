@@ -12,10 +12,6 @@ public class UserService implements IUserService {
   @Inject
   IUserDAO userDAO;
 
-  @Override
-  public List<UserModel> findAll() {
-    return userDAO.findAll();
-  }
 
   @Override
   public UserModel findByUsernameAndPassword(String username, String password) {
@@ -48,5 +44,10 @@ public class UserService implements IUserService {
   @Override
   public void update(UserModel userModel) {
     userDAO.update(userModel);
+  }
+
+  @Override
+  public List<UserModel> findAll() {
+    return userDAO.findAll();
   }
 }
