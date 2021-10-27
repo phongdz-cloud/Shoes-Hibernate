@@ -1,19 +1,23 @@
 package com.example.projectshoes.service;
 
 
+import com.example.projectshoes.model.CategoryModel;
 import com.example.projectshoes.model.UserModel;
 
-public interface IUserService {
+import java.util.List;
 
+public interface IUserService {
+  List<UserModel> findAll();
   UserModel findByUsernameAndPassword(String username, String password);
 
   UserModel findByUserName(String username);
 
   UserModel findByEmail(String email);
 
+  UserModel findByUserID(Long id);
+
   Long save(UserModel userModel);
 
   void update(UserModel userModel);
-
 
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategoryDAO {
     @Override
     public List<CategoryModel> findAll() {
-        StringBuilder sql= new StringBuilder("SELECT * FROM Category");
+        StringBuilder sql = new StringBuilder("SELECT * FROM Category");
         return query(sql.toString(),new CategoryMapper());
     }
 

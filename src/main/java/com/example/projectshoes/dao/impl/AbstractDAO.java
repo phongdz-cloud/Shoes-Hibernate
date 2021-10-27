@@ -3,13 +3,8 @@ package com.example.projectshoes.dao.impl;
 
 import com.example.projectshoes.dao.GenericDAO;
 import com.example.projectshoes.mapper.RowMapper;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -47,6 +42,9 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         }
         else if (obj instanceof Float){
           statement.setFloat(index, (Float) obj);
+        }
+        else if (obj instanceof Date){
+          statement.setDate(index, (Date) obj);
         }
       }
     } catch (Exception e) {

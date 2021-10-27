@@ -4,12 +4,18 @@ import com.example.projectshoes.dao.IUserDAO;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.IUserService;
 import java.sql.Timestamp;
+import java.util.List;
 import javax.inject.Inject;
 
 public class UserService implements IUserService {
 
   @Inject
   IUserDAO userDAO;
+
+  @Override
+  public List<UserModel> findAll() {
+    return userDAO.findAll();
+  }
 
   @Override
   public UserModel findByUsernameAndPassword(String username, String password) {
@@ -24,6 +30,11 @@ public class UserService implements IUserService {
   @Override
   public UserModel findByEmail(String email) {
     return userDAO.findByEmail(email);
+  }
+
+  @Override
+  public UserModel findByUserID(Long id) {
+    return userDAO.findByUserID(id);
   }
 
   @Override
