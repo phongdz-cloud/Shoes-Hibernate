@@ -4,12 +4,14 @@ import com.example.projectshoes.dao.IUserDAO;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.IUserService;
 import java.sql.Timestamp;
+import java.util.List;
 import javax.inject.Inject;
 
 public class UserService implements IUserService {
 
   @Inject
   IUserDAO userDAO;
+
 
   @Override
   public UserModel findById(Long id) {
@@ -32,6 +34,11 @@ public class UserService implements IUserService {
   }
 
   @Override
+  public UserModel findByUserID(Long id) {
+    return userDAO.findByUserID(id);
+  }
+
+  @Override
   public Long save(UserModel userModel) {
     userModel.setRoleId(2L);
     userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
@@ -42,5 +49,10 @@ public class UserService implements IUserService {
   @Override
   public void update(UserModel userModel) {
     userDAO.update(userModel);
+  }
+
+  @Override
+  public List<UserModel> findAll() {
+    return userDAO.findAll();
   }
 }

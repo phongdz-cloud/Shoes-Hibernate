@@ -19,6 +19,10 @@
                 <li class="sidebar-list-item"><a class="sidebar-link text-muted" href="/admin-category">Categories</a></li>
                 <li class="sidebar-list-item"><a class="sidebar-link text-muted" href="/admin-product?page=1&&maxPageItem=2">Products</a></li>
                 <li class="sidebar-list-item"><a class="sidebar-link text-muted" href="/admin-product?action=insert">Products - New</a></li>
+                <li class="sidebar-list-item"><a class="sidebar-link text-muted" href="/admin-user">User</a></li>
+                <li class="sidebar-list-item"><a class="sidebar-link text-muted" href="/admin-delivery">Delivery</a></li>
+                <li class="sidebar-list-item"><a class="sidebar-link text-muted" href="/admin-delivery?action=insert">Delivery - New</a></li>
+                <li class="sidebar-list-item"><a class="sidebar-link text-muted" href="/admin-saledetail">Saledetails</a></li>
             </ul>
         </li>
         <li class="sidebar-list-item"><a class="sidebar-link text-muted " href="#" data-bs-target="#widgetsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse">

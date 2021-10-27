@@ -51,6 +51,18 @@
 <!-- CMS Category JS-->
 <script src="<c:url value="/template/admin/js/e-commerce-products.ab70c491.js"/>">
 </script>
+<!-- User JS-->
+<script src="<c:url value="/template/admin/js/user.js"/>">
+</script>
+<!-- Delivery JS-->
+<script src="<c:url value="/template/admin/js/delivery.js"/>">
+</script>
+
+<!-- Saledetails JS-->
+<script src="<c:url value="/template/admin/js/e-commerce-saledetails.ab70c491.js"/>">
+</script>
+
+
 <!-- Main Theme JS File-->
 <script src="<c:url value="/template/admin/js/e-commerce-customers.9c7efe69.js"/>"></script>
 

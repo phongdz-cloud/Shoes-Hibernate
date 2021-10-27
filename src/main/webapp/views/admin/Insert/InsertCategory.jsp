@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <c:url var="APICategory" value="/api-category"/>
 <!DOCTYPE html>
@@ -89,7 +91,6 @@
                     <div class="alert alert-success">
                             Congratulations,Delete Product success
                     </div>`)
-                // window.location.href = "/admin-";
             },
             error: function (error) {
                 console.log("Error")

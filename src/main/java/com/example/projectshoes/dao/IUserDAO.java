@@ -1,7 +1,8 @@
 package com.example.projectshoes.dao;
 
-
+import com.example.projectshoes.model.CategoryModel;
 import com.example.projectshoes.model.UserModel;
+import java.util.List;
 
 public interface IUserDAO extends GenericDAO<UserModel> {
 
@@ -13,8 +14,12 @@ public interface IUserDAO extends GenericDAO<UserModel> {
 
   UserModel findByEmail(String email);
 
+  UserModel findByUserID(Long id);
+
   Long save(UserModel userModel);
 
   void update(UserModel userModel);
+
+  List<UserModel> findAll();
 
 }

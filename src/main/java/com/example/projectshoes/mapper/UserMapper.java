@@ -15,6 +15,7 @@ public class UserMapper implements RowMapper<UserModel> {
       user.setUsername(rs.getString("username"));
       user.setPassword(rs.getString("password"));
       user.setEmail(rs.getString("email"));
+      user.setRoleId(rs.getLong("role_id"));
       user.setAvatar(rs.getString("avatar"));
       try {
         RoleModel role = new RoleModel();
@@ -26,6 +27,7 @@ public class UserMapper implements RowMapper<UserModel> {
       }
       return user;
     } catch (SQLException e) {
+      System.out.println("Failed");
       return null;
     }
   }

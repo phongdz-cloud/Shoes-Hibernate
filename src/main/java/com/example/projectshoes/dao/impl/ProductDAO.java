@@ -43,6 +43,7 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
         StringBuilder sql=new StringBuilder("DELETE FROM product WHERE id = ?");
         delete(sql.toString(),id);
     }
+
     @Override
     public void update(ProductModel productModel) {
         StringBuilder sql=new StringBuilder("UPDATE product set name=?,price=?,category_id=?,size=?,quantity=?,");
