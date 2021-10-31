@@ -1,22 +1,29 @@
 package com.example.projectshoes.model;
 
-public class RoleModel extends AbstractModel<RoleModel>{
-    private String name;
-    private String code;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
-    public String getName() {
-        return name;
-    }
+@Entity
+public class RoleModel extends AbstractModel<RoleModel> {
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  @Column(name = "name")
+  private String name;
+  @Column(name = "code")
+  private String code;
 
-    public String getCode() {
-        return code;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
 }

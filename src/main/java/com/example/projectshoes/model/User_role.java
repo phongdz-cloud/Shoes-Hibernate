@@ -1,22 +1,23 @@
 package com.example.projectshoes.model;
 
 public class User_role extends AbstractModel<User_role> {
-    private Long userId;
-    private Long roleId;
 
-    public Long getUserId() {
-        return userId;
-    }
+  private Long userId;
+  private Long roleId;
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+  public Long getUserId() {
+    return userId;
+  }
 
-    public Long getRoleId() {
-        return roleId;
-    }
+  public void setUserId(Long userId) {
+    this.userId = userId;
+  }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
+  public Long getRoleId() {
+    return roleId;
+  }
+
+  public void setRoleId(Long roleId) {
+    this.roleId = roleId;
+  }
 }

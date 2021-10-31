@@ -1,10 +1,25 @@
 package com.example.projectshoes.model;
 
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import com.vladmihalcea.hibernate.type.json.JsonStringType;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
 
-public class AbstractModel<T> {
+@MappedSuperclass
+@TypeDefs({
+    @TypeDef(name = "json", typeClass = JsonStringType.class),
+    @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
+})
+public class AbstractModel<T> implements Serializable {
 
   private Long id;
   private Timestamp createdDate;
@@ -18,6 +33,8 @@ public class AbstractModel<T> {
   private Integer page;
   private Integer maxPageItem;
   private Integer totalItem;
+
+  @Type(type = "json")
   public long[] getIds() {
     return ids;
   }
@@ -25,6 +42,8 @@ public class AbstractModel<T> {
   public void setIds(long[] ids) {
     this.ids = ids;
   }
+
+  @Type(type = "json")
 
   public List<T> getListResult() {
     return listResult;
@@ -34,6 +53,8 @@ public class AbstractModel<T> {
     this.listResult = listResult;
   }
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   public Long getId() {
     return id;
   }
@@ -89,6 +110,7 @@ public class AbstractModel<T> {
   public void setAlert(String alert) {
     this.alert = alert;
   }
+
   public Integer getMaxPageItem() {
     return maxPageItem;
   }
@@ -106,6 +128,7 @@ public class AbstractModel<T> {
   public void setTotalPage(Integer totalPage) {
     this.totalPage = totalPage;
   }
+
   public Integer getTotalItem() {
     return totalItem;
   }
@@ -113,9 +136,11 @@ public class AbstractModel<T> {
   public void setTotalItem(Integer totalItem) {
     this.totalItem = totalItem;
   }
+
   public Integer getPage() {
     return page;
   }
+
   public void setPage(Integer page) {
     this.page = page;
   }

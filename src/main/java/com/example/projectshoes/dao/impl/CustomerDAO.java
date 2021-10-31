@@ -16,11 +16,7 @@ public class CustomerDAO extends AbstractDAO<CustomerModel> implements ICustomer
 
   @Override
   public Long save(CustomerModel customerModel) {
-    StringBuilder sql = new StringBuilder("INSERT INTO customer(user_id,firstname,lastname");
-    sql.append(",gender,phone,address,content) VALUES(?,?,?,?,?,?,?)");
-    return insert(sql.toString(), customerModel.getUserId(), customerModel.getFirstName(),
-        customerModel.getLastName(), customerModel.getGender(), customerModel.getPhone(),
-        customerModel.getAddress(), customerModel.getContent());
+    return insert(customerModel);
   }
 
   @Override

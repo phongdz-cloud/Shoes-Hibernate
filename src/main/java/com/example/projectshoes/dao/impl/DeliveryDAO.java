@@ -24,11 +24,7 @@ public class DeliveryDAO extends AbstractDAO<DeliveryModel> implements IDelivery
 
     @Override
     public Long save(DeliveryModel deliveryModel) {
-        StringBuilder sql=new StringBuilder("INSERT INTO Delivery (name, shipper, delivery_date, status,createddate, createdby,modifiedby,modifieddate)");
-        sql.append(" VALUES(?,?,?,?,?,?,?,?)");
-        return insert(sql.toString(),deliveryModel.getName(),deliveryModel.getShipper(),deliveryModel.getDeliveryDate(),
-                deliveryModel.getStatus(), deliveryModel.getCreatedDate(), deliveryModel.getCreatedBy(),
-                deliveryModel.getModifiedBy(), deliveryModel.getModifiedDate());
+        return insert(deliveryModel);
     }
 
     @Override

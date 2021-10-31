@@ -10,7 +10,7 @@ public interface GenericDAO<T> {
 
   void update(String sql, Object... parameters);
 
-  Long insert(String sql, Object... parameters);
+  Long insert(T object);
 
   Long delete(String sql, Long id);
 

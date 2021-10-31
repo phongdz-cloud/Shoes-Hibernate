@@ -3,7 +3,6 @@ package com.example.projectshoes.dao.impl;
 import com.example.projectshoes.dao.ISaledetailDAO;
 import com.example.projectshoes.mapper.SaledetailMapper;
 import com.example.projectshoes.model.SaledetailModel;
-
 import java.util.List;
 
 public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISaledetailDAO {
@@ -16,12 +15,7 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
 
     @Override
     public Long save(SaledetailModel saledetailModel) {
-        StringBuilder sql=new StringBuilder("INSERT INTO Saledetail (user_id, product_id, delivery_id, quantity, total, status_delivery,");
-        sql.append("createddate,modifieddate, createdby,modifiedby)");
-        sql.append(" VALUES (?,?,?,?,?,?,?,?,?,?)");
-        return insert(sql.toString(),saledetailModel.getUserId(),saledetailModel.getProductId(),saledetailModel.getDeliveryId(),
-                saledetailModel.getQuantity(), saledetailModel.getTotal(),saledetailModel.getStatus_delivery(),
-                saledetailModel.getCreatedDate(),saledetailModel.getModifiedDate(),saledetailModel.getCreatedBy(),saledetailModel.getModifiedBy());
+        return insert(saledetailModel);
     }
 
     @Override

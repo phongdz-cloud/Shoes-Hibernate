@@ -1,12 +1,12 @@
 package com.example.projectshoes.dao.impl;
 
 import com.example.projectshoes.dao.IUserDAO;
-import com.example.projectshoes.mapper.CategoryMapper;
 import com.example.projectshoes.mapper.UserMapper;
-import com.example.projectshoes.model.CategoryModel;
 import com.example.projectshoes.model.UserModel;
 import java.util.List;
+import javax.transaction.Transactional;
 
+@Transactional
 public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
 
@@ -45,21 +45,15 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
   @Override
   public UserModel findByUserID(Long id) {
-    StringBuilder sql=new StringBuilder("SELECT * FROM user Where id=?");
+    StringBuilder sql = new StringBuilder("SELECT * FROM user Where id=?");
     sql.append(" VALUES(?)");
-    List<UserModel> user= query(sql.toString(),new UserMapper(),id);
-    return  user.isEmpty() ? null :user.get(0);
+    List<UserModel> user = query(sql.toString(), new UserMapper(), id);
+    return user.isEmpty() ? null : user.get(0);
   }
 
   @Override
   public Long save(UserModel userModel) {
-    StringBuilder sql = new StringBuilder("INSERT INTO user (username, password, email, avatar,");
-    sql.append(" createddate, createdby, role_id)");
-    sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?)");
-    return insert(sql.toString(), userModel.getUsername(), userModel.getPassword(),
-        userModel.getEmail(), userModel.getAvatar(), userModel.getCreatedDate(),
-        userModel.getCreatedBy(),
-        userModel.getRoleId());
+    return insert(userModel);
   }
 
   @Override
@@ -69,12 +63,10 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
   }
 
 
-
-
   @Override
   public List<UserModel> findAll() {
-    StringBuilder sql= new StringBuilder("SELECT * FROM User");
-    return query(sql.toString(),new UserMapper());
+    StringBuilder sql = new StringBuilder("SELECT * FROM User");
+    return query(sql.toString(), new UserMapper());
   }
 
 }

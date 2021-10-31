@@ -1,15 +1,26 @@
 package com.example.projectshoes.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import org.hibernate.annotations.Type;
+
+@Entity
+@Table(name = "user")
 public class UserModel extends AbstractModel<UserModel> {
 
   private String username;
   private String password;
+  @Transient
   private String repassword;
   private String email;
   private String avatar;
   private Long roleId;
+  @Transient
   private RoleModel role = new RoleModel();
 
+  @Column(name = "username")
   public String getUsername() {
     return username;
   }
@@ -18,6 +29,7 @@ public class UserModel extends AbstractModel<UserModel> {
     this.username = username;
   }
 
+  @Column(name = "password")
   public String getPassword() {
     return password;
   }
@@ -26,6 +38,7 @@ public class UserModel extends AbstractModel<UserModel> {
     this.password = password;
   }
 
+  @Column(name = "email")
   public String getEmail() {
     return email;
   }
@@ -34,6 +47,7 @@ public class UserModel extends AbstractModel<UserModel> {
     this.email = email;
   }
 
+  @Column(name = "role_id")
   public Long getRoleId() {
     return roleId;
   }
@@ -42,6 +56,7 @@ public class UserModel extends AbstractModel<UserModel> {
     this.roleId = roleId;
   }
 
+  @Type(type = "json")
   public RoleModel getRole() {
     return role;
   }
@@ -58,6 +73,7 @@ public class UserModel extends AbstractModel<UserModel> {
     this.repassword = repassword;
   }
 
+  @Column(name = "avatar")
   public String getAvatar() {
     return avatar;
   }

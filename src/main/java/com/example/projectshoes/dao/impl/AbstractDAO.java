@@ -3,11 +3,19 @@ package com.example.projectshoes.dao.impl;
 
 import com.example.projectshoes.dao.GenericDAO;
 import com.example.projectshoes.mapper.RowMapper;
-
-import java.sql.*;
+import com.example.projectshoes.utils.HibernateUtil;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
 
@@ -39,11 +47,9 @@ public class AbstractDAO<T> implements GenericDAO<T> {
           statement.setInt(index, (Integer) obj);
         } else if (obj instanceof Timestamp) {
           statement.setTimestamp(index, (Timestamp) obj);
-        }
-        else if (obj instanceof Float){
+        } else if (obj instanceof Float) {
           statement.setFloat(index, (Float) obj);
-        }
-        else if (obj instanceof Date){
+        } else if (obj instanceof Date) {
           statement.setDate(index, (Date) obj);
         }
       }
@@ -118,45 +124,23 @@ public class AbstractDAO<T> implements GenericDAO<T> {
   }
 
   @Override
-  public Long insert(String sql, Object... parameters) {
-    Long id = null;
-    Connection connection = null;
-    PreparedStatement statement = null;
-    ResultSet resultSet = null;
-    try {
-      connection = getConnection();
-      connection.setAutoCommit(false);
-      statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-      setParameter(statement, parameters);
-      statement.executeUpdate();
-      resultSet = statement.getGeneratedKeys();
-      if (resultSet.next()) {
-        id = resultSet.getLong(1);
+  public Long insert(T object) {
+    Transaction transaction = null;
+    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+      //start a transaction
+      transaction = session.beginTransaction();
+      //save the user object
+      session.save(object);
+      //commit transaction
+//      session.close();
+      return 1L;
+    } catch (Exception ex) {
+      if (transaction != null) {
+        transaction.rollback();
       }
-      connection.commit();
-      return id;
-    } catch (SQLException e) {
-      try {
-        connection.rollback();
-      } catch (SQLException ex) {
-        ex.printStackTrace();
-      }
-    } finally {
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-        if (statement != null) {
-          statement.close();
-        }
-        if (resultSet != null) {
-          statement.close();
-        }
-      } catch (SQLException e) {
-        return null;
-      }
+      ex.printStackTrace();
     }
-    return null;
+    return 0L;
   }
 
   @Override
