@@ -2,10 +2,12 @@ package com.example.projectshoes.controller.web;
 
 import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.model.ProductModel;
+import com.example.projectshoes.model.RoleModel;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.paging.PageRequest;
 import com.example.projectshoes.paging.Pageble;
 import com.example.projectshoes.service.IProductService;
+import com.example.projectshoes.service.IRoleService;
 import com.example.projectshoes.service.IUserService;
 import com.example.projectshoes.utils.FormUtil;
 import com.example.projectshoes.utils.SessionUtil;
@@ -22,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat"})
 public class HomeController extends HttpServlet {
 
+  @Inject
+  IRoleService roleService;
   @Inject
   IUserService userService;
   @Inject
@@ -45,10 +49,10 @@ public class HomeController extends HttpServlet {
       SessionUtil.getInstance().removeValue(req, "USERMODEL");
       resp.sendRedirect(req.getContextPath() + "/trang-chu");
     } else {
-      ProductModel productModel=new ProductModel();
-      Pageble pageble=new PageRequest(1,10);
+      ProductModel productModel = new ProductModel();
+      Pageble pageble = new PageRequest(1, 10);
       productModel.setListResult(productService.findAll(pageble));
-      req.setAttribute("productModel",productModel);
+      req.setAttribute("productModel", productModel);
       String userSuccess = req.getParameter("user");
       req.setAttribute("user", userSuccess);
       RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
@@ -66,6 +70,8 @@ public class HomeController extends HttpServlet {
           userModel.getUsername(), userModel.getPassword()
       );
       if (userModel != null) {
+        RoleModel roleModel = roleService.findRoleById(userModel.getRoleId());
+        userModel.setRole(roleModel);
         SessionUtil.getInstance().putValue(req, "USERMODEL", userModel);
         if (userModel.getRole().getCode().equals(SystemConstant.USER)) {
           resp.sendRedirect(req.getContextPath() + "/trang-chu");

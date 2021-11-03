@@ -1,6 +1,8 @@
 package com.example.projectshoes.service.impl;
 
+import com.example.projectshoes.dao.IRoleDAO;
 import com.example.projectshoes.dao.IUserDAO;
+import com.example.projectshoes.model.RoleModel;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.IUserService;
 import java.sql.Timestamp;
@@ -11,12 +13,8 @@ public class UserService implements IUserService {
 
   @Inject
   IUserDAO userDAO;
-
-
-  @Override
-  public UserModel findById(Long id) {
-    return userDAO.findById(id);
-  }
+  @Inject
+  IRoleDAO roleDAO;
 
   @Override
   public UserModel findByUsernameAndPassword(String username, String password) {
@@ -35,14 +33,17 @@ public class UserService implements IUserService {
 
   @Override
   public UserModel findByUserID(Long id) {
-    return userDAO.findByUserID(id);
+    return userDAO.findById(id);
   }
+
 
   @Override
   public Long save(UserModel userModel) {
-    userModel.setRoleId(2L);
+    RoleModel roleModel = roleDAO.findRoleById(1L);
+    userModel.setRoleId(1L);
     userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
     userModel.setCreatedBy(userModel.getUsername());
+    userModel.getRoles().add(roleModel);
     return userDAO.save(userModel);
   }
 

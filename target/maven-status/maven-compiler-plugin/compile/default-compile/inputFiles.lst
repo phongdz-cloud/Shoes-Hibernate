@@ -12,11 +12,11 @@ C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\api
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\api\admin\SaledetailAPI.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\api\LoginAPI.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\web\HomeController.java
+C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\service\impl\RoleService.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\utils\SessionUtil.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\model\SaledetailModel.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\web\ProductDetailController.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\service\impl\UserService.java
-C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\model\User_role.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\constant\SystemConstant.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\utils\FieldUtil.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\model\AbstractModel.java
@@ -38,8 +38,10 @@ C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\ser
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\api\web\CustomerAPI.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\service\impl\CustomerService.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\dao\impl\CategoryDAO.java
+C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\dao\IRoleDAO.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\model\UserModel.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\dao\impl\CustomerDAO.java
+C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\service\IRoleService.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\admin\OderController.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\service\ICategoryService.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\model\CategoryModel.java
@@ -66,6 +68,7 @@ C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\map
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\admin\CategoryController.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\service\impl\ProductService.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\web\Shop.java
+C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\dao\impl\RoleDAO.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\web\SetPasswordController.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\web\ForgotPasswordController.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\utils\JavaMailUtil.java

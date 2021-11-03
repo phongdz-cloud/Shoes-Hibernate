@@ -51,7 +51,7 @@ public class ForgotPasswordAPI extends HttpServlet {
     req.setCharacterEncoding("UTF-8");
     resp.setContentType("application/json");
     UserModel oddUserModel = HttpUtil.of(req.getReader()).toModel(UserModel.class);
-    UserModel newUserModel = userService.findById(SystemConstant.ID);
+    UserModel newUserModel = userService.findByUserID(SystemConstant.ID);
     if (newUserModel != null) {
       SystemConstant.ID = null;
       newUserModel.setPassword(oddUserModel.getPassword());

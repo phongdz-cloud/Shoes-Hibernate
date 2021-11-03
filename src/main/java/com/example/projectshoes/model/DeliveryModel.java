@@ -2,13 +2,27 @@ package com.example.projectshoes.model;
 
 
 import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity(name = "Delivery")
+@Table(name = "delivery")
 public class DeliveryModel extends AbstractModel<DeliveryModel> {
 
+  @Column(name = "shipper")
   private String shipper;
+  @Column(name = "status")
   private String status;
+  @Column(name = "deliverydate")
   private Date deliveryDate;
+  @Column(name = "name")
   private String name;
+
+  @OneToOne(mappedBy = "delivery")
+  private SaledetailModel saleDetail;
+
 
   public String getName() {
     return name;

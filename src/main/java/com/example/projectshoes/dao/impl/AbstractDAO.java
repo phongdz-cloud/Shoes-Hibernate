@@ -14,12 +14,16 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
 
   ResourceBundle myBundle = ResourceBundle.getBundle("db");
+
+  private Class<T> type = (Class<T>) this.getClass();
+
 
   public Connection getConnection() {
     try {
@@ -58,6 +62,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
     }
   }
 
+
   @Override
   public <T> List<T> query(String sql, RowMapper<T> rowMapper, Object... parameters) {
     List<T> results = new ArrayList<>();
@@ -82,57 +87,62 @@ public class AbstractDAO<T> implements GenericDAO<T> {
           if (statement != null) {
             statement.close();
           }
-          if (resultSet != null) {
-            statement.close();
-          }
-        } catch (SQLException e) {
-          return null;
+        } catch (Exception ex) {
+          System.out.println(ex.getMessage());
         }
       }
+      return results;
     }
-    return null;
+    return results;
   }
 
   @Override
-  public void update(String sql, Object... parameters) {
-    PreparedStatement statement = null;
-    Connection connection = getConnection();
-    try {
-      connection.setAutoCommit(false);
-      statement = connection.prepareStatement(sql);
-      setParameter(statement, parameters);
-      statement.executeUpdate();
-      connection.commit();
-    } catch (SQLException e) {
-      try {
-        connection.rollback();
-      } catch (SQLException ex) {
-        ex.printStackTrace();
-      }
-    } finally {
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-        if (statement != null) {
-          statement.close();
-        }
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-    }
-  }
-
-  @Override
-  public Long insert(T object) {
+  @SuppressWarnings("unchecked")
+  public List<T> queryHibernate(String sql, T object) {
+    List<T> listOfTests = null;
     Transaction transaction = null;
     try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-      //start a transaction
       transaction = session.beginTransaction();
-      //save the user object
-      session.save(object);
-      //commit transaction
-//      session.close();
+      if (object != null) {
+        listOfTests = session.createQuery(sql)
+            .setProperties(object)
+            .getResultList();
+      } else {
+        // SELECT * FROM USER/PRODUCT
+        listOfTests = session.createQuery(sql)
+            .list();
+      }
+      transaction.commit();
+    } catch (Exception ex) {
+      System.out.println(ex.getMessage());
+    }
+    return listOfTests;
+  }
+
+  @Override
+  public T findById(Long id) {
+    Query query = null;
+    Transaction transaction = null;
+    T obj = null;
+    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+      transaction = session.beginTransaction();
+      obj = session.get(type, id);
+      transaction.commit();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    return obj;
+  }
+
+
+  // thêm và update
+  @Override
+  public Long save(T object) {
+    Transaction transaction = null;
+    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+      transaction = session.beginTransaction();
+      session.saveOrUpdate(object);
+      transaction.commit();
       return 1L;
     } catch (Exception ex) {
       if (transaction != null) {
@@ -143,36 +153,19 @@ public class AbstractDAO<T> implements GenericDAO<T> {
     return 0L;
   }
 
+  // delete
   @Override
-  public Long delete(String sql, Long id) {
-    PreparedStatement statement = null;
-    Connection connection = getConnection();
-    try {
-      connection.setAutoCommit(false);
-      statement = connection.prepareStatement(sql);
-      statement.setLong(1, id);
-      statement.executeUpdate();
-      connection.commit();
-      return id;
-    } catch (SQLException e) {
-      try {
-        connection.rollback();
-      } catch (SQLException ex) {
-        ex.printStackTrace();
-      }
-    } finally {
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-        if (statement != null) {
-          statement.close();
-        }
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
+  public Long delete(T object) {
+    Transaction transaction = null;
+    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+      transaction = session.beginTransaction();
+      session.delete(object);
+      transaction.commit();
+      return 1L;
+    } catch (Exception ex) {
+      System.out.println(ex.getMessage());
+      return null;
     }
-    return null;
   }
 
   @Override
@@ -210,4 +203,11 @@ public class AbstractDAO<T> implements GenericDAO<T> {
   }
 
 
+  public Class<T> getType() {
+    return type;
+  }
+
+  public void setType(Class<T> type) {
+    this.type = type;
+  }
 }

@@ -6,15 +6,18 @@ import java.util.List;
 
 public interface GenericDAO<T> {
 
+
   <T> List<T> query(String sql, RowMapper<T> rowMapper, Object... parameters);
 
-  void update(String sql, Object... parameters);
+  T findById(Long id);
 
-  Long insert(T object);
 
-  Long delete(String sql, Long id);
+  Long save(T object);
+
+  Long delete(T object);
 
   int count(String sql, Object... parameters);
 
+  List<T> queryHibernate(String sql, T object);
 
 }

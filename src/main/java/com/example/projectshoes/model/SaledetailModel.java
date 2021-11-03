@@ -1,75 +1,122 @@
 package com.example.projectshoes.model;
 
-public class SaledetailModel extends AbstractModel<SaledetailModel>{
-    private Long userId;
-    private Long productId;
-    private Long deliveryId;
-    private int quantity;
-    private Float total;
-    private String status_delivery;
-    private UserModel user = new UserModel();
-    private DeliveryModel delivery= new DeliveryModel();
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
-    public UserModel getUser() {
-        return user;
-    }
+@Entity(name = "Saledetail")
+@Table(name = "saledetail", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {
+        "product_id"
+    }),
+    @UniqueConstraint(columnNames = {
+        "user_id"
+    }),
+    @UniqueConstraint(columnNames = {
+        "delivery_id"
+    })
+})
+public class SaledetailModel extends AbstractModel<SaledetailModel> {
 
-    public void setUser(UserModel user) {
-        this.user = user;
-    }
+  //  @Column(name = "user_id")
+  @Transient
+  private Long userId;
+  //  @Column(name = "product_id")
+  @Transient
+  private Long productId;
+  //  @Column(name = "delivery_id")
+  @Transient
+  private Long deliveryId;
+  @Column(name = "quantity")
+  private int quantity;
+  @Column(name = "total")
+  private Float total;
+  @Column(name = "status_delivery")
+  private String status_delivery;
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+  private UserModel user = new UserModel();
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "delivery_id", referencedColumnName = "id", insertable = false, updatable = false)
+  private DeliveryModel delivery = new DeliveryModel();
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+  private DeliveryModel product = new DeliveryModel();
 
-    public DeliveryModel getDelivery() {
-        return delivery;
-    }
+  public UserModel getUser() {
+    return user;
+  }
 
-    public void setDelivery(DeliveryModel delivery) {
-        this.delivery = delivery;
-    }
+  public void setUser(UserModel user) {
+    this.user = user;
+  }
 
-    public Long getUserId() {return userId;}
+  public DeliveryModel getDelivery() {
+    return delivery;
+  }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+  public void setDelivery(DeliveryModel delivery) {
+    this.delivery = delivery;
+  }
 
-    public Long getProductId() {
-        return productId;
-    }
+  public Long getUserId() {
+    return userId;
+  }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
+  public void setUserId(Long userId) {
+    this.userId = userId;
+  }
 
-    public Long getDeliveryId() {
-        return deliveryId;
-    }
+  public Long getProductId() {
+    return productId;
+  }
 
-    public int getQuantity() {
-        return quantity;
-    }
+  public void setProductId(Long productId) {
+    this.productId = productId;
+  }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+  public Long getDeliveryId() {
+    return deliveryId;
+  }
 
-    public Float getTotal() {
-        return total;
-    }
+  public int getQuantity() {
+    return quantity;
+  }
 
-    public void setTotal(Float total) {
-        this.total = total;
-    }
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
 
-    public String getStatus_delivery() {
-        return status_delivery;
-    }
+  public Float getTotal() {
+    return total;
+  }
 
-    public void setStatus_delivery(String status_delivery) {
-        this.status_delivery = status_delivery;
-    }
+  public void setTotal(Float total) {
+    this.total = total;
+  }
 
-    public void setDeliveryId(Long deliveryId) {
-        this.deliveryId = deliveryId;
-    }
+  public String getStatus_delivery() {
+    return status_delivery;
+  }
 
+  public void setStatus_delivery(String status_delivery) {
+    this.status_delivery = status_delivery;
+  }
+
+  public void setDeliveryId(Long deliveryId) {
+    this.deliveryId = deliveryId;
+  }
+
+  public DeliveryModel getProduct() {
+    return product;
+  }
+
+  public void setProduct(DeliveryModel product) {
+    this.product = product;
+  }
 }

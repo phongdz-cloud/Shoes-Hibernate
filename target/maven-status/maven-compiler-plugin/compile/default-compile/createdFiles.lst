@@ -14,13 +14,14 @@ com\example\projectshoes\controller\Cart\ListCart.class
 com\example\projectshoes\mapper\DeliveryMapper.class
 com\example\projectshoes\model\CustomerModel.class
 com\example\projectshoes\controller\web\ErorrPageController.class
+com\example\projectshoes\service\impl\RoleService.class
 com\example\projectshoes\controller\web\SetPasswordController.class
 com\example\projectshoes\controller\admin\SaledetailController.class
 com\example\projectshoes\dao\ISaledetailDAO.class
+com\example\projectshoes\dao\impl\RoleDAO.class
 com\example\projectshoes\controller\admin\CategoryController.class
 com\example\projectshoes\mapper\UserMapper.class
 com\example\projectshoes\filter\AuthorizationFilter.class
-com\example\projectshoes\model\User_role.class
 com\example\projectshoes\utils\JavaMailUtil$1.class
 com\example\projectshoes\model\DeliveryModel.class
 com\example\projectshoes\paging\Pageble.class
@@ -60,6 +61,7 @@ com\example\projectshoes\controller\web\LoginAPIController.class
 com\example\projectshoes\dao\impl\CategoryDAO.class
 com\example\projectshoes\api\UserAPI.class
 com\example\projectshoes\controller\web\ProductDetailController.class
+com\example\projectshoes\dao\IRoleDAO.class
 com\example\projectshoes\service\IProductService.class
 com\example\projectshoes\model\StockModel.class
 com\example\projectshoes\dao\IDeliveryDAO.class
@@ -69,6 +71,7 @@ com\example\projectshoes\controller\web\ForgotPasswordController.class
 com\example\projectshoes\dao\IProductDAO.class
 com\example\projectshoes\utils\HttpUtil.class
 com\example\projectshoes\constant\SystemConstant.class
+com\example\projectshoes\service\IRoleService.class
 com\example\projectshoes\message\ResponseMessage.class
 com\example\projectshoes\service\impl\CustomerService.class
 com\example\projectshoes\service\impl\ProductService.class

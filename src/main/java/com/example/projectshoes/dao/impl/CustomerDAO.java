@@ -16,16 +16,11 @@ public class CustomerDAO extends AbstractDAO<CustomerModel> implements ICustomer
 
   @Override
   public Long save(CustomerModel customerModel) {
-    return insert(customerModel);
+    return save(customerModel);
   }
 
   @Override
   public void update(CustomerModel customerModel) {
-    StringBuilder sql = new StringBuilder(
-        "UPDATE customer SET firstname=?, lastname=?, gender=?, ");
-    sql.append("phone=?, address=?, content=? WHERE user_id =?");
-    update(sql.toString(), customerModel.getFirstName(), customerModel.getLastName()
-        , customerModel.getGender(), customerModel.getPhone(), customerModel.getAddress(),
-        customerModel.getContent(), customerModel.getUserId());
+    update(customerModel);
   }
 }

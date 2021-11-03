@@ -8,6 +8,9 @@ import java.util.List;
 
 public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO {
 
+  public ProductDAO() {
+    setType(ProductModel.class);
+  }
 
   @Override
   public ProductModel findOne(Long id) {
@@ -18,7 +21,7 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
   @Override
   public Long save(ProductModel productModel) {
-    return insert(productModel);
+    return save(productModel);
   }
 
   @Override
@@ -37,19 +40,13 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
   @Override
   public void delete(long id) {
-    StringBuilder sql = new StringBuilder("DELETE FROM product WHERE id = ?");
-    delete(sql.toString(), id);
+    ProductModel productModel = findById(id);
+    delete(productModel);
   }
 
   @Override
   public void update(ProductModel productModel) {
-    StringBuilder sql = new StringBuilder(
-        "UPDATE product set name=?,price=?,category_id=?,size=?,quantity=?,");
-    sql.append("modifieddate=?,modifiedby=? WHERE id=?");
-    update(sql.toString(), productModel.getName(), productModel.getPrice(),
-        productModel.getCategoryId(),
-        productModel.getSize(), productModel.getQuantity(), productModel.getModifiedDate(),
-        productModel.getModifiedBy(), productModel.getId());
+    update(productModel);
   }
 
   @Override

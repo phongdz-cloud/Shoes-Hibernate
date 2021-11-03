@@ -16,7 +16,7 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
 
   @Override
   public Long save(CategoryModel categoryModel) {
-    return insert(categoryModel);
+    return save(categoryModel);
   }
 
   @Override

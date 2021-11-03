@@ -1,8 +1,5 @@
 package com.example.projectshoes.model;
 
-import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
-import com.vladmihalcea.hibernate.type.json.JsonStringType;
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,31 +7,47 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
+import javax.persistence.Transient;
 
 @MappedSuperclass
-@TypeDefs({
-    @TypeDef(name = "json", typeClass = JsonStringType.class),
-    @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
-})
-public class AbstractModel<T> implements Serializable {
+public class AbstractModel<T> {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
-  private Timestamp createdDate;
-  private Timestamp modifiedDate;
-  private String createdBy;
-  private String modifiedBy;
-  private String message;
-  private String alert;
-  private long[] ids;
-  private List<T> listResult = new ArrayList<>();
-  private Integer page;
-  private Integer maxPageItem;
-  private Integer totalItem;
 
-  @Type(type = "json")
+  private Timestamp createdDate;
+
+  private Timestamp modifiedDate;
+
+  private String createdBy;
+
+  private String modifiedBy;
+  @Transient
+
+  private String message;
+  @Transient
+
+  private String alert;
+  @Transient
+
+  private long[] ids;
+  @Transient
+
+  private List<T> listResult = new ArrayList<>();
+  @Transient
+
+  private Integer page;
+  @Transient
+
+  private Integer maxPageItem;
+  @Transient
+
+  private Integer totalItem;
+  @Transient
+
+  private Integer totalPage;
+
   public long[] getIds() {
     return ids;
   }
@@ -42,8 +55,6 @@ public class AbstractModel<T> implements Serializable {
   public void setIds(long[] ids) {
     this.ids = ids;
   }
-
-  @Type(type = "json")
 
   public List<T> getListResult() {
     return listResult;
@@ -53,8 +64,7 @@ public class AbstractModel<T> implements Serializable {
     this.listResult = listResult;
   }
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+
   public Long getId() {
     return id;
   }
@@ -119,7 +129,6 @@ public class AbstractModel<T> implements Serializable {
     this.maxPageItem = maxPageItem;
   }
 
-  private Integer totalPage;
 
   public Integer getTotalPage() {
     return totalPage;

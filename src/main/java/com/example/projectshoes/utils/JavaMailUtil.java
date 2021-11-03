@@ -13,7 +13,7 @@ import javax.mail.internet.MimeMessage;
 
 public class JavaMailUtil {
 
-  public static void sendMail(String recepient,String template) throws MessagingException {
+  public static void sendMail(String recepient, String template) throws MessagingException {
     Properties properties = new Properties();
 
     properties.put("mail.smtp.auth", "true");
@@ -21,8 +21,8 @@ public class JavaMailUtil {
     properties.put("mail.smtp.host", "smtp.gmail.com");
     properties.put("mail.smtp.port", "587");
 
-    String myAccountEmail = "nguyentri.alan@gmail.com";
-    String password = "Tringuyen04042001";
+    String myAccountEmail = "19110262@student.hcmute.edu.vn";
+    String password = "Hohoaiphong1999lh";
     Session session = Session.getInstance(properties, new Authenticator() {
       @Override
       protected PasswordAuthentication getPasswordAuthentication() {
@@ -30,13 +30,14 @@ public class JavaMailUtil {
       }
     });
 
-    Message message = prepareMessage(session, myAccountEmail, recepient,template);
+    Message message = prepareMessage(session, myAccountEmail, recepient, template);
 
     Transport.send(message);
     System.out.println("Message sent successfully");
   }
 
-  private static Message prepareMessage(Session session, String myAccountEmail, String recepient,String template) {
+  private static Message prepareMessage(Session session, String myAccountEmail, String recepient,
+      String template) {
     Message message = new MimeMessage(session);
     try {
 
