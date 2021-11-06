@@ -10,10 +10,10 @@ import java.util.List;
 public interface IProductDAO extends GenericDAO<ProductModel> {
 
     ProductModel findOne(Long id);
-    Long save(ProductModel product);
+    Long saveProduct(ProductModel product);
     List<ProductModel> findAll(Pageble pageble);
     List<ProductModel> findbyCategoryID(Long id);
-    void delete(long id);
+    void deleteProduct(long id);
     void update(ProductModel productModel);
     List<ProductModel> PageProduct(int page);
     int getTotalItem();

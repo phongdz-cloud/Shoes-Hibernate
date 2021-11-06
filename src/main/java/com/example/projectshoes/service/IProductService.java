@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface IProductService {
     List<ProductModel> findAll(Pageble pageble);
-    Long save(ProductModel productModel);
-    void delete(long[] ids);
+    Long saveProduct(ProductModel productModel);
+    void deleteProduct(long[] ids);
     ProductModel findOne(Long id);
     void update(ProductModel productModel);
     List<ProductModel> pageProduct(int page);

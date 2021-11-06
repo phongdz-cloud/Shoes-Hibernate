@@ -14,7 +14,7 @@
                     <div class="menu">
                         <ul>
                             <li>
-                                <a href="<c:url value="/trang-chu-api"/>">Home</a>
+                                <a href="<c:url value="/trang-chu"/>">Home</a>
                             </li>
                             <li class="dropdown">
                                 <span class="opener plus"></span>
@@ -103,16 +103,16 @@
                                                 </ul>
                                             </div>
                                             <div class="col-xl-3 col-lg-3 col-md-12">
-                                                <a href="<c:url value="/shop"/>"
+                                                <a href="<c:url value="/shop?page=1&&maxPageItem=16"/>"
                                                    class="megamenu-title">Product
                                                     Types</a>
                                                 <ul>
-                                                    <li><a href="<c:url value="/product/van"/>">Van
+                                                    <li><a href="<c:url value="/error-page"/>">Van
                                                         Shoes</a></li>
-                                                    <li><a href="<c:url value="/product/mlb"/>">MLB
+                                                    <li><a href="<c:url value="/error-page"/>">MLB
                                                         Shoes</a>
                                                     </li>
-                                                    <li><a href="<c:url value="/product/convert"/>">Convert
+                                                    <li><a href="<c:url value="/error-page"/>">Convert
                                                         Shoes</a></li>
                                                     <li><a href="<c:url value="/error-page"/>">Paddock
                                                         Shoes</a></li>

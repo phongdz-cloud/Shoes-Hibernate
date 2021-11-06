@@ -63,9 +63,10 @@
                             <td class="text-muted">${item.modifiedBy}</td>
                             <td class="text-muted">${item.modifiedDate}</td>
                             <td><a class="me-3 text-lg text-success"
-                                   href="/admin-product?action=edit&&productid=${item.id}"><i class="far fa-edit"></i></a><a class="text-lg text-danger" href="#!">
+                                   href="/admin-product?action=edit&&productid=${item.id}"><i class="far fa-edit"></i></a><a class="text-lg text-danger" onclick="deleteProduct(${item.id})" href="">
                                 <i class="far fa-trash-alt"></i></a></td>
                         </tr>
+                        <input type="hidden" value="${productModel.id}" id="id${productModel.id}" name="id${productModel.id}"/>
                     </c:forEach>
                     </tbody>
                 </table>
@@ -80,6 +81,7 @@
             </span>
             </div>
         </div>
+
         <input type="hidden" value="" id="page" name="page"/>
         <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
     </form>
@@ -96,6 +98,11 @@
         deleteProduct(data);
     });
     function deleteProduct(data) {
+        if(typeof (data)==="number"){
+            var data2={};
+            data2['ids']=[data];
+            data=data2;
+        }
         $.ajax({
             url: '${APIProduct}',
             type: 'DELETE',
@@ -107,7 +114,7 @@
                     <div class="alert alert-success">
                             Congratulations,Delete Product success
                     </div>`)
-                window.location.href = "/admin-product";
+                window.location.href = "/admin-product?page=1&maxPageItem=2";
             },
             error: function (error) {
                 console.log("Error")
@@ -152,6 +159,7 @@
             visiblePages: 3,
             startPage: currentPage,
             onPageClick: function (event, page) {
+                event.preventDefault();
                 if (currentPage != page) {
                     $('#maxPageItem').val(limit);
                     $('#page').val(page);

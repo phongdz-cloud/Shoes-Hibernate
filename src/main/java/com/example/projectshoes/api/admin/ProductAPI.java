@@ -38,7 +38,7 @@ public class ProductAPI extends HttpServlet {
         UserModel userModel=(UserModel) SessionUtil.getInstance().getValue(req,"USERMODEL");
         productModel.setCreatedBy(userModel.getUsername());
         productModel.setModifiedBy(userModel.getUsername());
-        productService.save(productModel);
+        productService.saveProduct(productModel);
         mapper.writeValue(resp.getOutputStream(),productModel);
     }
 
@@ -48,7 +48,7 @@ public class ProductAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
         ProductModel productModel =  HttpUtil.of(req.getReader()).toModel(ProductModel.class);
-        productService.delete(productModel.getIds());
+        productService.deleteProduct(productModel.getIds());
         mapper.writeValue(resp.getOutputStream(), "{}");
     }
 

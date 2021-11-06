@@ -21,16 +21,16 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Long save(ProductModel productModel) {
+    public Long saveProduct(ProductModel productModel) {
         productModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         productModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        return productDAO.save(productModel);
+        return productDAO.saveProduct(productModel);
     }
 
     @Override
-    public void delete(long[] ids) {
+    public void deleteProduct(long[] ids) {
         for(long id:ids){
-            productDAO.delete(id);
+            productDAO.deleteProduct(id);
         }
     }
     @Override

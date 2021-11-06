@@ -1,12 +1,6 @@
 package com.example.projectshoes.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity(name = "Product")
 @Table(name = "product")
@@ -15,7 +9,7 @@ public class ProductModel extends AbstractModel<ProductModel> {
   private String name;
   @Column(name = "price")
   private Float price;
-  //  @Column(name = "category_id")
+//  @Column(name = "category_id")
   @Transient
   private Long categoryId;
   @Column(name = "size")
@@ -23,7 +17,8 @@ public class ProductModel extends AbstractModel<ProductModel> {
   @Column(name = "quantity")
   private int quantity;
 
-  @ManyToOne(targetEntity = CategoryModel.class, fetch = FetchType.LAZY)
+  @ManyToOne(targetEntity = CategoryModel.class, fetch = FetchType.EAGER)
+  @JoinColumn(name = "category_id")
   private CategoryModel category;
 
   @ManyToOne(fetch = FetchType.LAZY)
