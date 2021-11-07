@@ -39,7 +39,7 @@ public class UserModel extends AbstractModel<UserModel> {
   @OneToOne(mappedBy = "user")
   private CustomerModel customer;
 
-  @OneToOne(mappedBy = "user")
+  @OneToOne(fetch = FetchType.EAGER,mappedBy = "user")
   private SaledetailModel saleDetail;
 
 

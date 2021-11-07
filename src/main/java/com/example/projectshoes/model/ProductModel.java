@@ -24,7 +24,7 @@ public class ProductModel extends AbstractModel<ProductModel> {
   @ManyToOne(fetch = FetchType.LAZY)
   private StockModel stock;
 
-  @OneToOne(mappedBy = "product")
+  @OneToOne(fetch = FetchType.EAGER,mappedBy = "product")
   private SaledetailModel saleDetail;
 
 

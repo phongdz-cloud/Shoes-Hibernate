@@ -88,4 +88,5 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     int count=count1.get(0).intValue();
     return count;
   }
+
 }

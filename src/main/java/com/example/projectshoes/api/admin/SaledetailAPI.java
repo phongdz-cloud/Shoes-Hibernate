@@ -41,7 +41,7 @@ public class SaledetailAPI extends HttpServlet {
         UserModel userModel=(UserModel) SessionUtil.getInstance().getValue(req,"USERMODEL");
         saledetailModel.setCreatedBy(userModel.getUsername());
         saledetailModel.setModifiedBy(userModel.getUsername());
-        saledetailService.save(saledetailModel);
+        saledetailService.saveSaledetail(saledetailModel);
         mapper.writeValue(resp.getOutputStream(),saledetailModel);
     }
 
@@ -51,7 +51,7 @@ public class SaledetailAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
         SaledetailModel saledetailModel =  HttpUtil.of(req.getReader()).toModel(SaledetailModel.class);
-        saledetailService.delete(saledetailModel.getIds());
+        saledetailService.deleteSaledetail(saledetailModel.getIds());
         mapper.writeValue(resp.getOutputStream(), "{}");
     }
 
