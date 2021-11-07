@@ -1,13 +1,8 @@
 package com.example.projectshoes.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
+import com.sun.javafx.geom.Edge;
+
+import javax.persistence.*;
 
 @Entity(name = "Saledetail")
 @Table(name = "saledetail", uniqueConstraints = {
@@ -38,15 +33,15 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> {
   private Float total;
   @Column(name = "status_delivery")
   private String status_delivery;
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(fetch = FetchType.EAGER,cascade =CascadeType.ALL)
   @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
   private UserModel user = new UserModel();
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
   @JoinColumn(name = "delivery_id", referencedColumnName = "id", insertable = false, updatable = false)
   private DeliveryModel delivery = new DeliveryModel();
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
   @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
-  private DeliveryModel product = new DeliveryModel();
+  private ProductModel product = new ProductModel();
 
   public UserModel getUser() {
     return user;
@@ -112,11 +107,11 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> {
     this.deliveryId = deliveryId;
   }
 
-  public DeliveryModel getProduct() {
+  public ProductModel getProduct() {
     return product;
   }
 
-  public void setProduct(DeliveryModel product) {
+  public void setProduct(ProductModel product) {
     this.product = product;
   }
 }
