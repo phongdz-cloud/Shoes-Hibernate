@@ -1,6 +1,9 @@
 package com.example.projectshoes.api.admin;
+import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.model.ProductModel;
 import com.example.projectshoes.model.UserModel;
+import com.example.projectshoes.paging.PageRequest;
+import com.example.projectshoes.paging.Pageble;
 import com.example.projectshoes.service.ICategoryService;
 import com.example.projectshoes.service.IProductService;
 import com.example.projectshoes.utils.HttpUtil;
@@ -25,8 +28,16 @@ public class ProductAPI extends HttpServlet {
         ObjectMapper mapper=new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
-        ProductModel productModel= HttpUtil.of(req.getReader()).toModel(ProductModel.class);
-        Long id=productModel.getId();
+        ProductModel productModel=new ProductModel();
+//        String key=req.getParameter("key");
+//        String category=req.getParameter("categorycode");
+//        Pageble pageble = new PageRequest(productModel.getPage(), productModel.getMaxPageItem());
+//
+//        productModel.setTotalPage((int) Math.ceil((double) productModel.getTotalItem() / productModel.getMaxPageItem()));
+       productModel.setListResult(productService.Sort("A-Z"));
+        SystemConstant.productModel=productModel;
+        SystemConstant.FLAGSORT=true;
+        mapper.writeValue(resp.getOutputStream(),productModel);
     }
 
     @Override

@@ -2,6 +2,7 @@
 <c:url var="APIProduct" value="/api-product"/>
 <html>
 <body>
+
 <form id="formproduct">
     <div class="page-header">
         <h1 class="page-heading">Product Name</h1>
@@ -59,7 +60,6 @@
                         <input type="hidden" value="${productModel.id}" id="id" name="id"/>
                         <c:if test="${empty productModel}">
                             <button id="btnAddOrUpdate" style="margin-top: 10px" class="btn btn-outline-primary mb-4">Add Product</button>
-                            <button style="margin-top: 10px" class="btn btn-outline-primary mb-4" onclick="clear()">Clear</button>
                         </c:if>
                         <c:if test="${not empty productModel}">
                             <button id="btnAddOrUpdate" style="margin-top: 10px" class="btn btn-outline-primary mb-4">Update</button>
@@ -153,9 +153,6 @@
                 window.location.href = "${NewURL}?type=list&maxPageItem=2&page=1&message=error_system";
             }
         });
-    }
-    function clear(){
-        $('#formproduct')[0].reset();
     }
 </script>
 </body>
