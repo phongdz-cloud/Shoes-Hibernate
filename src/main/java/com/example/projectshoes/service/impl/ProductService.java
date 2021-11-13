@@ -16,8 +16,8 @@ public class ProductService implements IProductService {
     @Inject
     ICategoryService categoryService;
     @Override
-    public List<ProductModel> findAll(Pageble pageble) {
-        return productDAO.findAll(pageble);
+    public List<ProductModel> findAll(Pageble pageble,String key) {
+        return productDAO.findAll(pageble,key);
     }
 
     @Override
@@ -51,5 +51,30 @@ public class ProductService implements IProductService {
     @Override
     public int getTotalItem() {
         return productDAO.getTotalItem();
+    }
+
+    @Override
+    public List<ProductModel> findbyCategory(Pageble pageble,String code) {
+        return productDAO.findbyCategory(pageble,code);
+    }
+
+    @Override
+    public List<ProductModel> Sort(String sql) {
+        String query="";
+        if(sql.equals("A-Z")){
+            query="FROM Product p ORDER BY p.name ASC";
+        }
+        else if(sql.equals("price")){
+            query="FROM Product p ORDER BY p.price";
+        }
+        else {
+
+        }
+        return productDAO.Sort(query);
+    }
+
+    @Override
+    public int getTotalItemByCategory(String code) {
+        return productDAO.getTotalItemByCategory(code);
     }
 }
