@@ -6,15 +6,23 @@ import com.example.projectshoes.dao.IUserDAO;
 import com.example.projectshoes.dao.impl.ProductDAO;
 import com.example.projectshoes.dao.impl.RoleDAO;
 import com.example.projectshoes.dao.impl.UserDAO;
+import com.example.projectshoes.model.ProductModel;
 import com.example.projectshoes.model.RoleModel;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.paging.PageRequest;
+import com.example.projectshoes.paging.Pageble;
+import com.example.projectshoes.service.IProductService;
+import com.example.projectshoes.service.impl.ProductService;
+
+import javax.inject.Inject;
 
 public class TestHibernate {
 
   static IRoleDAO roleService = new RoleDAO();
   static IUserDAO userService = new UserDAO();
-  static IProductDAO productservice=new ProductDAO();
+
+  @Inject
+  IProductService productService;
   public static void main(String[] args) {
     try {
 //      RoleModel role = roleService.findRoleById(2L);
@@ -27,7 +35,7 @@ public class TestHibernate {
 //      userService.save(userModel);
 //        userService.findAll();
 //        productservice.findAll()
-      productservice.findAll(new PageRequest(1,2));
+      ProductModel productModel=new ProductModel();
     } catch (Exception ex) {
       System.out.println(ex.getMessage());
     }

@@ -1,5 +1,7 @@
 package com.example.projectshoes.constant;
 
+import com.example.projectshoes.model.ProductModel;
+
 public class SystemConstant {
 
   public static final String MODEL = "model";
@@ -10,6 +12,8 @@ public class SystemConstant {
   public static final String ACCOUT_PROFILE = "profile";
   public static Long ID = null;
   public static Boolean FLAG = false;
+  public static Boolean FLAGSORT = false;
+  public static ProductModel productModel;
   public static final String TEAMPLATE_MAIL = "\n"
       + "<!doctype html>\n"
       + "<html lang=\"en-US\">\n"

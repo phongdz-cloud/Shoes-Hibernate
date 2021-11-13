@@ -15,7 +15,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO {
-
+  Session session = HibernateUtil.getSessionFactory().openSession();
   @Inject
   ICategoryService categoryService;
   public ProductDAO() {
@@ -39,24 +39,38 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
   }
 
   @Override
-  public List<ProductModel> findAll(Pageble pageble) {
-    Session session = HibernateUtil.getSessionFactory().openSession();
-//    ProductModel productModel=new ProductModel();
-//    StringBuilder sql = new StringBuilder("from Product p");
-//    if (pageble.getOffset() != null && pageble.getLimit() != null) {
-//      sql.append(" LIMIT " + pageble.getOffset() + ", " + pageble.getLimit() + "");
-//    }
-    Query q = session.createQuery("FROM Product p");
+  public List<ProductModel> findAll(Pageble pageble,String key) {
+    ProductModel productModel=new ProductModel();
+    String query="";
+    if(key==null){
+      query="FROM Product p";
+    }
+    else {
+      query="FROM Product as p where p.name like '%"+key+"%'";
+    }
+    Query q = session.createQuery(query);
     q.setFirstResult(pageble.getOffset());
     q.setMaxResults(pageble.getLimit());
-    ProductModel productModel=new ProductModel();
     productModel.setListResult(q.getResultList());
     return productModel.getListResult();
   }
 
   @Override
-  public List<ProductModel> findbyCategoryID(Long id) {
-    return null;
+  public List<ProductModel> findbyCategory(Pageble pageble,String code) {
+    ProductModel productModel=new ProductModel();
+    StringBuilder query= new StringBuilder("select u From Product u inner join u.category t");
+    query.append(" where t.code='"+code+"'");
+    Query q = session.createQuery(query.toString());
+    q.setFirstResult(pageble.getOffset());
+    q.setMaxResults(pageble.getLimit());
+    productModel.setListResult(q.getResultList());
+    return productModel .getListResult();
+  }
+
+  @Override
+  public List<ProductModel> Sort(String sql) {
+    ProductModel productModel=new ProductModel();
+      return queryHibernate(sql,productModel);
   }
 
   @Override
@@ -82,11 +96,17 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
   @Override
   public int getTotalItem() {
-    Session session = HibernateUtil.getSessionFactory().openSession();
     Query query = session.createSQLQuery("select count(*) from Product p");
     List<BigInteger> count1 =query.list();
     int count=count1.get(0).intValue();
     return count;
   }
 
+  @Override
+  public int getTotalItemByCategory(String code) {
+    Query q = session.createQuery("select count(*) From Product u inner join u.category t where t.code='"+code+"'");
+    List<Long> count1 =q.list();
+    int count=count1.get(0).intValue();
+    return count;
+  }
 }

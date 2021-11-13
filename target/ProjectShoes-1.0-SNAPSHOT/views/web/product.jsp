@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="APIProduct" value="/api-product"/>
 <html>
 <body>
 <section class="page-banner">
@@ -244,11 +245,11 @@
                                 <div class="show-item">
                                     <span class="ml-0">Sort By:</span>
                                     <div class="select-item">
-                                        <select class="m-w-130">
+                                        <select id="select" onchange="Sort(this)" class="m-w-130">
                                             <option value="" selected="selected">Default sorting</option>
-                                            <option value="">Sort by A-Z</option>
-                                            <option value="">Z-A</option>
-                                            <option value="">Price</option>
+                                            <option>A-Z</option>
+                                            <option>Z-A</option>
+                                            <option>Price</option>
                                         </select>
                                     </div>
                                 </div>
@@ -266,7 +267,7 @@
                         </div>
                     </div>
                     <div class="featured">
-                        <div class="row">
+                        <div data-price="" class="row">
                             <c:forEach var="item" items="${productModel.listResult}">
                                 <div class="featured-product mb-25">
                                     <div class="product-img transition mb-15">
@@ -293,13 +294,44 @@
             </div>
         </div>
     </section>
+    <c:if test="${not empty categorycode}">
+        <input type="hidden" value="" id="categorycode" name="categorycode"/>
+    </c:if>
     <input type="hidden" value="" id="page" name="page"/>
     <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
 </form>
 <script>
     var totalPages = ${productModel.totalPage};
     var currentPage = ${productModel.page};
-    var limit = 4;
+    var category="${categorycode}";
+    function Sort(param) {
+
+        var value = param.value;
+        var data2={};
+        data2['ids']=[value];
+        value=data2;
+        if(value==='A-Z'){
+            $.ajax({
+                url: '${APIProduct}',
+                type: 'GET',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    if(category==""){
+                        window.location.href="/shop?page=1&&maxPageItem=16";
+                    }
+                    else {
+                        window.location.href="/shop/collections/categorycode="+category;
+                    }
+                },
+                error:function (err) {
+                    console.log(err);
+                }
+            });
+        }
+    }
+    var limit = 16;
     $(function () {
         window.pagObj = $('#pagination').twbsPagination({
             totalPages: totalPages,
@@ -308,6 +340,9 @@
             onPageClick: function (event, page) {
                 event.preventDefault();
                 if (currentPage != page) {
+                    if(category!="") {
+                        $('#categorycode').val(category);
+                    }
                     $('#maxPageItem').val(limit);
                     $('#page').val(page);
                     $('#formshop').submit();

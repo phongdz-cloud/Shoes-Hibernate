@@ -36,6 +36,7 @@ public class HomeController extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     String action = req.getParameter("action");
+    String key=req.getParameter("key");
     if (action != null && action.equals("login")) {
       String message = req.getParameter("message");
       String alert = req.getParameter("alert");
@@ -51,7 +52,7 @@ public class HomeController extends HttpServlet {
     } else {
       ProductModel productModel = new ProductModel();
       Pageble pageble = new PageRequest(1, 10);
-      productModel.setListResult(productService.findAll(pageble));
+      productModel.setListResult(productService.findAll(pageble,key));
       req.setAttribute("productModel", productModel);
       String userSuccess = req.getParameter("user");
       req.setAttribute("user", userSuccess);
