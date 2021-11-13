@@ -6,17 +6,20 @@ import com.example.projectshoes.dao.IUserDAO;
 import com.example.projectshoes.dao.impl.ProductDAO;
 import com.example.projectshoes.dao.impl.RoleDAO;
 import com.example.projectshoes.dao.impl.UserDAO;
-import com.example.projectshoes.model.RoleModel;
-import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.paging.PageRequest;
+import com.example.projectshoes.utils.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class TestHibernate {
 
   static IRoleDAO roleService = new RoleDAO();
   static IUserDAO userService = new UserDAO();
-  static IProductDAO productservice=new ProductDAO();
+  static IProductDAO productservice = new ProductDAO();
+
   public static void main(String[] args) {
-    try {
+    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+      Transaction transaction = session.beginTransaction();
 //      RoleModel role = roleService.findRoleById(2L);
 //      UserModel userModel = new UserModel();
 //      userModel.setUsername("admin");
@@ -27,7 +30,8 @@ public class TestHibernate {
 //      userService.save(userModel);
 //        userService.findAll();
 //        productservice.findAll()
-      productservice.findAll(new PageRequest(1,2));
+      transaction.commit();
+//      productservice.findAll(new PageRequest(1, 2));
     } catch (Exception ex) {
       System.out.println(ex.getMessage());
     }

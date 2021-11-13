@@ -37,6 +37,11 @@ public class HomeController extends HttpServlet {
       throws ServletException, IOException {
     String action = req.getParameter("action");
     if (action != null && action.equals("login")) {
+      if (SystemConstant.checkRemember) {
+        req.setAttribute("checked", true);
+        req.setAttribute("rememberUsername", SystemConstant.rememberUsername);
+        req.setAttribute("rememberPassword", SystemConstant.rememberPassword);
+      }
       String message = req.getParameter("message");
       String alert = req.getParameter("alert");
       if (message != null && alert != null) {
@@ -66,6 +71,13 @@ public class HomeController extends HttpServlet {
     String action = req.getParameter("action");
     if (action != null && action.equals("login")) {
       UserModel userModel = FormUtil.toModel(UserModel.class, req);
+      if (userModel.getChecked() != null) {
+        SystemConstant.checkRemember = true;
+        SystemConstant.rememberUsername = userModel.getUsername();
+        SystemConstant.rememberPassword = userModel.getPassword();
+      } else {
+        SystemConstant.checkRemember = false;
+      }
       userModel = userService.findByUsernameAndPassword(
           userModel.getUsername(), userModel.getPassword()
       );

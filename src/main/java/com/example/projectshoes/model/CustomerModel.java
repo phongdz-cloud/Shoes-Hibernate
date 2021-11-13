@@ -3,22 +3,19 @@ package com.example.projectshoes.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity(name = "Customer")
 @Table(name = "customer")
 public class CustomerModel extends AbstractModel<CustomerModel> {
 
-  //  @OneToOne(fetch = FetchType.LAZY)
-//  @JoinColumn(name = "user_id")
-//  private UserModel userModel;
-  @Transient
-  private Long userId;
+  @Column(name = "firstname")
   private String firstName;
-  private String lastName; // last_name
+  @Column(name = "lastname")
+  private String lastName;
   @Column(name = "gender")
   private String gender;
   @Column(name = "phone")
@@ -27,17 +24,9 @@ public class CustomerModel extends AbstractModel<CustomerModel> {
   private String address;
   @Column(name = "content")
   private String content;
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "user_id", referencedColumnName = "id")
   private UserModel user;
-
-  public Long getUserId() {
-    return userId;
-  }
-
-  public void setUserId(Long userId) {
-    this.userId = userId;
-  }
 
   public String getFirstName() {
     return firstName;

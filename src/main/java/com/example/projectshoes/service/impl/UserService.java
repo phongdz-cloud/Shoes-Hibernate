@@ -36,19 +36,22 @@ public class UserService implements IUserService {
     return userDAO.findById(id);
   }
 
-
   @Override
   public Long save(UserModel userModel) {
     RoleModel roleModel = roleDAO.findRoleById(1L);
-    userModel.setRoleId(1L);
+    userModel.setRoleId(2L); // USER
     userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
     userModel.setCreatedBy(userModel.getUsername());
     userModel.getRoles().add(roleModel);
+    userModel.setStatus("Active");
+    userModel.setBadge("success");
     return userDAO.save(userModel);
   }
 
   @Override
   public void update(UserModel userModel) {
+    userModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+    userModel.setModifiedBy(userModel.getUsername());
     userDAO.update(userModel);
   }
 

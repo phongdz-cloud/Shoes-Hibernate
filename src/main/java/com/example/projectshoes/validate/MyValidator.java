@@ -12,8 +12,8 @@ public class MyValidator {
     this.userService = userService;
   }
 
-  public String validateForm(UserModel userModel) {
-    if (!userModel.getPassword().equals(userModel.getRepassword())) {
+ public String validateForm(UserModel userModel) {
+     if (!userModel.getPassword().equals(userModel.getRepassword())) {
       return "Re-entered password is not the same";
     } else if (userService.findByUserName(userModel.getUsername()) != null) {
       return "Account already exists";
