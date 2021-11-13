@@ -48,7 +48,7 @@
                                             class="text-reset text-decoration-none"
                                             href="#!"><img class="avatar p-1 me-2"
                                                            src="${item.user.avatar}"
-                                                           alt="Error avatar"><strong>${item.user.username}</strong></a>
+                                                           ><strong>${item.user.username}</strong></a>
                                     </td>
                                     <td>${item.firstName}</td>
                                     <td>${item.lastName}</td>

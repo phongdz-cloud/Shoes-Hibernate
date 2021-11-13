@@ -41,7 +41,6 @@ E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\mode
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\dao\impl\SaledetailDAO.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\paging\PageRequest.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\service\ICategoryService.java
-E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\TestHibernate.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\api\admin\SaledetailAPI.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\api\admin\CategoryAPI.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\controller\Cart\LineItem.java
@@ -61,6 +60,7 @@ E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\util
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\dao\ICategoryDAO.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\model\ProductModel.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\controller\admin\CustomerController.java
+E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\controller\web\ChangeProfileController.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\service\impl\ProductService.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\constant\SystemConstant.java
 E:\DoAnWeb\GitClone3\Shoes-Hibernate\src\main\java\com\example\projectshoes\mapper\DeliveryMapper.java

@@ -8,11 +8,6 @@
 
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.url">jdbc:mysql://localhost:3306/test_shoes?useSSL=false</property>
-<<<<<<< HEAD
-=======
-<!--    <property name="connection.url">jdbc:mysql://ec2-35-170-79-103.compute-1.amazonaws.com:3306/test_shoes?useSSL=false</property>-->
-    <!--    <property name="connection.url">jdbc:mysql://localhost:3306/shoes</property>-->
->>>>>>> 7339192a2d082242e973d7d357db6d8061dfecb2
     <property name="connection.username">root</property>
     <property name="connection.password">123456</property>
     <!-- JDBC connection pool settings ... using built-in test pool -->
@@ -25,10 +20,6 @@
     <property name="current_session_context_class">thread</property>
     <!-- Drop and re-create the database schema on startup -->
 <!--    <property name="hbm2ddl.auto">create-drop</property>-->
-<<<<<<< HEAD
-<!--        <property name="hbm2ddl.auto">update</property>-->
-=======
->>>>>>> 7339192a2d082242e973d7d357db6d8061dfecb2
     <property name="hbm2ddl.auto">none</property>
     <!-- dbcp connection pool configuration -->
     <property name="hibernate.dbcp.initialSize">5</property>

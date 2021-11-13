@@ -32,7 +32,6 @@ com\example\projectshoes\api\LoginAPI.class
 com\example\projectshoes\dao\impl\SaledetailDAO.class
 com\example\projectshoes\validate\MyValidator.class
 com\example\projectshoes\utils\JavaMail.class
-com\example\projectshoes\TestHibernate.class
 com\example\projectshoes\controller\admin\OderController.class
 com\example\projectshoes\utils\HibernateUtil.class
 com\example\projectshoes\dao\ICategoryDAO.class
@@ -46,6 +45,7 @@ com\example\projectshoes\controller\Cart\CartModel.class
 com\example\projectshoes\service\impl\CategoryService.class
 com\example\projectshoes\controller\Cart\LineItem.class
 com\example\projectshoes\controller\admin\HomeController.class
+com\example\projectshoes\controller\web\ChangeProfileController.class
 com\example\projectshoes\service\impl\DeliveryService.class
 com\example\projectshoes\controller\admin\ProductController.class
 com\example\projectshoes\model\AbstractModel.class
