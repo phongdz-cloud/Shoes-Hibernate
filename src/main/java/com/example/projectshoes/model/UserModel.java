@@ -30,6 +30,8 @@ public class UserModel extends AbstractModel<UserModel> {
   private String repassword;
   @Column(name = "email")
   private String email;
+  @Column(name = "status")
+  private String status;
   @Column(name = "avatar")
   @Lob
   private String avatar;
@@ -137,6 +139,13 @@ public class UserModel extends AbstractModel<UserModel> {
     this.saleDetail = saleDetail;
   }
 
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
 
   @Override
   public String toString() {

@@ -29,8 +29,7 @@
     <div class="container">
         <div class="billing-details">
             <h2 class="checkout-title text-uppercase text-center mb-30">CREATE ACCOUNT</h2>
-            <div id="notification" class="checkout-title  text-uppercase text-center mb-30">CREATE
-                ACCOUNT
+            <div id="notification" class="checkout-title  text-uppercase text-center mb-30">
             </div>
             <form class="checkout-form" id="formSubmit">
                 <div class="form-group">
@@ -115,8 +114,7 @@
       $.each(formData, function (i, v) {
         data["" + v.name + ""] = v.value;
       });
-      +
-          addUser(data);
+      addUser(data);
     }
   });
 

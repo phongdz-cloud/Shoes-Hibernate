@@ -146,12 +146,12 @@
                             <c:if test="${not empty sessionScope.get('USERMODEL')}">
                                 <li class="dropdown">
                                     <span class="opener plus"></span>
-                                    <a href="<c:url value="/error-page"/>">Account</a>
+                                    <a href="<c:url value="#"/>">Account</a>
                                     <div class="megamenu">
                                         <div class="megamenu-inner">
                                             <ul>
-                                                <li><a href="<c:url value="/error-page"/>">My
-                                                    account</a>
+                                                <li><a href="<c:url value="/change-profile"/>">Update
+                                                    profile</a>
                                                 </li>
                                                 <li><a href="<c:url value="/error-page"/>">Blog</a>
                                                 </li>

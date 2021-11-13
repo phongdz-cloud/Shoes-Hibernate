@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface IUserService {
 
-
   UserModel findByUsernameAndPassword(String username, String password);
 
   UserModel findByUserName(String username);
@@ -18,7 +17,6 @@ public interface IUserService {
   Long save(UserModel userModel);
 
   void update(UserModel userModel);
-
 
   List<UserModel> findAll();
 

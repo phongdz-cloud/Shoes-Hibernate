@@ -26,6 +26,16 @@ public class AbstractModel<T> {
   @Transient
 
   private String message;
+
+  @Transient
+  private String avatar;
+
+  @Transient
+  private Boolean checked;
+
+  @Transient
+  private String badge;
+
   @Transient
 
   private String alert;
@@ -47,6 +57,7 @@ public class AbstractModel<T> {
   @Transient
 
   private Integer totalPage;
+
 
   public long[] getIds() {
     return ids;
@@ -152,5 +163,29 @@ public class AbstractModel<T> {
 
   public void setPage(Integer page) {
     this.page = page;
+  }
+
+  public String getAvatar() {
+    return avatar;
+  }
+
+  public void setAvatar(String avatar) {
+    this.avatar = avatar;
+  }
+
+  public Boolean getChecked() {
+    return checked;
+  }
+
+  public void setChecked(Boolean checked) {
+    this.checked = checked;
+  }
+
+  public String getBadge() {
+    return badge;
+  }
+
+  public void setBadge(String badge) {
+    this.badge = badge;
   }
 }

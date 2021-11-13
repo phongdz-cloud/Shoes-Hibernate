@@ -18,7 +18,7 @@ import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class AbstractDAO<T> implements GenericDAO<T> {
+  public class AbstractDAO<T> implements GenericDAO<T> {
 
   ResourceBundle myBundle = ResourceBundle.getBundle("db");
 

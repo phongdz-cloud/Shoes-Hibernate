@@ -22,7 +22,6 @@ public class DeliveryDAO extends AbstractDAO<DeliveryModel> implements IDelivery
     DeliveryModel deliveryModel=new DeliveryModel();
     return queryHibernate(sql.toString(),deliveryModel);
   }
-
   @Override
   public DeliveryModel findOne(Long id) {
     StringBuilder sql = new StringBuilder("FROM Delivery d Where id=:id");
