@@ -28,13 +28,15 @@ public class ProductAPI extends HttpServlet {
         ObjectMapper mapper=new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
+        String keyvalue=req.getParameter("keyvalue");
+        String categorycode=req.getParameter("categorycode");
         ProductModel productModel=new ProductModel();
 //        String key=req.getParameter("key");
 //        String category=req.getParameter("categorycode");
 //        Pageble pageble = new PageRequest(productModel.getPage(), productModel.getMaxPageItem());
 //
 //        productModel.setTotalPage((int) Math.ceil((double) productModel.getTotalItem() / productModel.getMaxPageItem()));
-       productModel.setListResult(productService.Sort("A-Z"));
+        productModel.setListResult(productService.Sort(keyvalue,categorycode));
         SystemConstant.productModel=productModel;
         SystemConstant.FLAGSORT=true;
         mapper.writeValue(resp.getOutputStream(),productModel);

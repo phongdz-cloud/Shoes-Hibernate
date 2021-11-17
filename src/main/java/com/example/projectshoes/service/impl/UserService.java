@@ -1,13 +1,18 @@
 package com.example.projectshoes.service.impl;
 
+import com.example.projectshoes.controller.Cart.CartModel;
+import com.example.projectshoes.controller.Cart.LineItem;
 import com.example.projectshoes.dao.IRoleDAO;
 import com.example.projectshoes.dao.IUserDAO;
 import com.example.projectshoes.model.RoleModel;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.IUserService;
+import com.example.projectshoes.utils.SessionUtil;
+
 import java.sql.Timestamp;
 import java.util.List;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 public class UserService implements IUserService {
 
@@ -58,5 +63,19 @@ public class UserService implements IUserService {
   @Override
   public List<UserModel> findAll() {
     return userDAO.findAll();
+  }
+
+  @Override
+  public void removeCart(HttpServletRequest req) {
+    CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req,"cart");
+    if(cart!=null){
+      List<LineItem> lineItemList=cart.getItems();
+      for(LineItem item:lineItemList){
+        cart.removeItem(item);
+        if(lineItemList.size()==0){
+          break;
+        }
+      }
+    }
   }
 }

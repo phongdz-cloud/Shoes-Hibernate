@@ -68,7 +68,7 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
   }
 
   @Override
-  public List<ProductModel> Sort(String sql) {
+  public List<ProductModel> Sort(String sql,String categorycode) {
     ProductModel productModel=new ProductModel();
       return queryHibernate(sql,productModel);
   }
@@ -82,16 +82,6 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
   @Override
   public void update(ProductModel productModel) {
     saveProduct(productModel);
-  }
-
-  @Override
-  public List<ProductModel> PageProduct(int page) {
-    if (page < 1) {
-      page = 1;
-    }
-    int offset = (page - 1) * 5;
-    StringBuilder sql = new StringBuilder("select * from product LIMIT 5 OFFSET ?");
-    return query(sql.toString(), new ProductMapper(), offset);
   }
 
   @Override
