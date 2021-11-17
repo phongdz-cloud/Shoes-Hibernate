@@ -22,7 +22,6 @@ public class LoginAPIController extends HttpServlet {
       throws ServletException, IOException {
     String username = req.getParameter("id");
     if (username != null) {
-
       UserModel userModel = userService.findByUserName(username);
       SessionUtil.getInstance().putValue(req, "USERMODEL", userModel);
       resp.sendRedirect(req.getContextPath() + "/trang-chu");

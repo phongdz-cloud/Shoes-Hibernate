@@ -83,7 +83,6 @@ public class HomeController extends HttpServlet {
           userModel.getUsername(), userModel.getPassword()
       );
       if (userModel != null) {
-        userService.removeCart(req);
         RoleModel roleModel = roleService.findRoleById(userModel.getRoleId());
         userModel.setRole(roleModel);
         SessionUtil.getInstance().putValue(req, "USERMODEL", userModel);
