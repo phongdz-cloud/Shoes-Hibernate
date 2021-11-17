@@ -156,7 +156,7 @@
                                 </table>
                             </div>
                             <div class="share-wishlist">
-                                <a href="checkout.html" class="btn btn-color">Proceed to checkout <i class="fa fa-angle-right"></i></a>
+                                <a href="/cart?action=checkout" class="btn btn-color">Proceed to checkout <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>

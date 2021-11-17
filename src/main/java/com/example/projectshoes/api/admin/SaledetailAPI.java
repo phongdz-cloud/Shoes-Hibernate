@@ -1,14 +1,17 @@
 package com.example.projectshoes.api.admin;
 
+import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.model.SaledetailModel;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.IDeliveryService;
 import com.example.projectshoes.service.ISaledetailService;
 import com.example.projectshoes.utils.HttpUtil;
+import com.example.projectshoes.utils.JavaMailUtil;
+import com.example.projectshoes.utils.PathUtil;
 import com.example.projectshoes.utils.SessionUtil;
 import org.codehaus.jackson.map.ObjectMapper;
-
 import javax.inject.Inject;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,6 +44,11 @@ public class SaledetailAPI extends HttpServlet {
         UserModel userModel=(UserModel) SessionUtil.getInstance().getValue(req,"USERMODEL");
         saledetailModel.setCreatedBy(userModel.getUsername());
         saledetailModel.setModifiedBy(userModel.getUsername());
+        try {
+            JavaMailUtil.sendMail(userModel.getEmail(), SystemConstant.TEAMPLATE_MAIL);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
         saledetailService.saveSaledetail(saledetailModel);
         mapper.writeValue(resp.getOutputStream(),saledetailModel);
     }

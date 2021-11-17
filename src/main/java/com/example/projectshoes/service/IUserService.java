@@ -2,6 +2,8 @@ package com.example.projectshoes.service;
 
 
 import com.example.projectshoes.model.UserModel;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface IUserService {
@@ -19,5 +21,7 @@ public interface IUserService {
   void update(UserModel userModel);
 
   List<UserModel> findAll();
+
+  void removeCart(HttpServletRequest req);
 
 }

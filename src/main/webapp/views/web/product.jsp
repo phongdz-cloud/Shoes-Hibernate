@@ -305,31 +305,33 @@
     var currentPage = ${productModel.page};
     var category="${categorycode}";
     function Sort(param) {
-
         var value = param.value;
-        var data2={};
-        data2['ids']=[value];
-        value=data2;
-        if(value==='A-Z'){
-            $.ajax({
-                url: '${APIProduct}',
-                type: 'GET',
-                data: JSON.stringify(data),
-                contentType: 'application/json',
-                dataType: 'json',
-                success: function (result) {
-                    if(category==""){
-                        window.location.href="/shop?page=1&&maxPageItem=16";
-                    }
-                    else {
-                        window.location.href="/shop/collections/categorycode="+category;
-                    }
-                },
-                error:function (err) {
-                    console.log(err);
-                }
-            });
+        var value2="";
+        if(category!="")
+        {
+            value2=category;
         }
+        $.ajax({
+            url: '${APIProduct}',
+            type: 'GET',
+            contentType: 'application/json',
+            data: {
+                keyvalue:value,
+                categorycode:value2
+            },
+            dataType: 'json',
+            success: function (result) {
+                if(category==""){
+                    window.location.href="/shop?page=1&&maxPageItem=16";
+                }
+                else {
+                    window.location.href="/shop/collections?categorycode="+category;
+                }
+            },
+            error:function (err) {
+                console.log(err);
+            }
+        });
     }
     var limit = 16;
     $(function () {
