@@ -3,6 +3,7 @@ package com.example.projectshoes.controller.Cart;
 import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.model.ProductModel;
 import com.example.projectshoes.model.UserModel;
+import com.example.projectshoes.service.IDeliveryService;
 import com.example.projectshoes.service.IProductService;
 import com.example.projectshoes.service.ISaledetailService;
 import com.example.projectshoes.service.IUserService;
@@ -29,6 +30,8 @@ public class ListCart extends HttpServlet {
     IUserService userService;
     @Inject
     ISaledetailService saledetailService;
+    @Inject
+    IDeliveryService deliveryService;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserModel userModel=(UserModel) SessionUtil.getInstance().getValue(req,"USERMODEL");
@@ -70,7 +73,12 @@ public class ListCart extends HttpServlet {
                     boolean check=false;
                     for(LineItem item:lineItemList){
                         if(item.getProduct().getId().equals(productModel.getId())&&quantity!=0&&action!=null){
-                            item.setQuantity(item.getQuantity()+quantity);
+                            if(productModel.getQuantity()<item.getQuantity()+quantity){
+                                item.setQuantity(productModel.getQuantity());
+                            }
+                            else {
+                                item.setQuantity(item.getQuantity()+quantity);
+                            }
                             check=true;
                             break;
                         }
@@ -109,9 +117,9 @@ public class ListCart extends HttpServlet {
 //                } catch (MessagingException e) {
 //                    e.printStackTrace();
 //                }
-                productService.UpdateAfertCheckout(req);
+                productService.UpdateAfertCheckout(req,userModel);
                 userService.removeCart(req);
-//                saledetailService.saveSaledetail()
+                //saledetailService.saveSaledetail()
                 req.setAttribute("userModel",userModel);
                 url="/views/web/Checkout.jsp";
             }

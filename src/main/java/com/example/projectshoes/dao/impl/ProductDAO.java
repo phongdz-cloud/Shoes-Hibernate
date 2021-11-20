@@ -1,5 +1,6 @@
 package com.example.projectshoes.dao.impl;
 
+import com.example.projectshoes.dao.ICategoryDAO;
 import com.example.projectshoes.dao.IProductDAO;
 import com.example.projectshoes.mapper.ProductMapper;
 import com.example.projectshoes.model.CategoryModel;
@@ -17,7 +18,7 @@ import java.util.List;
 public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO {
   Session session = HibernateUtil.getSessionFactory().openSession();
   @Inject
-  ICategoryService categoryService;
+  ICategoryDAO categoryService;
   public ProductDAO() {
     setType(ProductModel.class);
   }
@@ -33,8 +34,10 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
   @Override
   public Long saveProduct(ProductModel productModel) {
-    CategoryModel categoryModel=categoryService.findByCategoryID(productModel.getCategoryId());
-    productModel.setCategory(categoryModel);
+    if(productModel.getCategoryId()!=null){
+      CategoryModel categoryModel=categoryService.findByCategoryID(productModel.getCategoryId());
+      productModel.setCategory(categoryModel);
+    }
     return save(productModel);
   }
 
@@ -91,7 +94,6 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     int count=count1.get(0).intValue();
     return count;
   }
-
   @Override
   public int getTotalItemByCategory(String code) {
     Query q = session.createQuery("select count(*) From Product u inner join u.category t where t.code='"+code+"'");

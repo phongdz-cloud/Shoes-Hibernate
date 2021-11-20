@@ -5,17 +5,7 @@ import com.sun.javafx.geom.Edge;
 import javax.persistence.*;
 
 @Entity(name = "Saledetail")
-@Table(name = "saledetail", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {
-        "product_id"
-    }),
-    @UniqueConstraint(columnNames = {
-        "user_id"
-    }),
-    @UniqueConstraint(columnNames = {
-        "delivery_id"
-    })
-})
+@Table(name = "saledetail")
 public class SaledetailModel extends AbstractModel<SaledetailModel> {
 
   //  @Column(name = "user_id")
@@ -31,19 +21,31 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> {
   private int quantity;
   @Column(name = "total")
   private Float total;
+
+  @Column(name = "code")
+  private Long code;
   @Column(name = "status_delivery")
   private String status_delivery;
+
   @OneToOne(fetch = FetchType.EAGER,cascade =CascadeType.ALL)
-  @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
-  private UserModel user = new UserModel();
+  @JoinColumn(name = "user_id", referencedColumnName = "id")
+  private UserModel user = null;
+
   @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-  @JoinColumn(name = "delivery_id", referencedColumnName = "id", insertable = false, updatable = false)
-  private DeliveryModel delivery = new DeliveryModel();
+  @JoinColumn(name = "delivery_id", referencedColumnName = "id")
+  private DeliveryModel delivery = null;
+  
   @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-  @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
-  private ProductModel product = new ProductModel();
+  @JoinColumn(name = "product_id", referencedColumnName = "id")
+  private ProductModel product =null;
+
+  public SaledetailModel() {
+  }
 
   public UserModel getUser() {
+    if(this.user==null){
+      user=new UserModel();
+    }
     return user;
   }
 
@@ -52,6 +54,9 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> {
   }
 
   public DeliveryModel getDelivery() {
+    if(this.delivery==null){
+      delivery=new DeliveryModel();
+    }
     return delivery;
   }
 
@@ -108,10 +113,21 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> {
   }
 
   public ProductModel getProduct() {
+    if(this.product==null){
+      product=new ProductModel();
+    }
     return product;
   }
 
   public void setProduct(ProductModel product) {
     this.product = product;
+  }
+
+  public Long getCode() {
+    return code;
+  }
+
+  public void setCode(Long code) {
+    this.code = code;
   }
 }
