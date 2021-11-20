@@ -1,6 +1,7 @@
 <%@include file="/common/taglib.jsp" %>
 <c:url var="APIuser" value="/api-user"/>
 <c:url var="LoginUrl" value="/dang-nhap"/>
+<c:url var="otpUrl" value="/otp"/>
 <c:url var="RegisterUrl" value="/dang-ky"/>
 <head>
     <title>Forgot password</title>
@@ -144,7 +145,7 @@
       dataType: 'json',
       success: function (result) {
         if (result['message'] == null) {
-          window.location.href = "${LoginUrl}?action=login&message=register_success&alert=success"
+          window.location.href = "${otpUrl}?message=registerSuccess&alert=info"
         } else {
           $('#notification').html(`
                <div class="alert alert-danger">` + result['message'] + `</div>`)

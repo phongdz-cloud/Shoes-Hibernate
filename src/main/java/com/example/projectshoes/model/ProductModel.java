@@ -1,10 +1,11 @@
 package com.example.projectshoes.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity(name = "Product")
 @Table(name = "product")
-public class ProductModel extends AbstractModel<ProductModel> {
+public class ProductModel extends AbstractModel<ProductModel> implements Serializable {
   @Column(name = "name")
   private String name;
   @Column(name = "price")

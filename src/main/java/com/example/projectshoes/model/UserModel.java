@@ -1,5 +1,6 @@
 package com.example.projectshoes.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -10,7 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import org.hibernate.annotations.Cascade;
@@ -19,7 +19,7 @@ import org.hibernate.annotations.NaturalId;
 
 @Entity(name = "User")
 @Table(name = "user")
-public class UserModel extends AbstractModel<UserModel> {
+public class UserModel extends AbstractModel<UserModel> implements Serializable {
 
   @Column(name = "username")
   @NaturalId
@@ -41,7 +41,7 @@ public class UserModel extends AbstractModel<UserModel> {
   @OneToOne(mappedBy = "user")
   private CustomerModel customer;
 
-  @OneToOne(fetch = FetchType.EAGER,mappedBy = "user")
+  @OneToOne(fetch = FetchType.EAGER, mappedBy = "user")
   private SaledetailModel saleDetail;
 
 

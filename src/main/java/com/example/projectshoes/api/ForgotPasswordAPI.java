@@ -3,8 +3,10 @@ package com.example.projectshoes.api;
 import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.IUserService;
+import com.example.projectshoes.utils.HashingUtil;
 import com.example.projectshoes.utils.HttpUtil;
 import com.example.projectshoes.utils.JavaMailUtil;
+import com.example.projectshoes.utils.MailTemplateUtil;
 import com.example.projectshoes.utils.PathUtil;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -34,7 +36,7 @@ public class ForgotPasswordAPI extends HttpServlet {
       try {
         SystemConstant.FLAG = true;
         SystemConstant.ID = userModel.getId();
-        JavaMailUtil.sendMail(userEmail, SystemConstant.TEAMPLATE_MAIL);
+        JavaMailUtil.sendMail(userEmail, MailTemplateUtil.templateMailForgotpassword(), "Forgot password");
         mapper.writeValue(resp.getOutputStream(), true);
       } catch (MessagingException e) {
         e.printStackTrace();
@@ -54,7 +56,7 @@ public class ForgotPasswordAPI extends HttpServlet {
     UserModel newUserModel = userService.findByUserID(SystemConstant.ID);
     if (newUserModel != null) {
       SystemConstant.ID = null;
-      newUserModel.setPassword(oddUserModel.getPassword());
+      newUserModel.setPassword(HashingUtil.hash((oddUserModel.getPassword())));
       userService.update(newUserModel);
       mapper.writeValue(resp.getOutputStream(), true);
     } else {

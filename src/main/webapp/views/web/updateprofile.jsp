@@ -1,5 +1,6 @@
 <%@include file="/common/taglib.jsp" %>
 <c:url var="APICustomer" value="/api-customer"/>
+<c:url var="APIFirebase" value="/api-upload"/>
 <c:url var="loadProfile" value="/change-profile"/>
 <head>
     <title>Update profile</title>
@@ -35,7 +36,7 @@
                     </div>
                 </c:if>
             </div>
-            <form class="checkout-form" id="formSubmit">
+            <form class="checkout-form" id="formSubmit" enctype='multipart/form-data'>
                 <c:if test="${not empty customer}">
                     <div class="form-group">
                         <label class="form-label">Firstname</label>
@@ -147,7 +148,7 @@
     data["content"] = editor.getData();
     console.log(data)
     if ($('#avatar').val() === '') {
-      addCustomerOrUpdate(data);
+      uploadFirebase(file)
     } else {
       uploadImage(data);
     }
@@ -168,7 +169,9 @@
       addCustomerOrUpdate(data);
     })
     .catch(console.error)
+    console.log("Url chua tra ve!")
   }
+
 
   function addCustomerOrUpdate(data) {
     $.ajax({

@@ -1,12 +1,13 @@
 package com.example.projectshoes.model;
 
 
+import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.*;
 
 @Entity(name = "Delivery")
 @Table(name = "delivery")
-public class DeliveryModel extends AbstractModel<DeliveryModel> {
+public class DeliveryModel extends AbstractModel<DeliveryModel> implements Serializable {
 
   @Column(name = "shipper")
   private String shipper;
