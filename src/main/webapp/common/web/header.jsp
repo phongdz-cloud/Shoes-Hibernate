@@ -272,7 +272,7 @@
                                     <div class="clearfix"></div>
                                     <div class="mt-20">
                                         <a href="<c:url value="/cart"/>" class="btn">Cart</a>
-                                        <a href="<c:url value="/error-page"/>"
+                                        <a href="<c:url value="/cart?action=checkout"/>"
                                            class="btn btn-color right-side">Checkout</a>
                                     </div>
                                 </div>

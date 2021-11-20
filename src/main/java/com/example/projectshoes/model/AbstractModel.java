@@ -53,12 +53,12 @@ public class AbstractModel<T> implements Serializable {
 
   private Integer maxPageItem;
   @Transient
-
   private Integer totalItem;
   @Transient
-
   private Integer totalPage;
 
+  public AbstractModel() {
+  }
 
   public long[] getIds() {
     return ids;

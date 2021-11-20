@@ -2,7 +2,7 @@ package com.example.projectshoes.service;
 
 import com.example.projectshoes.model.ProductModel;
 import com.example.projectshoes.paging.Pageble;
-
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface IProductService {
@@ -11,9 +11,9 @@ public interface IProductService {
     void deleteProduct(long[] ids);
     ProductModel findOne(Long id);
     void update(ProductModel productModel);
-    List<ProductModel> pageProduct(int page);
     int getTotalItem();
     List<ProductModel> findbyCategory(Pageble pageble,String code);
-    List<ProductModel> Sort(String sql);
+    List<ProductModel> Sort(String sql,String categorycode);
     int getTotalItemByCategory(String code);
+    void UpdateAfertCheckout(HttpServletRequest req);
 }

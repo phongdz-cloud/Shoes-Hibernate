@@ -49,11 +49,10 @@
                                 </div>
                             </div>
                             <div class="col-12 col-lg-6 text-sm">
-                                <label class="form-label text-muted">Quantity</label>
-                                <div class="input-group">
-                                    <div class="input-group-text">$ </div>
-                                    <input class="form-control">
-                                </div>
+                                <label class="form-label text-muted">Image</label>
+                                <input type="file" id="avatar" name="avatar" class="form-control"
+                                       placeholder="Avatar"
+                                       required>
                             </div>
                         </div>
                         <div style="margin-top: 10px" class="form-text" id="notification"></div>
@@ -102,6 +101,7 @@
         </div>
     </section>
 </form>
+
 <script>
     $('#btnAddOrUpdate').click(function (e) {
         e.preventDefault(); // submit về 1 API
@@ -110,13 +110,26 @@
         $.each(formData, function (i, v) {
             data["" + v.name + ""] = v.value;
         });
-        var id = $('#id').val();
-        if (id == "") {
-            addProduct(data);
-            $('#formproduct')[0].reset();
-        } else {
-            updateProduct(data);
-        }
+        const ref = firebase.storage().ref();
+        const file = document.querySelector('#avatar').files[0];
+        const metadata = {
+            contentType: file.type
+        };
+        const name = file.name;
+        const uploadIMG = ref.child(name).put(file, metadata);
+        uploadIMG.then(snapshort => snapshort.ref.getDownloadURL())
+            .then(url => {
+                console.log(url);
+                data["avatar"] = url;
+                var id = $('#id').val();
+                if (id == "") {
+                    addProduct(data);
+                    $('#formproduct')[0].reset();
+                } else {
+                    updateProduct(data);
+                }
+            })
+            .catch(console.error)
     });
     function addProduct(data) {
         $.ajax({

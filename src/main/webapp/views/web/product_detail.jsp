@@ -10,8 +10,8 @@
                 </div>
                 <div class="col-xl-6 col-lg-6 col-12">
                     <ul class="right-side">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="/trang-chu">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
                         <li>Shop Detail</li>
                     </ul>
                 </div>
@@ -73,7 +73,7 @@
                                         <button type="button" id="sub" class="sub cou-sub">
                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                         </button>
-                                        <input type="number" id="1" class="input-text qty" value="1" min="1" max="3" />
+                                        <input type="number" id="1" class="input-text qty" value="1" min="1" max="${productModel.quantity}" />
                                         <button type="button" id="add" class="add cou-sub">
                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                         </button>
@@ -84,8 +84,8 @@
                                     <div class="fill-input">
                                         <select class="selectpicker full">
                                             <option selected="selected" value="#">${productModel.size}</option>
-                                            <option value="#">7</option>
-                                            <option value="#">6</option>
+                                            <option value="#">${productModel.size}</option>
+                                            <option value="#">${productModel.size}</option>
                                         </select>
                                     </div>
                                 </div>

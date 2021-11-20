@@ -18,6 +18,20 @@ public class ProductModel extends AbstractModel<ProductModel> implements Seriali
   @Column(name = "quantity")
   private int quantity;
 
+  @Override
+  public String getAvatar() {
+    return avatar;
+  }
+
+  @Override
+  public void setAvatar(String avatar) {
+    this.avatar = avatar;
+  }
+
+  @Column(name = "avatar")
+  @Lob
+  private String avatar;
+
   @ManyToOne(targetEntity = CategoryModel.class, fetch = FetchType.EAGER)
   @JoinColumn(name = "category_id")
   private CategoryModel category;

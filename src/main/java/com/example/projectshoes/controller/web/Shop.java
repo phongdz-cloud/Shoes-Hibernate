@@ -29,6 +29,7 @@ public class Shop extends HttpServlet {
             productModel.setMaxPageItem(16);
         }
         if(SystemConstant.FLAGSORT){
+            SystemConstant.FLAGSORT=false;
            productModel.setListResult(SystemConstant.productModel.getListResult());
         }
         else {

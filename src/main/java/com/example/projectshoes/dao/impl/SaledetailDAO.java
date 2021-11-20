@@ -89,6 +89,4 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
     int count=count1.get(0).intValue();
     return count;
   }
-
-
 }
