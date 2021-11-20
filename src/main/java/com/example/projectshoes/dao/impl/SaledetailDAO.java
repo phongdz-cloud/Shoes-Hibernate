@@ -89,4 +89,13 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
     int count=count1.get(0).intValue();
     return count;
   }
+
+  @Override
+  public SaledetailModel findbyCode(Long code) {
+    StringBuilder sql = new StringBuilder("FROM Saledetail s Where s.code=:code");
+    SaledetailModel saledetailModel=new SaledetailModel();
+    saledetailModel.setCode(code);
+    List<SaledetailModel> saledetailModels = queryHibernate(sql.toString(),saledetailModel);
+    return saledetailModels.isEmpty() ? null : saledetailModels.get(0);
+  }
 }

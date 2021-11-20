@@ -207,12 +207,6 @@
                                             <label for="price_7">$209.00 - $217.00 (3)</label>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox" id="price_8" name="Cotton">
-                                            <label for="price_8">$309.00 - $321.00 (1)</label>
-                                        </div>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -224,7 +218,7 @@
                             <div class="col-xl-6 col-lg-5 col-md-6 mb-r-15">
                                 <div class="view">
                                     <div class="list-types grid active">
-                                        <a href="shop.html">
+                                        <a href="/shop">
                                             <div class="grid-icon list-types-icon">
                                                 <i class="fa fa-th-large transition" aria-hidden="true"></i>
                                             </div>
@@ -272,7 +266,7 @@
                                 <div class="featured-product mb-25">
                                     <div class="product-img transition mb-15">
                                         <a href="/product?productid=${item.id}">
-                                            <img src="<c:url value="/template/web/images/product-1.jpg"/>" alt="product" class="transition">
+                                            <img src="${item.avatar}" alt="product" class="transition">
                                         </a>
                                         <div class="new-label">
                                             <span class="text-uppercase">New</span>

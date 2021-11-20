@@ -82,7 +82,7 @@
                     <div class="featured-product mb-25">
                         <div class="product-img transition mb-15">
                             <a href="<c:url value="/product?productid=${item.id}"/>">
-                                <img src="<c:url value='/template/web/images/product-1.jpg'/>"
+                                <img src="${item.avatar}"
                                      alt="product" class="transition">
                             </a>
                             <div class="new-label">
