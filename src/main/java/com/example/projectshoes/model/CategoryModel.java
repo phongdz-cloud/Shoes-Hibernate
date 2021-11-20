@@ -1,5 +1,6 @@
 package com.example.projectshoes.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Category")
 @Table(name = "category")
-public class CategoryModel extends AbstractModel<CategoryModel> {
+public class CategoryModel extends AbstractModel<CategoryModel> implements Serializable {
 
   @Column(name = "code")
   private String code;

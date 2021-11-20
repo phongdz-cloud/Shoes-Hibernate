@@ -22,7 +22,15 @@
     <junit.version>5.7.1</junit.version>
   </properties>
 
+
   <dependencies>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.5.10</version>
+    </dependency>
+
     <!-- jstl -->
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -39,11 +47,11 @@
     </dependency>
 
     <!--mysql-->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>${mysql.version}</version>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>mysql</groupId>-->
+    <!--      <artifactId>mysql-connector-java</artifactId>-->
+    <!--      <version>${mysql.version}</version>-->
+    <!--    </dependency>-->
 
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -125,6 +133,22 @@
       <artifactId>mail</artifactId>
       <version>1.4.7</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+    <dependency>
+      <groupId>org.mindrot</groupId>
+      <artifactId>jbcrypt</artifactId>
+      <version>0.4</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>

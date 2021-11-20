@@ -1,5 +1,6 @@
 package com.example.projectshoes.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -11,7 +12,7 @@ import javax.persistence.Transient;
 
 @Entity(name = "Stock")
 @Table(name = "stock")
-public class StockModel extends AbstractModel<StockModel> {
+public class StockModel extends AbstractModel<StockModel> implements Serializable {
 
   //  @Column(name = "product_id")
   @Transient

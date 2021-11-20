@@ -1,8 +1,15 @@
 package com.example.projectshoes.model;
 
-import com.sun.javafx.geom.Edge;
-
-import javax.persistence.*;
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 @Entity(name = "Saledetail")
 @Table(name = "saledetail", uniqueConstraints = {
@@ -16,7 +23,8 @@ import javax.persistence.*;
         "delivery_id"
     })
 })
-public class SaledetailModel extends AbstractModel<SaledetailModel> {
+public class
+SaledetailModel extends AbstractModel<SaledetailModel> implements Serializable {
 
   //  @Column(name = "user_id")
   @Transient
@@ -34,13 +42,13 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> {
   @Column(name = "status_delivery")
   private String status_delivery;
   @OneToOne(fetch = FetchType.EAGER,cascade =CascadeType.ALL)
-  @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+  @JoinColumn(name = "user_id", referencedColumnName = "id")
   private UserModel user = new UserModel();
   @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-  @JoinColumn(name = "delivery_id", referencedColumnName = "id", insertable = false, updatable = false)
+  @JoinColumn(name = "delivery_id", referencedColumnName = "id")
   private DeliveryModel delivery = new DeliveryModel();
   @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-  @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+  @JoinColumn(name = "product_id", referencedColumnName = "id")
   private ProductModel product = new ProductModel();
 
   public UserModel getUser() {

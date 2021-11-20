@@ -1,12 +1,17 @@
 package com.example.projectshoes.api;
 
+import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.message.ResponseMessage;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.IUserService;
 import com.example.projectshoes.utils.HttpUtil;
+import com.example.projectshoes.utils.JavaMailUtil;
+import com.example.projectshoes.utils.MailTemplateUtil;
+import com.example.projectshoes.utils.OtpUtil;
 import com.example.projectshoes.validate.MyValidator;
 import java.io.IOException;
 import javax.inject.Inject;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +48,14 @@ public class UserAPI extends HttpServlet {
     UserModel userModel = HttpUtil.of(req.getReader()).toModel(UserModel.class);
     ResponseMessage.setMessage(myValidator.validateForm(userModel));
     if (ResponseMessage.getInstance().getMessage() == null) {
-      userService.save(userModel);
+      try {
+        SystemConstant.Otp = OtpUtil.generateOtp(6);
+        SystemConstant.userVerify = userModel;
+        JavaMailUtil.sendMail(userModel.getEmail(), MailTemplateUtil.templateMailVeiry(SystemConstant.Otp),"Verify Account");
+      } catch (MessagingException e) {
+        e.printStackTrace();
+      }
+//      userService.save(userModel);
     } else {
       userModel.setMessage(ResponseMessage.getResponseMessage().getMessage());
     }

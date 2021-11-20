@@ -1,5 +1,6 @@
 package com.example.projectshoes.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
 @MappedSuperclass
-public class AbstractModel<T> {
+public class AbstractModel<T> implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
