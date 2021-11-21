@@ -101,4 +101,11 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     int count=count1.get(0).intValue();
     return count;
   }
+
+  @Override
+  public ProductModel findByProductID(Long id) {
+    return findById(id);
+  }
+
+
 }
