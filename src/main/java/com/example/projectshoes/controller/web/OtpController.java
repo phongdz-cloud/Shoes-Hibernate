@@ -2,12 +2,11 @@ package com.example.projectshoes.controller.web;
 
 import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.service.IUserService;
-import com.example.projectshoes.utils.JavaMailUtil;
 import com.example.projectshoes.utils.MailTemplateUtil;
+import com.example.projectshoes.utils.SendGridEmailerUtil;
 import java.io.IOException;
 import java.util.ResourceBundle;
 import javax.inject.Inject;
-import javax.mail.MessagingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,13 +49,13 @@ public class OtpController extends HttpServlet {
       if (otp.equals(SystemConstant.Otp)) {
         try {
           userService.save(SystemConstant.userVerify);
-          JavaMailUtil.sendMail(SystemConstant.userVerify.getEmail(),
+          SendGridEmailerUtil.sendMail(SystemConstant.userVerify.getEmail(),
               MailTemplateUtil.templateMailCongratulation(), "Conratulation!");
           SystemConstant.Otp = null;
           this.message = resourceBundle.getString("register_success");
           this.alert = "success";
           this.url = "/views/web/login.jsp";
-        } catch (MessagingException e) {
+        } catch (Exception e) {
           e.printStackTrace();
         }
       } else {
