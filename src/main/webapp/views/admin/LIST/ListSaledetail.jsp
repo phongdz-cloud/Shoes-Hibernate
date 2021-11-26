@@ -36,8 +36,6 @@
                         <th>Status_delivery</th>
                         <th>Createddate</th>
                         <th>CreatedBy</th>
-                        <th>ModifiedBy</th>
-                        <th>ModifiedDate</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,22 +45,16 @@
                                 <input class="form-check-input" type="checkbox" id="checkbox_${item.id}" value="${item.id}">
                                 <label class="form-check-label" for="check${item.id}">${item.id}</label>
                             </td>
-                            <td>${item.userId}</td>
-                            <td>${item.productId}</td>
-                            <td>${item.deliveryId}</td>
+                            <td>${item.user.id}</td>
+                            <td>${item.product.id}</td>
+                            <td>${item.delivery.id}</td>
                             <td>${item.quantity}</td>
                             <td>${item.total}</td>
                             <td>
-                                <c:forEach var="rs" items="${deliveryModel.listResult}">
-                                <c:if test="${rs.id==item.deliveryId}">
-                                ${rs.status}
-                                </c:if>
-                            </c:forEach>
+                                ${item.delivery.status}
                             </td>
                             <td class="text-muted">${item.createdDate}</td>
                             <td class="text-muted">${item.createdBy}</td>
-                            <td class="text-muted">${item.modifiedBy}</td>
-                            <td class="text-muted">${item.modifiedDate}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -72,7 +64,7 @@
                 <select id="sort" onchange="Sort(this)" class="form-select form-select-sm d-inline w-auto" name="categoryBulkAction">
                     <option value="" disabled selected>Choose your option</option>
                     <option>A-Z</option>
-                    <option>Total</option>
+<%--                    <option>Total</option>--%>
                 </select>
                     <button id="btnDelete" type="button"
                             class="btn btn-sm btn-outline-primary align-top" data-toggle="tooltip" title='Xoa bai viet'>

@@ -125,4 +125,9 @@ public class ProductService implements IProductService {
             productDAO.update(productModel);
         }
     }
+
+    @Override
+    public ProductModel findByProductID(Long id) {
+        return productDAO.findByProductID(id);
+    }
 }

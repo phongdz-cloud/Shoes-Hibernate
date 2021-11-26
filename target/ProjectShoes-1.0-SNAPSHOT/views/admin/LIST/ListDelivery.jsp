@@ -60,8 +60,10 @@
                             <td>${item.modifiedDate}</td>
                             <td><a class="me-3 text-lg text-success"
                                    href="/admin-delivery?action=edit&&deliveryid=${item.id}"><i class="far fa-edit"></i></a>
-                                <a class="text-lg text-danger" onclick="deleteDelivery(${item.id})" href="">
-                                    <i class="far fa-trash-alt"></i></a>
+<%--                                <a class="text-lg text-danger" onclick="deleteDelivery(${item.id})" href="">--%>
+<%--                                    <i class="far fa-trash-alt"></i></a>--%>
+                                <button type="button" class="text-lg text-danger" onclick="deleteDelivery(${item.id})" />
+                                <i class="far fa-trash-alt"></i></button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -72,7 +74,7 @@
                 <select id="sort" onchange="Sort(this)" class="form-select form-select-sm d-inline w-auto" name="categoryBulkAction">
                     <option value="" disabled selected>Choose your option</option>
                     <option>A-Z</option>
-                    <option>Price</option>
+<%--                    <option>Price</option>--%>
                 </select>
                 <button id="btnDelete" type="button"
                         class="btn btn-sm btn-outline-primary align-top" data-toggle="tooltip" title='Xoa bai viet'>

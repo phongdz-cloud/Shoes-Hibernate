@@ -32,8 +32,6 @@
                         <th>Email</th>
                         <th>Createddate</th>
                         <th>CreatedBy</th>
-                        <th>ModifiedBy</th>
-                        <th>ModifiedDate</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,8 +44,6 @@
                                 <td>${item.email}</td>
                                 <td>${item.createdDate}</td>
                                 <td>${item.createdBy}</td>
-                                <td>${item.modifiedBy}</td>
-                                <td>${item.modifiedDate}</td>
                             </tr>
                         </c:if>
                     </c:forEach>
