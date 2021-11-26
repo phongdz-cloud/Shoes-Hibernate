@@ -20,7 +20,14 @@ public class OtpUtil {
   }
 
   public static void main(String[] args) {
-    System.out.println(generateOtp(6));
+    String price = "4.36$";
+    String price2 = "$182.01";
+
+    System.out.println(price2.substring(1));
+    System.out.println(price.substring(0,price.length()-1));
+
+    price = price.substring(price.length()-1);
+
   }
 
 }

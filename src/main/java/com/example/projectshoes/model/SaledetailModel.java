@@ -129,4 +129,6 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> implements S
     public void setCode(Long code) {
       this.code = code;
     }
+
+
   }
