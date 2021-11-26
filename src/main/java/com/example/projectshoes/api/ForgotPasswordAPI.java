@@ -37,7 +37,7 @@ public class ForgotPasswordAPI extends HttpServlet {
       try {
         SystemConstant.FLAG = true;
         SystemConstant.ID = userModel.getId();
-        SendGridEmailerUtil.sendMail(userEmail, MailTemplateUtil.templateMailForgotpassword(), "Forgot password");
+        JavaMailUtil.sendMail(userEmail, MailTemplateUtil.templateMailForgotpassword(), "Forgot password");
         mapper.writeValue(resp.getOutputStream(), true);
       } catch (Exception e) {
         e.printStackTrace();
