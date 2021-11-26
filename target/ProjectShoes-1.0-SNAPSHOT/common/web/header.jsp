@@ -38,7 +38,7 @@
                             </li>
                             <li class="dropdown">
                                 <span class="opener plus"></span>
-                                <a href="<c:url value="/error-page"/>">Shop</a>
+                                <a href="<c:url value="/contact"/>">Shop</a>
                                 <div class="megamenu full">
                                     <div class="megamenu-inner">
                                         <div class="row">
