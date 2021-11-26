@@ -1,12 +1,14 @@
 package com.example.projectshoes.utils;
 
+
 import redis.clients.jedis.Jedis;
 
 public class JedisConnection {
+
   public static Jedis getConnection() {
 
-//    Jedis jedis = new Jedis("ec2-3-238-190-121.compute-1.amazonaws.com", 6379);
-//    jedis.auth("Ye7o0Kzl2rKd3AB2EJHmbh8W5iwNSs7r");
+//    Jedis jedis = new Jedis(System.getenv("HOST_REDIS"), 6379);
+//    jedis.auth(System.getenv("AUTH_REDIS"));
     Jedis jedis = new Jedis("localhost", 6379);
     try {
       System.out.println("Hello Redis: " + jedis.ping());

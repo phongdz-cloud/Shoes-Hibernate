@@ -20,7 +20,7 @@ import org.hibernate.Transaction;
 
   public class AbstractDAO<T> implements GenericDAO<T> {
 
-  ResourceBundle myBundle = ResourceBundle.getBundle("db");
+  ResourceBundle myBundle = ResourceBundle.getBundle("config");
 
   private Class<T> type = (Class<T>) this.getClass();
 

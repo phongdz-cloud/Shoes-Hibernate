@@ -8,6 +8,7 @@ import com.example.projectshoes.utils.HttpUtil;
 import com.example.projectshoes.utils.JavaMailUtil;
 import com.example.projectshoes.utils.MailTemplateUtil;
 import com.example.projectshoes.utils.PathUtil;
+import com.example.projectshoes.utils.SendGridEmailerUtil;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.mail.MessagingException;
@@ -36,9 +37,9 @@ public class ForgotPasswordAPI extends HttpServlet {
       try {
         SystemConstant.FLAG = true;
         SystemConstant.ID = userModel.getId();
-        JavaMailUtil.sendMail(userEmail, MailTemplateUtil.templateMailForgotpassword(), "Forgot password");
+        SendGridEmailerUtil.sendMail(userEmail, MailTemplateUtil.templateMailForgotpassword(), "Forgot password");
         mapper.writeValue(resp.getOutputStream(), true);
-      } catch (MessagingException e) {
+      } catch (Exception e) {
         e.printStackTrace();
       }
     } else {
