@@ -1,4 +1,5 @@
 com\example\projectshoes\service\ICategoryService.class
+com\example\projectshoes\controller\web\ContactController.class
 com\example\projectshoes\dao\impl\UserDAO.class
 com\example\projectshoes\mapper\CategoryMapper.class
 com\example\projectshoes\mapper\SaledetailMapper.class
@@ -11,6 +12,7 @@ com\example\projectshoes\controller\admin\CategoryController.class
 com\example\projectshoes\mapper\UserMapper.class
 com\example\projectshoes\filter\AuthorizationFilter.class
 com\example\projectshoes\utils\JavaMailUtil$1.class
+com\example\projectshoes\api\web\AuthorizePaymentAPI.class
 com\example\projectshoes\controller\web\Shop.class
 com\example\projectshoes\api\admin\SaledetailAPI.class
 com\example\projectshoes\dao\ICacheDAO.class
@@ -31,6 +33,7 @@ com\example\projectshoes\model\SaledetailModel.class
 com\example\projectshoes\utils\CookieUtil.class
 com\example\projectshoes\service\impl\UserService.class
 com\example\projectshoes\dao\impl\CustomerDAO.class
+com\example\projectshoes\service\impl\PaymentServices.class
 com\example\projectshoes\dao\impl\CategoryDAO.class
 com\example\projectshoes\api\UserAPI.class
 com\example\projectshoes\controller\web\ProductDetailController.class
@@ -50,6 +53,7 @@ com\example\projectshoes\utils\UpdatebleBCrypt.class
 com\example\projectshoes\controller\admin\CustomerController.class
 com\example\projectshoes\dao\ICustomerDAO.class
 com\example\projectshoes\utils\FormUtil.class
+com\example\projectshoes\service\IPaymentServices.class
 com\example\projectshoes\dao\impl\AbstractDAO.class
 com\example\projectshoes\controller\web\OtpController.class
 com\example\projectshoes\dao\GenericDAO.class
@@ -64,6 +68,7 @@ com\example\projectshoes\controller\Cart\ListCart.class
 com\example\projectshoes\mapper\DeliveryMapper.class
 com\example\projectshoes\model\CustomerModel.class
 com\example\projectshoes\dao\ISaledetailDAO.class
+com\example\projectshoes\controller\Cart\AuthorizePaymentServlet.class
 com\example\projectshoes\dao\impl\RoleDAO.class
 com\example\projectshoes\model\DeliveryModel.class
 com\example\projectshoes\paging\Pageble.class
