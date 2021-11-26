@@ -32,12 +32,6 @@ public class SaledetailService implements ISaledetailService {
     public Long saveSaledetail(SaledetailModel saledetailModel) {
         saledetailModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         saledetailModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        UserModel userModel=userService.findByUserID(saledetailModel.getUserId());
-        ProductModel productModel=productService.findOne(saledetailModel.getProductId());
-        DeliveryModel deliveryModel=deliveryService.findByDeliveryID(saledetailModel.getDeliveryId());
-        saledetailModel.setUser(userModel);
-        saledetailModel.setProduct(productModel);
-        saledetailModel.setDelivery(deliveryModel);
         return saledetailDAO.saveSaledetail(saledetailModel);
     }
 

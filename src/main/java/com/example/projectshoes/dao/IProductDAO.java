@@ -1,5 +1,6 @@
 package com.example.projectshoes.dao;
 
+import com.example.projectshoes.model.DeliveryModel;
 import com.example.projectshoes.model.ProductModel;
 import com.example.projectshoes.paging.Pageble;
 
@@ -16,4 +17,5 @@ public interface IProductDAO extends GenericDAO<ProductModel> {
     void update(ProductModel productModel);
     int getTotalItem();
     int getTotalItemByCategory(String code);
+    ProductModel findByProductID(Long id);
 }
