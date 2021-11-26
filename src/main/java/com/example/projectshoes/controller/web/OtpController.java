@@ -2,6 +2,7 @@ package com.example.projectshoes.controller.web;
 
 import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.service.IUserService;
+import com.example.projectshoes.utils.JavaMailUtil;
 import com.example.projectshoes.utils.MailTemplateUtil;
 import com.example.projectshoes.utils.SendGridEmailerUtil;
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class OtpController extends HttpServlet {
       if (otp.equals(SystemConstant.Otp)) {
         try {
           userService.save(SystemConstant.userVerify);
-          SendGridEmailerUtil.sendMail(SystemConstant.userVerify.getEmail(),
+          JavaMailUtil.sendMail(SystemConstant.userVerify.getEmail(),
               MailTemplateUtil.templateMailCongratulation(), "Conratulation!");
           SystemConstant.Otp = null;
           this.message = resourceBundle.getString("register_success");

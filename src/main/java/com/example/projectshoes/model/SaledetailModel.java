@@ -27,15 +27,12 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> implements S
     private String status_delivery;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserModel user = null;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "delivery_id", referencedColumnName = "id")
     private DeliveryModel delivery = null;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private ProductModel product = null;
 
     public SaledetailModel() {

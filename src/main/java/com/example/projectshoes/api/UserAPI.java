@@ -8,11 +8,9 @@ import com.example.projectshoes.utils.HttpUtil;
 import com.example.projectshoes.utils.JavaMailUtil;
 import com.example.projectshoes.utils.MailTemplateUtil;
 import com.example.projectshoes.utils.OtpUtil;
-import com.example.projectshoes.utils.SendGridEmailerUtil;
 import com.example.projectshoes.validate.MyValidator;
 import java.io.IOException;
 import javax.inject.Inject;
-import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +50,8 @@ public class UserAPI extends HttpServlet {
       try {
         SystemConstant.Otp = OtpUtil.generateOtp(6);
         SystemConstant.userVerify = userModel;
-        SendGridEmailerUtil.sendMail(userModel.getEmail(), MailTemplateUtil.templateMailVeiry(SystemConstant.Otp),"Verify Account");
+        JavaMailUtil.sendMail(userModel.getEmail(),
+            MailTemplateUtil.templateMailVeiry(SystemConstant.Otp), "Verify Account");
       } catch (Exception e) {
         e.printStackTrace();
       }
