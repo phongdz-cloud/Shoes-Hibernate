@@ -94,7 +94,7 @@ public class ProductService implements IProductService {
   }
 
   @Override
-  public void UpdateAfertCheckout(HttpServletRequest req, UserModel userModel) {
+  public SaledetailModel UpdateAfertCheckout(HttpServletRequest req, UserModel userModel) {
     ProductModel productModel = new ProductModel();
     CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
     SessionUtil.getInstance().putValue(req, "cart", cart);
@@ -107,12 +107,14 @@ public class ProductService implements IProductService {
 //            saledetailExisting=saledetailDAO.findbyCode(code);
 //        }
     DeliveryModel deliveryModel = deliveryDAO.findOne(1L);
+    SaledetailModel saledetailModel = null;
     for (LineItem item : lineItemList) {
+      saledetailModel = new SaledetailModel();
       productModel = productDAO.findOne(item.getProduct().getId());
-      SaledetailModel saledetailModel = new SaledetailModel();
       saledetailModel.setProduct(productModel);
       saledetailModel.setUser(userModel);
       saledetailModel.setQuantity(item.getQuantity());
+      saledetailModel.setTotal((float) item.getTotal());
       saledetailModel.setCreatedBy(userModel.getUsername());
       saledetailModel.setDelivery(deliveryModel);
       saledetailModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
@@ -120,6 +122,7 @@ public class ProductService implements IProductService {
       productModel.setQuantity(productModel.getQuantity() - item.getQuantity());
       productDAO.update(productModel);
     }
+    return saledetailModel;
   }
 
   @Override

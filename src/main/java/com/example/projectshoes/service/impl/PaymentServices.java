@@ -10,6 +10,7 @@ import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payer;
 import com.paypal.api.payments.PayerInfo;
 import com.paypal.api.payments.Payment;
+import com.paypal.api.payments.PaymentExecution;
 import com.paypal.api.payments.RedirectUrls;
 import com.paypal.api.payments.Transaction;
 import com.paypal.base.rest.APIContext;
@@ -44,14 +45,9 @@ public class PaymentServices implements IPaymentServices {
     }
   }
 
-  public Payment getPaymentDetails(String paymentId) {
+  public Payment getPaymentDetails(String paymentId) throws PayPalRESTException {
     APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, MODE);
-    try {
-      return Payment.get(apiContext, paymentId);
-    } catch (PayPalRESTException e) {
-      e.printStackTrace();
-    }
-    return null;
+    return Payment.get(apiContext, paymentId);
   }
 
   private String getApprovalLink(Payment approvedPayment) {
@@ -67,21 +63,21 @@ public class PaymentServices implements IPaymentServices {
 
   private RedirectUrls getRedirectUrls() {
     RedirectUrls redirectUrls = new RedirectUrls();
-    redirectUrls.setCancelUrl("http://localhost/PayPalTest/cancel.html");
-    redirectUrls.setReturnUrl("http://localhost/PayPalTest/review_payment");
+    redirectUrls.setCancelUrl("http://localhost:8080/cart?action=addtocart");
+    redirectUrls.setReturnUrl("http://localhost:8080/review_payment");
     return redirectUrls;
   }
 
   private List<Transaction> getTransactionInformation(SaledetailModel saledetailModel) {
 
     Details details = new Details();
-    details.setShipping(String.format("%.2f", 10F));
-    details.setSubtotal(String.format("%.2f", 100F));
-    details.setTax(String.format("%.2f", 10F));
+    details.setShipping(String.format("%.2f", 0F));
+    details.setSubtotal(String.format("%.2f", saledetailModel.getTotal()));
+    details.setTax(String.format("%.2f", 0F));
 
     Amount amount = new Amount();
     amount.setCurrency("USD");
-    amount.setTotal(String.format("%.2f", 120F));
+    amount.setTotal(String.format("%.2f", saledetailModel.getTotal()));
     amount.setDetails(details);
 
     Transaction transaction = new Transaction();
@@ -92,9 +88,9 @@ public class PaymentServices implements IPaymentServices {
     Item item = new Item();
     item.setCurrency("USD")
         .setName(saledetailModel.getProduct().getName())
-        .setPrice(String.format("%.2f", 100F))
-        .setTax(String.format("%.2f", 10F))
-        .setQuantity("1");
+        .setPrice(String.format("%.2f", saledetailModel.getProduct().getPrice()))
+        .setTax(String.format("%.2f", 0F))
+        .setQuantity(String.valueOf(saledetailModel.getQuantity()));
     items.add(item);
     itemList.setItems(items);
     transaction.setItemList(itemList);
@@ -113,5 +109,13 @@ public class PaymentServices implements IPaymentServices {
         .setEmail("19110262@student.hcmute.edu.vn");
     payer.setPayerInfo(payerInfo);
     return payer;
+  }
+
+  public Payment executePayment(String paymentId, String payerId) throws PayPalRESTException {
+    PaymentExecution paymentExecution = new PaymentExecution();
+    paymentExecution.setPayerId(payerId);
+    Payment payment = new Payment().setId(paymentId);
+    APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, MODE);
+    return payment.execute(apiContext, paymentExecution);
   }
 }

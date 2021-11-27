@@ -5,9 +5,10 @@ jdbc:mysql://b8b2adbe576e3b:
 </property>
 <property name="connection.username">b8b2adbe576e3b</property>
 <property name="connection.password">00940ca4</property>
--- Config terminal Bước 1: heroku login Bước 2: heroku war:deploy C:
-\Users\dell\Desktop\newProjectShoes\target\ProjectShoes-1.0-SNAPSHOT.war --app shoesteam -- Design
-Lỗi 404 và 500
+-- Config terminal Bước 1:
+heroku login Bước 2:
+heroku war:deploy C:\Users\dell\Desktop\newProjectShoes\target\ProjectShoes-1.0-SNAPSHOT.war --app
+shoesteam --Design
 https://www.niemvuilaptrinh.com/article/25-thiet-ke-404-page-template
 
 -- Spinner
