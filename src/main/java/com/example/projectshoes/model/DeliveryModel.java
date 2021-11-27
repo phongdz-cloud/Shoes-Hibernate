@@ -3,7 +3,12 @@ package com.example.projectshoes.model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity(name = "Delivery")
 @Table(name = "delivery")
@@ -17,9 +22,8 @@ public class DeliveryModel extends AbstractModel<DeliveryModel> implements Seria
   private Date deliveryDate;
   @Column(name = "name")
   private String name;
-
-  @OneToOne(fetch = FetchType.EAGER,mappedBy = "delivery")
-  private SaledetailModel saleDetail;
+  @OneToMany(mappedBy = "delivery")
+  private List<SaledetailModel> saleDetails;
 
 
   public String getName() {
@@ -52,5 +56,16 @@ public class DeliveryModel extends AbstractModel<DeliveryModel> implements Seria
 
   public void setDeliveryDate(Date deliveryDate) {
     this.deliveryDate = deliveryDate;
+  }
+
+  public List<SaledetailModel> getSaleDetails() {
+    if (this.saleDetails == null) {
+      this.saleDetails = new ArrayList<>();
+    }
+    return saleDetails;
+  }
+
+  public void setSaleDetails(List<SaledetailModel> saleDetails) {
+    this.saleDetails = saleDetails;
   }
 }
