@@ -17,7 +17,6 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.10" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
-          <element id="library" level="project" name="Maven: io.github.cdimascio:dotenv-java:2.2.0" />
           <element id="library" level="project" name="Maven: opensymphony:sitemesh:2.4.2" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.26" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
