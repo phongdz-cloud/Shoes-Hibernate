@@ -96,7 +96,7 @@ public class ListCart extends HttpServlet {
                 total=cart.totalPrice(lineItem);
                 SessionUtil.getInstance().putValue(req,"cart",cart);
                 SessionUtil.getInstance().putValue(req,"total",total);
-               url="/views/web/Cart.jsp";
+                url="/views/web/Cart.jsp";
             }
         }
         RequestDispatcher rd=req.getRequestDispatcher(url);
@@ -112,16 +112,23 @@ public class ListCart extends HttpServlet {
                 url="/views/web/login.jsp";
             }
             else {
-//                try {
+                CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req,"cart");
+                if(cart!=null){
+                    //                try {
 //                    JavaMailUtil.sendMail(userModel.getEmail(), SystemConstant.TEAMPLATE_MAIL);
 //                } catch (MessagingException e) {
 //                    e.printStackTrace();
 //                }
-                productService.UpdateAfertCheckout(req,userModel);
-                userService.removeCart(req);
-                //saledetailService.saveSaledetail()
-                req.setAttribute("userModel",userModel);
-                url="/views/web/Checkout.jsp";
+                    productService.UpdateAfertCheckout(req,userModel);
+                    userService.removeCart(req);
+                    //saledetailService.saveSaledetail()
+                    req.setAttribute("userModel",userModel);
+                    url="/views/web/Checkout.jsp";
+                }
+                else {
+                    url="/views/web/Cart.jsp";
+                }
+
             }
         }
         RequestDispatcher rd=req.getRequestDispatcher(url);

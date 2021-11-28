@@ -65,6 +65,7 @@ public class HomeController extends HttpServlet {
       saledetailModel.setListResult(saledetailService.gettop3());
       productModel.setListResult(productService.findAll(pageble,key));
       req.setAttribute("productModel", productModel);
+      req.setAttribute("saledetailModel", saledetailModel);
       String userSuccess = req.getParameter("user");
       req.setAttribute("user", userSuccess);
       RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");

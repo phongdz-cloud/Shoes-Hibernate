@@ -149,6 +149,55 @@
                             </div>
                         </c:forEach>
                     </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="hading pb-20">
+                            <h2 class="hading-title">top <span>seller</span></h2>
+                        </div>
+                        <div class="seller">
+                            <div class="seller-box align-flax w-100 pb-20">
+                                <div class="seller-img">
+                                    <a href="<c:url value="/error-page"/>" class="display-b">
+                                        <img src="<c:url value='/template/web/images/product-10.jpg'/>"
+                                             alt="shoes"
+                                             class="transition">
+                                    </a>
+                                </div>
+                                <div class="seller-contain pl-15">
+                                    <a href="<c:url value="/error-page"/>"
+                                       class="product-name text-uppercase">ELEIFEND ARCU</a>
+                                    <span class="product-pricce">$478.00</span>
+                                </div>
+                            </div>
+                            <div class="seller-box align-flax w-100 pb-20">
+                                <div class="seller-img">
+                                    <a href="<c:url value="/error-page"/>" class="display-b">
+                                        <img src="<c:url value='/template/web/images/product-2.jpg'/>"
+                                             alt="shoes"
+                                             class="transition">
+                                    </a>
+                                </div>
+                                <div class="seller-contain pl-15">
+                                    <a href="<c:url value="/error-page"/>"
+                                       class="product-name text-uppercase">AENEAN EU TRISTIQUE</a>
+                                    <span class="product-pricce">$478.00</span>
+                                </div>
+                            </div>
+                            <div class="seller-box align-flax w-100 pb-20">
+                                <div class="seller-img">
+                                    <a href="<c:url value="/error-page"/>" class="display-b">
+                                        <img src="<c:url value='/template/web/images/product-6.jpg'/>"
+                                             alt="shoes"
+                                             class="transition">
+                                    </a>
+                                </div>
+                                <div class="seller-contain pl-15">
+                                    <a href="<c:url value="/error-page"/>"
+                                       class="product-name text-uppercase">BLIQUAM LOBORTIS</a>
+                                    <span class="product-pricce">$478.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12 col-md-12">
@@ -402,4 +451,3 @@
 </div>
 </body>
 </html>
-
