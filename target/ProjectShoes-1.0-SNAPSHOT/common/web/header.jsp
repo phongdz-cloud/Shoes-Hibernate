@@ -107,20 +107,26 @@
                                                    class="megamenu-title">Product
                                                     Types</a>
                                                 <ul>
-                                                    <li><a href="<c:url value="/shop?page=1&&maxPageItem=16"/>">All
-                                                        Shoes</a>
+                                                    <li>
+                                                        <a href="<c:url value="/shop?page=1&&maxPageItem=16"/>">All
+                                                            Shoes</a>
                                                     </li>
-                                                    <li><a href="<c:url value="/shop/collections?categorycode=Van"/>">Van
-                                                        Shoes</a>
+                                                    <li>
+                                                        <a href="<c:url value="/shop/collections?categorycode=Van"/>">Van
+                                                            Shoes</a>
                                                     </li>
-                                                    <li><a href="<c:url value="/shop/collections?categorycode=MLB"/>">MLB
-                                                        Shoes</a>
+                                                    <li>
+                                                        <a href="<c:url value="/shop/collections?categorycode=MLB"/>">MLB
+                                                            Shoes</a>
                                                     </li>
-                                                    <li><a href="<c:url value="/shop/collections?categorycode=Convert"/>">Convert
-                                                        Shoes</a>
-                                                    </li> <li><a href="<c:url value="/shop/collections?categorycode=Bitis"/>">Bitis
-                                                    Shoes</a>
-                                                </li>
+                                                    <li>
+                                                        <a href="<c:url value="/shop/collections?categorycode=Convert"/>">Convert
+                                                            Shoes</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<c:url value="/shop/collections?categorycode=Bitis"/>">Bitis
+                                                            Shoes</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -153,6 +159,8 @@
                                                 <li><a href="<c:url value="/change-profile"/>">Update
                                                     profile</a>
                                                 </li>
+                                                <li><a href="<c:url value="/list-receipt"/>">Receipts</a>
+                                                </li>
                                                 <li><a href="<c:url value="/error-page"/>">Blog</a>
                                                 </li>
                                                 <li>
@@ -169,7 +177,7 @@
                 <div class="search-right">
                     <div class="menu-toggle"><span></span></div>
                     <div class="search-menu">
-                        <input id="key" type="text" name="search" class="search-input"
+                        <input id="myInput" type="text" name="search" class="search-input"
                                placeholder="Search text" value="">
                         <input type="submit" name="submit" class="search-btn" onclick="Search()">
                         <div class="search-button-i transition">
@@ -284,15 +292,14 @@
         </div>
     </div>
     <script>
-        function Search() {
-            var input=document.getElementById("key").value;
-            if(input==""){
-                window.location.href="http://localhost:8080/shop?page=1&&maxPageItem=16";
-            }
-            else {
-                window.location.href="http://localhost:8080/shop?page=1&&maxPageItem=16&&key="+input;
-            }
+      function Search() {
+        var input = document.getElementById("key").value;
+        if (input == "") {
+          window.location.href = "http://localhost:8080/shop?page=1&&maxPageItem=16";
+        } else {
+          window.location.href = "http://localhost:8080/shop?page=1&&maxPageItem=16&&key=" + input;
         }
+      }
     </script>
 </header>
 

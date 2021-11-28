@@ -4,6 +4,7 @@ C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\uti
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\admin\SaledetailController.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\dao\IDeliveryDAO.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\dao\impl\DeliveryDAO.java
+C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\Cart\ListReceipt.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\service\impl\RoleService.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\utils\SessionUtil.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\web\ProductDetailController.java
@@ -28,9 +29,11 @@ C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\con
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\utils\SendGridEmailer.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\service\impl\SaledetailService.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\dao\GenericDAO.java
+C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\web\ExecutePaymentController.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\admin\ProductController.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\service\IUserService.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\utils\JedisConnection.java
+C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\controller\web\ReviewPaymentController.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\paging\Pageble.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\filter\AuthorizationFilter.java
 C:\Users\dell\Desktop\newProjectShoes\src\main\java\com\example\projectshoes\utils\PathUtil.java

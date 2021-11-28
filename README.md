@@ -17,3 +17,7 @@ https://codepen.io/charlyarg/pen/GByKja
 
 -- Genera auto ID non ID
 https://stackoverflow.com/questions/277630/hibernate-jpa-sequence-non-id
+
+
+-Search table Jquery
+https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_filters_table

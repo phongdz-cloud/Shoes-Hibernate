@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
-    <link rel="stylesheet" href="<c:url value='/template/web/css/bootstrap.min.css' />" />
+    <link rel="stylesheet" href="<c:url value='/template/web/css/bootstrap.min.css' />"/>
     <!-- Google fonts - Popppins for copy-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;display=swap"
@@ -27,7 +27,8 @@
     <link rel="shortcut icon"
           href="https://d19m59y37dris4.cloudfront.net/bubbly/1-2/img/favicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type='text/javascript' src='<c:url value="/template/admin/js/jquery-2.2.3.min.js" />'></script>
+    <script type='text/javascript'
+            src='<c:url value="/template/admin/js/jquery-2.2.3.min.js" />'></script>
     <script src="<c:url value='/template/admin/js/jquery.2.1.1.min.js' />"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -90,16 +91,16 @@
   });
 </script>
 <script type="module">
-    const firebaseConfig = {
-        apiKey: "AIzaSyCM8GPMn5mU7_B0Eg-kGiWZZ0DpVKDUZp0",
-        authDomain: "hoaiphong-4cfd9.firebaseapp.com",
-        projectId: "hoaiphong-4cfd9",
-        storageBucket: "hoaiphong-4cfd9.appspot.com",
-        messagingSenderId: "413471605092",
-        appId: "1:413471605092:web:1aa136cb962420c557ba71",
-        measurementId: "G-80ETZH4J6E"
-    };
-    firebase.initializeApp(firebaseConfig);
+  const firebaseConfig = {
+    apiKey: "<%=System.getenv("apiKey")%>",
+    authDomain: "<%=System.getenv("authDomain")%>",
+    projectId: "<%=System.getenv("projectId")%>",
+    storageBucket: "<%=System.getenv("storageBucket")%>",
+    messagingSenderId: "<%=System.getenv("messagingSenderId")%>",
+    appId: "<%=System.getenv("appId")%>",
+    measurementId: "<%=System.getenv("measurementId")%>"
+  };
+  firebase.initializeApp(firebaseConfig);
 </script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"

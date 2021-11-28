@@ -15,6 +15,7 @@ com\example\projectshoes\utils\JavaMailUtil$1.class
 com\example\projectshoes\api\web\AuthorizePaymentAPI.class
 com\example\projectshoes\controller\web\Shop.class
 com\example\projectshoes\api\admin\SaledetailAPI.class
+com\example\projectshoes\controller\web\ReviewPaymentController.class
 com\example\projectshoes\dao\ICacheDAO.class
 com\example\projectshoes\utils\HibernateUtil.class
 com\example\projectshoes\service\IUserService.class
@@ -22,6 +23,7 @@ com\example\projectshoes\utils\MailTemplateUtil.class
 com\example\projectshoes\dao\impl\ProductDAO.class
 com\example\projectshoes\dao\impl\DeliveryDAO.class
 com\example\projectshoes\paging\PageRequest.class
+com\example\projectshoes\controller\Cart\ListReceipt.class
 com\example\projectshoes\controller\Cart\CartModel.class
 com\example\projectshoes\service\impl\CategoryService.class
 com\example\projectshoes\controller\Cart\LineItem.class
@@ -99,6 +101,7 @@ com\example\projectshoes\service\impl\CustomerService.class
 com\example\projectshoes\service\impl\ProductService.class
 com\example\projectshoes\utils\PathUtil.class
 com\example\projectshoes\api\admin\CategoryAPI.class
+com\example\projectshoes\controller\web\ExecutePaymentController.class
 com\example\projectshoes\utils\HashingUtil.class
 com\example\projectshoes\controller\admin\UserController.class
 com\example\projectshoes\utils\JavaMailUtil.class

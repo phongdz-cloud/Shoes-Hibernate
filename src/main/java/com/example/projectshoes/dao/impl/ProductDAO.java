@@ -67,7 +67,7 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     q.setFirstResult(pageble.getOffset());
     q.setMaxResults(pageble.getLimit());
     productModel.setListResult(q.getResultList());
-    return productModel .getListResult();
+    return productModel.getListResult();
   }
 
   @Override

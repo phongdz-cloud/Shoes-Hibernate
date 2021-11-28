@@ -41,11 +41,13 @@
     <link rel="stylesheet" type="text/css"
           href="<c:url value='/template/web/css/responsive.css'/> ">
     <script src="<c:url value="/ckeditor/ckeditor.js"/>"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=585165199352568&autoLogAppEvents=1"
-            nonce="ZdUbvRBT"></script>
+    <script src="<c:url value='/template/paging/jquery.twbsPagination.js'/>"></script>
+    <script src="<c:url value='/template/sort/jquery.sortElements.js'/>"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous"
+              src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=585165199352568&autoLogAppEvents=1"
+              nonce="ZdUbvRBT"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id"
           content="945852596576-qdpeq7msdshcetuudjfqfe3svda8rljk.apps.googleusercontent.com">
@@ -69,7 +71,6 @@
     </div>
 </div>
 <!-- Search Screen end -->
-
 <%@ include file="/common/web/header.jsp" %>
 <dec:body/>
 <%@ include file="/common/web/footer.jsp" %>
@@ -87,13 +88,13 @@
 
 <script type="module">
   const firebaseConfig = {
-    apiKey: "AIzaSyCM8GPMn5mU7_B0Eg-kGiWZZ0DpVKDUZp0",
-    authDomain: "hoaiphong-4cfd9.firebaseapp.com",
-    projectId: "hoaiphong-4cfd9",
-    storageBucket: "hoaiphong-4cfd9.appspot.com",
-    messagingSenderId: "413471605092",
-    appId: "1:413471605092:web:1aa136cb962420c557ba71",
-    measurementId: "G-80ETZH4J6E"
+    apiKey: "<%=System.getenv("apiKey")%>",
+    authDomain: "<%=System.getenv("authDomain")%>",
+    projectId: "<%=System.getenv("projectId")%>",
+    storageBucket: "<%=System.getenv("storageBucket")%>",
+    messagingSenderId: "<%=System.getenv("messagingSenderId")%>",
+    appId: "<%=System.getenv("appId")%>",
+    measurementId: "<%=System.getenv("measurementId")%>"
   };
   firebase.initializeApp(firebaseConfig);
 </script>
@@ -114,6 +115,17 @@
     }, 10000)
   });
   /* ------------ Newslater-popup JS End ------------- */
+</script>
+
+<script>
+  $(document).ready(function () {
+    $("#myInput").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $("#myDIV *").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
 </script>
 
 

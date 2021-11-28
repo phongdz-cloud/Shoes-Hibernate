@@ -41,6 +41,7 @@ public class HibernateUtil {
         settings.put(Environment.SHOW_SQL, "true");
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         settings.put(Environment.HBM2DDL_AUTO, "update");
+        settings.put(Environment.POOL_SIZE,"100");
         configuration.setProperties(settings);
         configuration.addAnnotatedClass(AbstractModel.class);
         configuration.addAnnotatedClass(CategoryModel.class);

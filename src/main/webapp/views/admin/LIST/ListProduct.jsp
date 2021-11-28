@@ -163,7 +163,7 @@
             startPage: currentPage,
             onPageClick: function (event, page) {
                 event.preventDefault();
-                if (currentPage != page) {
+                if (currentPage !== page) {
                     $('#maxPageItem').val(limit);
                     $('#page').val(page);
                     $('#formsubmit').submit();

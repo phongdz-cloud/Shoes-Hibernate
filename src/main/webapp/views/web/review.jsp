@@ -19,6 +19,7 @@
 <body>
 <div align="center">
     <h1>Please Review Before Paying</h1>
+    <div id="loaded"></div>
     <form action="<c:url value="/excute_payment"/>" method="post">
         <table>
             <tr>
@@ -98,7 +99,7 @@
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="Pay Now"/>
+                    <input type="submit" onclick="getLoader()" value="Pay Now"/>
                 </td>
             </tr>
         </table>
@@ -106,3 +107,8 @@
 </div>
 </body>
 </html>
+<script>
+  function getLoader() {
+    document.getElementById('loaded').innerHTML = `<div class="spinner"></div>`
+  }
+</script>

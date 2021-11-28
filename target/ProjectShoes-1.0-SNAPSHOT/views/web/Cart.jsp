@@ -38,31 +38,42 @@
                             <td class="text-left">
                                 <div class="seller-box align-flax w-100">
                                     <div class="seller-img">
-                                        <a href="/product?productid=${item.product.id}" class="display-b">
-                                            <img src="${item.product.avatar}" alt="shoes" class="transition">
+                                        <a href="/product?productid=${item.product.id}"
+                                           class="display-b">
+                                            <img src="${item.product.avatar}" alt="shoes"
+                                                 class="transition">
                                         </a>
                                     </div>
                                     <div class="seller-contain pl-15">
-                                        <a href="/product?productid=${item.product.id}" class="product-name text-uppercase">${item.product.name}</a>
+                                        <a href="/product?productid=${item.product.id}"
+                                           class="product-name text-uppercase">${item.product.name}</a>
                                     </div>
                                 </div>
                             </td>
                             <td><span class="price">$${item.product.price}</span></td>
                             <td>
-                                <input type="number" id="ipqtt${item.product.id}" class="input-text" value="${item.quantity}" min="1" max="${item.product.quantity}"/>
+                                <input type="number" id="ipqtt${item.product.id}" class="input-text"
+                                       value="${item.quantity}" min="1"
+                                       max="${item.product.quantity}"/>
                             </td>
                             <td><span class="price">${item.totalCurrencyFormat}</span></td>
                             <td>
                                 <ul>
                                     <form action="/cart" method="post">
-                                        <input type="hidden" name="productId" value="${item.product.id}">
+                                        <input type="hidden" name="productId"
+                                               value="${item.product.id}">
                                         <input type="hidden" name="quantity" value="0">
-                                        <input type="submit" class="btn btn-primary" value="Remove" style="color: white">
+                                        <input type="submit" class="btn btn-primary" value="Remove"
+                                               style="color: white">
                                     </form>
                                     <form action="/cart" method="post">
-                                        <input type="hidden" name="productId" value="${item.product.id}">
-                                        <input id="qtt${item.product.id}" type="hidden" name="quantity" value="">
-                                        <input type="submit" class="btn btn-primary" value="Update" style="color: white" onclick="getValUpdate(${item.product.id})">
+                                        <input type="hidden" name="productId"
+                                               value="${item.product.id}">
+                                        <input id="qtt${item.product.id}" type="hidden"
+                                               name="quantity" value="">
+                                        <input type="submit" class="btn btn-primary" value="Update"
+                                               style="color: white"
+                                               onclick="getValUpdate(${item.product.id})">
                                     </form>
                                 </ul>
                             </td>
@@ -74,7 +85,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="share-wishlist shoping-con">
-                        <a href="/trang-chu" class="btn"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                        <a href="/trang-chu" class="btn"><i class="fa fa-angle-left"></i> Continue
+                            Shopping</a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -102,7 +114,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <select class="form-control">
-                                            <option selected="" value="">Select State/Province</option>
+                                            <option selected="" value="">Select State/Province
+                                            </option>
                                             <option value="1">---</option>
                                         </select>
                                     </div>
@@ -156,7 +169,9 @@
                                 </table>
                             </div>
                             <div class="share-wishlist">
-                                <a href="/cart?action=checkout" class="btn btn-color">Proceed to checkout <i class="fa fa-angle-right"></i></a>
+                                <a href="/cart?action=checkout" onclick="getLoader()"
+                                   class="btn btn-color">Proceed to checkout <i
+                                        class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -164,12 +179,17 @@
             </div>
         </div>
     </div>
+    <div id="loaded"></div>
 </section>
 <script>
-    function getValUpdate(param) {
-        var input=document.getElementById("ipqtt"+param).value;
-        document.getElementById("qtt"+param).value=input;
-    }
+  function getValUpdate(param) {
+    var input = document.getElementById("ipqtt" + param).value;
+    document.getElementById("qtt" + param).value = input;
+  }
+
+  function getLoader() {
+    document.getElementById('loaded').innerHTML = `<div class="spinner"></div>`
+  }
 </script>
 </body>
 </html>

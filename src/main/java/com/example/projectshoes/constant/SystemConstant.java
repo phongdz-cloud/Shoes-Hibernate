@@ -17,5 +17,6 @@ public class SystemConstant {
   public static ProductModel productModel;
   public static String Otp = null;
   public static UserModel userVerify = null;
+  public static Integer totalPageReceipt;
 
 }
