@@ -99,14 +99,7 @@ public class ProductService implements IProductService {
     CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
     SessionUtil.getInstance().putValue(req, "cart", cart);
     List<LineItem> lineItemList = cart.getItems();
-//        Random generator = new Random();
-//        Long code=generator.nextLong();
-//        SaledetailModel saledetailExisting=saledetailDAO.findbyCode(code);
-//        while (saledetailExisting!=null){
-//            code=generator.nextLong();
-//            saledetailExisting=saledetailDAO.findbyCode(code);
-//        }
-    DeliveryModel deliveryModel = deliveryDAO.findOne(1L);
+    DeliveryModel deliveryModel = deliveryDAO.findOne(10L);
     SaledetailModel saledetailModel = null;
     for (LineItem item : lineItemList) {
       saledetailModel = new SaledetailModel();

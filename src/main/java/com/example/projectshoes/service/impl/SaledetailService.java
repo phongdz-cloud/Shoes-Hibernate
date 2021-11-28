@@ -59,4 +59,20 @@ public class SaledetailService implements ISaledetailService {
   public int getTotalItem() {
     return saledetailDAO.getTotalItem();
   }
+
+    @Override
+    public List<SaledetailModel> gettop3() {
+        return saledetailDAO.gettop3();
+    }
+
+    @Override
+    public void deletebyProductId(long[] ids) {
+        for(long id:ids){
+            SaledetailModel saledetailModels=new SaledetailModel();
+            saledetailModels.setListResult(saledetailDAO.findbyProductID(id));
+            for(SaledetailModel i:saledetailModels.getListResult()){
+                saledetailDAO.delete(i);
+            }
+        }
+    }
 }

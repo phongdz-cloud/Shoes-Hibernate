@@ -11,13 +11,15 @@ public interface ISaledetailDAO extends GenericDAO<SaledetailModel> {
 
   List<SaledetailModel> findAll();
 
-  List<SaledetailModel> findAllbyUserID(Long id,int pageIndex);
+  List<SaledetailModel> findAllbyUserID(Long id, int pageIndex);
 
   List<SaledetailModel> findAllByUserIdTotal(Long id);
 
   List<SaledetailModel> findbyProductID(Long id);
 
   List<SaledetailModel> findbyDeliveryID(Long id);
+
+  List<SaledetailModel> gettop3();
 
   void deleteSaledetail(long id);
 
