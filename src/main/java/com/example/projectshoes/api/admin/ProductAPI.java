@@ -6,6 +6,7 @@ import com.example.projectshoes.paging.PageRequest;
 import com.example.projectshoes.paging.Pageble;
 import com.example.projectshoes.service.ICategoryService;
 import com.example.projectshoes.service.IProductService;
+import com.example.projectshoes.service.ISaledetailService;
 import com.example.projectshoes.utils.HttpUtil;
 import com.example.projectshoes.utils.SessionUtil;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -23,6 +24,8 @@ public class ProductAPI extends HttpServlet {
     IProductService productService;
     @Inject
     ICategoryService categoryService;
+    @Inject
+    ISaledetailService saledetailService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper=new ObjectMapper();
@@ -61,6 +64,7 @@ public class ProductAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
         ProductModel productModel =  HttpUtil.of(req.getReader()).toModel(ProductModel.class);
+        saledetailService.deletebyProductId(productModel.getIds());
         productService.deleteProduct(productModel.getIds());
         mapper.writeValue(resp.getOutputStream(), "{}");
     }
