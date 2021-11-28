@@ -40,4 +40,5 @@ public class SetPasswordController extends HttpServlet {
     RequestDispatcher rq = req.getRequestDispatcher(url);
     rq.forward(req, resp);
   }
+
 }

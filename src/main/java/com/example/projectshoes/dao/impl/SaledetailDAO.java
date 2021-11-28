@@ -105,7 +105,7 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
   }
 
   @Override
-  public SaledetailModel findbyCode(Long code) {
+  public SaledetailModel findbyCode(String code) {
     StringBuilder sql = new StringBuilder("FROM Saledetail s Where s.code=:code");
     SaledetailModel saledetailModel = new SaledetailModel();
     saledetailModel.setCode(code);
@@ -116,8 +116,9 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
   @Override
   public List<SaledetailModel> gettop3() {
     Session session = HibernateUtil.getSessionFactory().openSession();
-    SaledetailModel saledetailModel=new SaledetailModel();
-    StringBuilder sql=new StringBuilder("select u.product From Saledetail u group by u.product order by sum(u.quantity) desc");
+    SaledetailModel saledetailModel = new SaledetailModel();
+    StringBuilder sql = new StringBuilder(
+        "select u.product From Saledetail u group by u.product order by sum(u.quantity) desc");
     Query q = session.createQuery(sql.toString());
     q.setFirstResult(0);
     q.setMaxResults(3);

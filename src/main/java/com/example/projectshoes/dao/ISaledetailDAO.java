@@ -29,5 +29,5 @@ public interface ISaledetailDAO extends GenericDAO<SaledetailModel> {
 
   int getTotalItem();
 
-  SaledetailModel findbyCode(Long code);
+  SaledetailModel findbyCode(String code);
 }

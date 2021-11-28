@@ -19,13 +19,12 @@ public class ProductDetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id=Long.parseLong(req.getParameter("productid"));
-        ProductModel productModel=new ProductModel();
+        ProductModel productModel;
         productModel=productService.findOne(id);
         req.setAttribute("productModel",productModel);
         RequestDispatcher rd=req.getRequestDispatcher("/views/web/product_detail.jsp");
         rd.forward(req,resp);
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);

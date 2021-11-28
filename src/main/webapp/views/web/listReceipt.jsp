@@ -23,7 +23,7 @@
                 <td>${item.product.name}</td>
                 <td>${item.product.size}</td>
                 <td>${item.product.price}$</td>
-                <td>${item.product.quantity}</td>
+                <td>${item.quantity}</td>
                 <td>${item.total}</td>
             </tr>
         </c:forEach>

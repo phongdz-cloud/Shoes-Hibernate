@@ -1,5 +1,7 @@
-package com.example.projectshoes.controller.Cart;
+package com.example.projectshoes.controller.cart;
 
+import com.example.projectshoes.model.CartModel;
+import com.example.projectshoes.model.LineItemModel;
 import com.example.projectshoes.model.ProductModel;
 import com.example.projectshoes.model.SaledetailModel;
 import com.example.projectshoes.model.UserModel;
@@ -18,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/cart")
-public class ListCart extends HttpServlet {
+public class CartController extends HttpServlet {
 
   @Inject
   IProductService productService;
@@ -46,7 +48,7 @@ public class ListCart extends HttpServlet {
         String quantityString = req.getParameter("quantity");
         double total;
         CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
-        LineItem lineItem = new LineItem();
+        LineItemModel lineItemModel = new LineItemModel();
         int quantity;
         try {
           quantity = Integer.parseInt(quantityString);
@@ -58,13 +60,13 @@ public class ListCart extends HttpServlet {
         }
         if (cart == null) {
           cart = new CartModel();
-          lineItem.setProduct(productModel);
-          lineItem.setQuantity(quantity);
-          cart.addItem(lineItem);
+          lineItemModel.setProduct(productModel);
+          lineItemModel.setQuantity(quantity);
+          cart.addItem(lineItemModel);
         } else {
-          List<LineItem> lineItemList = cart.getItems();
+          List<LineItemModel> lineItemModelList = cart.getItems();
           boolean check = false;
-          for (LineItem item : lineItemList) {
+          for (LineItemModel item : lineItemModelList) {
             if (item.getProduct().getId().equals(productModel.getId()) && quantity != 0
                 && action != null) {
               if (productModel.getQuantity() < item.getQuantity() + quantity) {
@@ -77,16 +79,16 @@ public class ListCart extends HttpServlet {
             }
           }
           if (check == false) {
-            lineItem.setQuantity(quantity);
-            lineItem.setProduct(productModel);
+            lineItemModel.setQuantity(quantity);
+            lineItemModel.setProduct(productModel);
             if (quantity > 0) {
-              cart.addItem(lineItem);
+              cart.addItem(lineItemModel);
             } else if (quantity == 0) {
-              cart.removeItem(lineItem);
+              cart.removeItem(lineItemModel);
             }
           }
         }
-        total = cart.totalPrice(lineItem);
+        total = cart.totalPrice(lineItemModel);
         SessionUtil.getInstance().putValue(req, "cart", cart);
         SessionUtil.getInstance().putValue(req, "total", total);
         url = "/views/web/Cart.jsp";
@@ -122,10 +124,12 @@ public class ListCart extends HttpServlet {
           }
         } else {
           url = "/views/web/Cart.jsp";
+          rd = req.getRequestDispatcher(url);
+          rd.forward(req, resp);
         }
       }
     }
-    rd = req.getRequestDispatcher(url);
-    rd.forward(req, resp);
+
   }
+
 }

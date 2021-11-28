@@ -1,4 +1,4 @@
-package com.example.projectshoes.controller.Cart;
+package com.example.projectshoes.controller.cart;
 
 import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.model.SaledetailModel;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/list-receipt")
-public class ListReceipt extends HttpServlet {
+public class ReceiptController extends HttpServlet {
 
   @Inject
   ISaledetailService saledetailService;
@@ -27,7 +27,6 @@ public class ListReceipt extends HttpServlet {
       throws ServletException, IOException {
     SaledetailModel saledetailModel = FormUtil.toModel(SaledetailModel.class, req);
     UserModel user = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
-
     List<SaledetailModel> saledetailModelList;
     if (user != null) {
       if (saledetailModel.getPage() == null) {
@@ -37,13 +36,12 @@ public class ListReceipt extends HttpServlet {
           saledetailModel.getPage());
       int size = saledetailModelList.size();
       user.setTotalItem(size);
-      user.setTotalPage(SystemConstant.totalPageReceipt / 5);
+      user.setTotalPage((SystemConstant.totalPageReceipt / 5) + 1);
       user.setPage(saledetailModel.getPage());
       req.setAttribute("receipts", saledetailModelList);
       req.setAttribute("model", user);
     }
     RequestDispatcher rq = req.getRequestDispatcher("/views/web/listReceipt.jsp");
     rq.forward(req, resp);
-
   }
 }

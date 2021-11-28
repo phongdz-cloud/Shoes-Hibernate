@@ -1,8 +1,8 @@
 package com.example.projectshoes.service.impl;
 
 import com.example.projectshoes.constant.SystemQueries;
-import com.example.projectshoes.controller.Cart.CartModel;
-import com.example.projectshoes.controller.Cart.LineItem;
+import com.example.projectshoes.model.CartModel;
+import com.example.projectshoes.model.LineItemModel;
 import com.example.projectshoes.dao.ICacheDAO;
 import com.example.projectshoes.dao.IRoleDAO;
 import com.example.projectshoes.dao.IUserDAO;
@@ -126,10 +126,10 @@ public class UserService implements IUserService {
   public void removeCart(HttpServletRequest req) {
     CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
     if (cart != null) {
-      List<LineItem> lineItemList = cart.getItems();
-      for (LineItem item : lineItemList) {
+      List<LineItemModel> lineItemModelList = cart.getItems();
+      for (LineItemModel item : lineItemModelList) {
         cart.removeItem(item);
-        if (lineItemList.size() == 0) {
+        if (lineItemModelList.size() == 0) {
           break;
         }
       }

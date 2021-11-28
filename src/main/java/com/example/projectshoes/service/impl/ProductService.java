@@ -1,7 +1,7 @@
 package com.example.projectshoes.service.impl;
 
-import com.example.projectshoes.controller.Cart.CartModel;
-import com.example.projectshoes.controller.Cart.LineItem;
+import com.example.projectshoes.model.CartModel;
+import com.example.projectshoes.model.LineItemModel;
 import com.example.projectshoes.dao.IDeliveryDAO;
 import com.example.projectshoes.dao.IProductDAO;
 import com.example.projectshoes.dao.ISaledetailDAO;
@@ -15,6 +15,7 @@ import com.example.projectshoes.service.IProductService;
 import com.example.projectshoes.utils.SessionUtil;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Random;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -98,11 +99,13 @@ public class ProductService implements IProductService {
     ProductModel productModel = new ProductModel();
     CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
     SessionUtil.getInstance().putValue(req, "cart", cart);
-    List<LineItem> lineItemList = cart.getItems();
-    DeliveryModel deliveryModel = deliveryDAO.findOne(10L);
+    List<LineItemModel> lineItemModelList = cart.getItems();
+    DeliveryModel deliveryModel = deliveryDAO.findOne(1L);
     SaledetailModel saledetailModel = null;
-    for (LineItem item : lineItemList) {
+    String code = generateCode();
+    for (LineItemModel item : lineItemModelList) {
       saledetailModel = new SaledetailModel();
+      saledetailModel.setCode(code);
       productModel = productDAO.findOne(item.getProduct().getId());
       saledetailModel.setProduct(productModel);
       saledetailModel.setUser(userModel);
@@ -116,6 +119,23 @@ public class ProductService implements IProductService {
       productDAO.update(productModel);
     }
     return saledetailModel;
+  }
+
+  public String generateCode() {
+
+    int leftLimit = 97; // letter 'a'
+    int rightLimit = 122; // letter 'z'
+    int targetStringLength = 10;
+    Random random = new Random();
+    StringBuilder buffer = new StringBuilder(targetStringLength);
+    for (int i = 0; i < targetStringLength; i++) {
+      int randomLimitedInt = leftLimit + (int)
+          (random.nextFloat() * (rightLimit - leftLimit + 1));
+      buffer.append((char) randomLimitedInt);
+    }
+    String generatedString = buffer.toString();
+
+    return generatedString;
   }
 
   @Override

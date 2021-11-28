@@ -1,5 +1,7 @@
 package com.example.projectshoes.controller.web;
 
+import com.example.projectshoes.service.IProductService;
+import com.example.projectshoes.service.IUserService;
 import com.example.projectshoes.service.impl.PaymentServices;
 import com.paypal.api.payments.PayerInfo;
 import com.paypal.api.payments.Payment;
@@ -27,6 +29,7 @@ public class ExecutePaymentController extends HttpServlet {
     String payerId = request.getParameter("PayerID");
     String url = "/views/web/paymentError.jsp";
     try {
+
       Payment payment = paymentServices.executePayment(paymentId, payerId);
       PayerInfo payerInfo = payment.getPayer().getPayerInfo();
       Transaction transaction = payment.getTransactions().get(0);

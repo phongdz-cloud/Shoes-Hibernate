@@ -7,10 +7,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity(name = "Saledetail")
-@Table(name = "saledetail", uniqueConstraints = @UniqueConstraint(columnNames = {"code"}))
+@Table(name = "saledetail")
 public class SaledetailModel extends AbstractModel<SaledetailModel> implements Serializable {
 
   @Column(name = "quantity")
@@ -18,8 +17,8 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> implements S
   @Column(name = "total")
   private Float total;
 
-  @Column(name = "code", columnDefinition = "serial")
-  private Long code;
+  @Column(name = "code")
+  private String code;
 
   @Column(name = "status_delivery")
   private String status_delivery;
@@ -69,12 +68,11 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> implements S
     this.status_delivery = status_delivery;
   }
 
-
-  public Long getCode() {
+  public String getCode() {
     return code;
   }
 
-  public void setCode(Long code) {
+  public void setCode(String code) {
     this.code = code;
   }
 
@@ -93,6 +91,8 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> implements S
   public void setUser(UserModel user) {
     this.user = user;
   }
+
+
 
   public DeliveryModel getDelivery() {
     return delivery;

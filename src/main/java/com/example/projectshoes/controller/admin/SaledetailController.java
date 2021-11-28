@@ -19,10 +19,6 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/admin-saledetail")
 public class SaledetailController extends HttpServlet {
     @Inject
-    IUserService userService;
-    @Inject
-    IProductService productService;
-    @Inject
     IDeliveryService deliveryService;
     @Inject
     ISaledetailService saledetailService;
