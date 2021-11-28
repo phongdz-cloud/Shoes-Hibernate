@@ -36,16 +36,16 @@ public class ListCart extends HttpServlet {
       url = "/views/web/login.jsp";
     } else {
       Long id = Long.parseLong(req.getParameter("productId"));
-      Stri= req.getParameter("quantity");
-        double total;ng action = req.getParameter("action");
-        if (id == null) {
-          RequestDispatcher rd = req.getRequestDispatcher("/views/web/Cart.jsp");
-          rd.forward(req, resp);
-        } else {
-          ProductModel productModel = new ProductModel();
-          productModel = productService.findOne(id);
-          String quantityString
-          CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
+      String action = req.getParameter("action");
+      if (id == null) {
+        RequestDispatcher rd = req.getRequestDispatcher("/views/web/Cart.jsp");
+        rd.forward(req, resp);
+      } else {
+        ProductModel productModel = new ProductModel();
+        productModel = productService.findOne(id);
+        String quantityString = req.getParameter("quantity");
+        double total;
+        CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
         LineItem lineItem = new LineItem();
         int quantity;
         try {
@@ -75,7 +75,6 @@ public class ListCart extends HttpServlet {
               check = true;
               break;
             }
-<<<<<<< HEAD
           }
           if (check == false) {
             lineItem.setQuantity(quantity);
@@ -84,59 +83,6 @@ public class ListCart extends HttpServlet {
               cart.addItem(lineItem);
             } else if (quantity == 0) {
               cart.removeItem(lineItem);
-=======
-            else {
-                ProductModel productModel=new ProductModel();
-                productModel=productService.findOne(id);
-                String quantityString = req.getParameter("quantity");
-                double total;
-                CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req,"cart");
-                LineItem lineItem = new LineItem();
-                int quantity;
-                try {
-                    quantity = Integer.parseInt(quantityString);
-                    if (quantity < 0) {
-                        quantity = 1;
-                    }
-                } catch (NumberFormatException nfe) {
-                    quantity = 1;
-                }
-                if (cart == null) {
-                    cart = new CartModel();
-                    lineItem.setProduct(productModel);
-                    lineItem.setQuantity(quantity);
-                    cart.addItem(lineItem);
-                }
-                else {
-                    List<LineItem> lineItemList=cart.getItems();
-                    boolean check=false;
-                    for(LineItem item:lineItemList){
-                        if(item.getProduct().getId().equals(productModel.getId())&&quantity!=0&&action!=null){
-                            if(productModel.getQuantity()<item.getQuantity()+quantity){
-                                item.setQuantity(productModel.getQuantity());
-                            }
-                            else {
-                                item.setQuantity(item.getQuantity()+quantity);
-                            }
-                            check=true;
-                            break;
-                        }
-                    }
-                    if(check==false){
-                        lineItem.setQuantity(quantity);
-                        lineItem.setProduct(productModel);
-                        if (quantity > 0) {
-                            cart.addItem(lineItem);
-                        } else if (quantity == 0) {
-                            cart.removeItem(lineItem);
-                        }
-                    }
-                }
-                total=cart.totalPrice(lineItem);
-                SessionUtil.getInstance().putValue(req,"cart",cart);
-                SessionUtil.getInstance().putValue(req,"total",total);
-                url="/views/web/Cart.jsp";
->>>>>>> 537d12e5334fe63cc4e20dd54eb2efb032caa6bc
             }
           }
         }
@@ -146,7 +92,6 @@ public class ListCart extends HttpServlet {
         url = "/views/web/Cart.jsp";
       }
     }
-<<<<<<< HEAD
     RequestDispatcher rd = req.getRequestDispatcher(url);
     rd.forward(req, resp);
   }
@@ -162,21 +107,6 @@ public class ListCart extends HttpServlet {
       if (userModel == null) {
         url = "/views/web/login.jsp";
       } else {
-//                try {
-=======
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action=req.getParameter("action");
-        String url="/views/web/Cart.jsp";
-        if(action!=null){
-            UserModel userModel=(UserModel) SessionUtil.getInstance().getValue(req,"USERMODEL");
-            if(userModel==null){
-                url="/views/web/login.jsp";
-            }
-            else {
-                CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req,"cart");
-                if(cart!=null){
-
         SaledetailModel saledetailModel = productService.UpdateAfertCheckout(req, userModel);
         if (saledetailModel != null) {
           userService.removeCart(req);
@@ -190,28 +120,12 @@ public class ListCart extends HttpServlet {
             rd = req.getRequestDispatcher(url);
             rd.forward(req, resp);
           }
-=======
-                    productService.UpdateAfertCheckout(req,userModel);
-                    userService.removeCart(req);
-                    //saledetailService.saveSaledetail()
-                    req.setAttribute("userModel",userModel);
-                    url="/views/web/Checkout.jsp";
-                }
-                else {
-                    url="/views/web/Cart.jsp";
-                }
-
-            }
->>>>>>> 537d12e5334fe63cc4e20dd54eb2efb032caa6bc
+        } else {
+          url = "/views/web/Cart.jsp";
         }
-        //saledetailService.saveSaledetail()
-//        req.setAttribute("userModel", userModel);
-//        url = "/views/web/Checkout.jsp";
       }
     }
-//    RequestDispatcher rd = req.getRequestDispatcher(url);
-//    rd.forward(req, resp);
+    rd = req.getRequestDispatcher(url);
+    rd.forward(req, resp);
   }
-
-
 }

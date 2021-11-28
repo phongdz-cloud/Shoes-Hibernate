@@ -24,15 +24,15 @@ public class SaledetailModel extends AbstractModel<SaledetailModel> implements S
   @Column(name = "status_delivery")
   private String status_delivery;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "fk_user")
   private UserModel user;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "fk_delivery")
   private DeliveryModel delivery;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "fk_product")
   private ProductModel product;
 
