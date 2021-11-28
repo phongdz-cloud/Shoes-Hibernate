@@ -36,16 +36,16 @@ public class ListCart extends HttpServlet {
       url = "/views/web/login.jsp";
     } else {
       Long id = Long.parseLong(req.getParameter("productId"));
-      String action = req.getParameter("action");
-      if (id == null) {
-        RequestDispatcher rd = req.getRequestDispatcher("/views/web/Cart.jsp");
-        rd.forward(req, resp);
-      } else {
-        ProductModel productModel = new ProductModel();
-        productModel = productService.findOne(id);
-        String quantityString = req.getParameter("quantity");
-        double total;
-        CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
+      Stri= req.getParameter("quantity");
+        double total;ng action = req.getParameter("action");
+        if (id == null) {
+          RequestDispatcher rd = req.getRequestDispatcher("/views/web/Cart.jsp");
+          rd.forward(req, resp);
+        } else {
+          ProductModel productModel = new ProductModel();
+          productModel = productService.findOne(id);
+          String quantityString
+          CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
         LineItem lineItem = new LineItem();
         int quantity;
         try {
@@ -176,13 +176,6 @@ public class ListCart extends HttpServlet {
             else {
                 CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req,"cart");
                 if(cart!=null){
-                    //                try {
->>>>>>> 537d12e5334fe63cc4e20dd54eb2efb032caa6bc
-//                    JavaMailUtil.sendMail(userModel.getEmail(), SystemConstant.TEAMPLATE_MAIL);
-//                } catch (MessagingException e) {
-//                    e.printStackTrace();
-//                }
-<<<<<<< HEAD
 
         SaledetailModel saledetailModel = productService.UpdateAfertCheckout(req, userModel);
         if (saledetailModel != null) {
