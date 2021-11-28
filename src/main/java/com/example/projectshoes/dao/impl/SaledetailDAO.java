@@ -98,4 +98,23 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
     List<SaledetailModel> saledetailModels = queryHibernate(sql.toString(),saledetailModel);
     return saledetailModels.isEmpty() ? null : saledetailModels.get(0);
   }
+
+  @Override
+  public List<SaledetailModel> gettop3() {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    SaledetailModel saledetailModel=new SaledetailModel();
+    StringBuilder sql=new StringBuilder("select u.product From Saledetail u group by u.product order by sum(u.quantity) desc");
+    Query q = session.createQuery(sql.toString());
+    q.setFirstResult(0);
+    q.setMaxResults(3);
+    saledetailModel.setListResult(q.getResultList());
+    return saledetailModel.getListResult();
+  }
+
+  @Override
+  public List<SaledetailModel> findbyProductId(Long id) {
+    StringBuilder sql=new StringBuilder("select u from Saledetail u where u.product.id="+id);
+    List<SaledetailModel> saledetailModels=queryHibernate(sql.toString(),null);
+    return saledetailModels;
+  }
 }

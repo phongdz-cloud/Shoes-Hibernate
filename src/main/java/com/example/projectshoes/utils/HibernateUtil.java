@@ -1,5 +1,6 @@
 package com.example.projectshoes.utils;
 
+import com.example.projectshoes.model.AbstractModel;
 import com.example.projectshoes.model.CategoryModel;
 import com.example.projectshoes.model.CustomerModel;
 import com.example.projectshoes.model.DeliveryModel;
@@ -41,7 +42,7 @@ public class HibernateUtil {
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         settings.put(Environment.HBM2DDL_AUTO, "update");
         configuration.setProperties(settings);
-//        configuration.addAnnotatedClass(AbstractModel.class);
+        configuration.addAnnotatedClass(AbstractModel.class);
         configuration.addAnnotatedClass(CategoryModel.class);
         configuration.addAnnotatedClass(CustomerModel.class);
         configuration.addAnnotatedClass(DeliveryModel.class);

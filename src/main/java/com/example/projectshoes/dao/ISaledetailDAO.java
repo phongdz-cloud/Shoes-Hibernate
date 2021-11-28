@@ -16,4 +16,6 @@ public interface ISaledetailDAO extends GenericDAO<SaledetailModel>{
     List<SaledetailModel> PageSaledetail(int page);
     int getTotalItem();
     SaledetailModel findbyCode(Long code);
+    List<SaledetailModel> gettop3();
+    List<SaledetailModel> findbyProductId(Long id);
 }

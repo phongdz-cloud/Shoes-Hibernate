@@ -1,16 +1,27 @@
 package com.example.projectshoes.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity(name = "Product")
 @Table(name = "product")
 public class ProductModel extends AbstractModel<ProductModel> implements Serializable {
+
   @Column(name = "name")
   private String name;
   @Column(name = "price")
   private Float price;
-//  @Column(name = "category_id")
+  //  @Column(name = "category_id")
   @Transient
   private Long categoryId;
   @Column(name = "size")
@@ -38,9 +49,8 @@ public class ProductModel extends AbstractModel<ProductModel> implements Seriali
 
   @ManyToOne(fetch = FetchType.LAZY)
   private StockModel stock;
-
-  @OneToOne(fetch = FetchType.EAGER,mappedBy = "product")
-  private SaledetailModel saleDetail;
+  @OneToMany(mappedBy = "product")
+  private List<SaledetailModel> saleDetails;
 
 
   public CategoryModel getCategory() {
@@ -100,11 +110,14 @@ public class ProductModel extends AbstractModel<ProductModel> implements Seriali
     this.stock = stock;
   }
 
-  public SaledetailModel getSaleDetail() {
-    return saleDetail;
+  public List<SaledetailModel> getSaleDetails() {
+    if (this.saleDetails == null) {
+      this.saleDetails = new ArrayList<>();
+    }
+    return saleDetails;
   }
 
-  public void setSaleDetail(SaledetailModel saleDetail) {
-    this.saleDetail = saleDetail;
+  public void setSaleDetails(List<SaledetailModel> saleDetails) {
+    this.saleDetails = saleDetails;
   }
 }

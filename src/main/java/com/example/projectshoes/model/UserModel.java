@@ -1,7 +1,9 @@
 package com.example.projectshoes.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -41,8 +44,8 @@ public class UserModel extends AbstractModel<UserModel> implements Serializable 
   @OneToOne(mappedBy = "user")
   private CustomerModel customer;
 
-  @OneToOne(fetch = FetchType.EAGER, mappedBy = "user")
-  private SaledetailModel saleDetail;
+  @OneToMany(mappedBy = "user")
+  private List<SaledetailModel> saleDetails;
 
 
   @ManyToMany(fetch = FetchType.EAGER)
@@ -131,12 +134,15 @@ public class UserModel extends AbstractModel<UserModel> implements Serializable 
     this.customer = customer;
   }
 
-  public SaledetailModel getSaleDetail() {
-    return saleDetail;
+  public List<SaledetailModel> getSaleDetails() {
+    if (this.saleDetails == null) {
+      this.saleDetails = new ArrayList<>();
+    }
+    return saleDetails;
   }
 
-  public void setSaleDetail(SaledetailModel saleDetail) {
-    this.saleDetail = saleDetail;
+  public void setSaleDetails(List<SaledetailModel> saleDetails) {
+    this.saleDetails = saleDetails;
   }
 
   public String getStatus() {
@@ -157,7 +163,6 @@ public class UserModel extends AbstractModel<UserModel> implements Serializable 
         ", avatar='" + avatar + '\'' +
         ", roleId=" + roleId +
         ", customer=" + customer +
-        ", saleDetail=" + saleDetail +
         ", roles=" + roles +
         ", role=" + role +
         '}';
