@@ -34,7 +34,7 @@ public class HomeController extends HttpServlet {
   IProductService productService;
   @Inject
   ISaledetailService saledetailService;
-  private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
+  private final ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)

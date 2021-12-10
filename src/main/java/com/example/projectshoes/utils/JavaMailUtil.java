@@ -1,5 +1,6 @@
 package com.example.projectshoes.utils;
 
+import java.util.Objects;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -19,9 +20,9 @@ public class JavaMailUtil {
 
     properties.put("mail.smtp.auth", "true");
     properties.put("mail.smtp.starttls.enable", "true");
-    properties.put("mail.smtp.host", "smtp.gmail.com");
+    properties.put("mail.smtp.host", System.getenv("EMAIL_HOST"));
     properties.put("mail.smtp.port", "587");
-
+    properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
     String myAccountEmail = System.getenv("EMAIL_ACCOUNT");
     String password = System.getenv("EMAIL_PASSWORD");
     Session session = Session.getInstance(properties, new Authenticator() {
@@ -33,7 +34,7 @@ public class JavaMailUtil {
 
     Message message = prepareMessage(session, myAccountEmail, recepient, template, subject);
 
-    Transport.send(message);
+    Transport.send(Objects.requireNonNull(message));
     System.out.println("Message sent successfully");
   }
 

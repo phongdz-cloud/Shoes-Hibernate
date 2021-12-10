@@ -57,7 +57,7 @@
                             href="tel:+911234567890">+ 91 123
                         456 789 0</a></li>
                     <li><img src="<c:url value='/template/web/images/cont-3.png'/>" alt="img"><a
-                            href="/cdn-cgi/l/email-protection#ef979f80888aaf8a978e829f838ac18c8082"><span
+                            href="#"><span
                             class="__cf_email__"
                             data-cfemail="9fe7eff0f8fadffae7fef2eff3fab1fcf0f2">[email&#160;protected]</span></a>
                     </li>

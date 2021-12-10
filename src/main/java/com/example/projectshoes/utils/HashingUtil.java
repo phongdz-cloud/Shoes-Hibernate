@@ -1,6 +1,5 @@
 package com.example.projectshoes.utils;
 
-import com.example.projectshoes.model.UserModel;
 
 public class HashingUtil {
 

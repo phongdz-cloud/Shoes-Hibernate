@@ -9,6 +9,7 @@ import com.example.projectshoes.utils.FormUtil;
 import com.example.projectshoes.utils.SessionUtil;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +37,7 @@ public class ReceiptAPI extends HttpServlet {
     }
     List<SaledetailModel> saledetailModelList = saledetailService.findAll(
         saledetailModel.getPage());
-    user.setTotalItem(SystemConstant.totalSaledetail);
+    Objects.requireNonNull(user).setTotalItem(SystemConstant.totalSaledetail);
     user.setTotalPage((SystemConstant.totalSaledetail / 5) + 1);
     user.setPage(saledetailModel.getPage());
     StringBuilder pageReceipt = new StringBuilder(

@@ -8,10 +8,8 @@ import com.example.projectshoes.utils.HttpUtil;
 import com.example.projectshoes.utils.JavaMailUtil;
 import com.example.projectshoes.utils.MailTemplateUtil;
 import com.example.projectshoes.utils.PathUtil;
-import com.example.projectshoes.utils.SendGridEmailerUtil;
 import java.io.IOException;
 import javax.inject.Inject;
-import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +35,8 @@ public class ForgotPasswordAPI extends HttpServlet {
       try {
         SystemConstant.FLAG = true;
         SystemConstant.ID = userModel.getId();
-        JavaMailUtil.sendMail(userEmail, MailTemplateUtil.templateMailForgotpassword(), "Forgot password");
+        JavaMailUtil.sendMail(userEmail, MailTemplateUtil.templateMailForgotpassword(),
+            "Forgot password");
         mapper.writeValue(resp.getOutputStream(), true);
       } catch (Exception e) {
         e.printStackTrace();

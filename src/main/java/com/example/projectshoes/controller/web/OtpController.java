@@ -4,7 +4,6 @@ import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.service.IUserService;
 import com.example.projectshoes.utils.JavaMailUtil;
 import com.example.projectshoes.utils.MailTemplateUtil;
-import com.example.projectshoes.utils.SendGridEmailerUtil;
 import java.io.IOException;
 import java.util.ResourceBundle;
 import javax.inject.Inject;

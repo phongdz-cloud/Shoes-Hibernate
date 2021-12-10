@@ -1,6 +1,5 @@
 package com.example.projectshoes.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -12,10 +11,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity(name = "Product")
 @Table(name = "product")
-public class ProductModel extends AbstractModel<ProductModel> implements Serializable {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProductModel extends AbstractModel<ProductModel> {
 
   @Column(name = "name")
   private String name;
@@ -27,16 +34,6 @@ public class ProductModel extends AbstractModel<ProductModel> implements Seriali
   private int size;
   @Column(name = "quantity")
   private int quantity;
-
-  @Override
-  public String getAvatar() {
-    return avatar;
-  }
-
-  @Override
-  public void setAvatar(String avatar) {
-    this.avatar = avatar;
-  }
 
   @Column(name = "avatar")
   @Lob
@@ -51,62 +48,6 @@ public class ProductModel extends AbstractModel<ProductModel> implements Seriali
   @OneToMany(mappedBy = "product")
   private List<SaledetailModel> saleDetails;
 
-  public CategoryModel getCategory() {
-    return category;
-  }
-
-  public void setCategory(CategoryModel category) {
-    this.category = category;
-  }
-
-  public int getSize() {
-    return size;
-  }
-
-  public void setSize(int size) {
-    this.size = size;
-  }
-
-  public int getQuantity() {
-    return quantity;
-  }
-
-  public void setQuantity(int quantity) {
-    this.quantity = quantity;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Float getPrice() {
-    return price;
-  }
-
-  public void setPrice(Float price) {
-    this.price = price;
-  }
-
-  public Long getCategoryId() {
-    return categoryId;
-  }
-
-  public void setCategoryId(Long categoryId) {
-    this.categoryId = categoryId;
-  }
-
-  public StockModel getStock() {
-    return stock;
-  }
-
-  public void setStock(StockModel stock) {
-    this.stock = stock;
-  }
-
   public List<SaledetailModel> getSaleDetails() {
     if (this.saleDetails == null) {
       this.saleDetails = new ArrayList<>();
@@ -114,7 +55,4 @@ public class ProductModel extends AbstractModel<ProductModel> implements Seriali
     return saleDetails;
   }
 
-  public void setSaleDetails(List<SaledetailModel> saleDetails) {
-    this.saleDetails = saleDetails;
-  }
 }

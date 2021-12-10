@@ -19,16 +19,6 @@ public class OtpUtil {
     return generateOTP.toString();
   }
 
-  public static void main(String[] args) {
-    String price = "4.36$";
-    String price2 = "$182.01";
-
-    System.out.println(price2.substring(1));
-    System.out.println(price.substring(0,price.length()-1));
-
-    price = price.substring(price.length()-1);
-
-  }
 
 }
 

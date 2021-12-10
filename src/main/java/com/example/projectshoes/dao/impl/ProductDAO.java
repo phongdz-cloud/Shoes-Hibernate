@@ -2,7 +2,6 @@ package com.example.projectshoes.dao.impl;
 
 import com.example.projectshoes.dao.ICategoryDAO;
 import com.example.projectshoes.dao.IProductDAO;
-import com.example.projectshoes.mapper.ProductMapper;
 import com.example.projectshoes.model.CategoryModel;
 import com.example.projectshoes.model.ProductModel;
 import com.example.projectshoes.paging.Pageble;

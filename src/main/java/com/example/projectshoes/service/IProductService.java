@@ -19,5 +19,4 @@ public interface IProductService {
     List<ProductModel> Sort(String sql,String categorycode);
     int getTotalItemByCategory(String code);
     SaledetailModel UpdateAfertCheckout(HttpServletRequest req, UserModel userModel);
-    ProductModel findByProductID(Long id);
 }

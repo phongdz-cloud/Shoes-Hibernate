@@ -1,33 +1,31 @@
 package com.example.projectshoes.dao.impl;
 
 import com.example.projectshoes.dao.IDeliveryDAO;
-import com.example.projectshoes.mapper.DeliveryMapper;
 import com.example.projectshoes.model.DeliveryModel;
 import com.example.projectshoes.utils.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
-
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 public class DeliveryDAO extends AbstractDAO<DeliveryModel> implements IDeliveryDAO {
+
   public DeliveryDAO() {
     setType(DeliveryModel.class);
   }
 
   @Override
   public List<DeliveryModel> findAll() {
-    StringBuilder sql = new StringBuilder("from Delivery d");
-    DeliveryModel deliveryModel=new DeliveryModel();
-    return queryHibernate(sql.toString(),deliveryModel);
+    DeliveryModel deliveryModel = new DeliveryModel();
+    return queryHibernate("from Delivery d", deliveryModel);
   }
+
   @Override
   public DeliveryModel findOne(Long id) {
-    StringBuilder sql = new StringBuilder("FROM Delivery d Where id=:id");
-    DeliveryModel deliveryModel=new DeliveryModel();
+    DeliveryModel deliveryModel = new DeliveryModel();
     deliveryModel.setId(id);
-    List<DeliveryModel> deliveryModels = queryHibernate(sql.toString(),deliveryModel);
+    List<DeliveryModel> deliveryModels = queryHibernate("FROM Delivery d Where id=:id", deliveryModel);
     return deliveryModels.isEmpty() ? null : deliveryModels.get(0);
   }
 
@@ -41,9 +39,9 @@ public class DeliveryDAO extends AbstractDAO<DeliveryModel> implements IDelivery
   @Override
   public DeliveryModel findByDeliveryName(String name) {
     StringBuilder sql = new StringBuilder("FROM Delivery Where name=:name");
-    DeliveryModel deliveryModel=new DeliveryModel();
+    DeliveryModel deliveryModel = new DeliveryModel();
     deliveryModel.setName(name);
-    List<DeliveryModel> delivery = queryHibernate(sql.toString(),deliveryModel);
+    List<DeliveryModel> delivery = queryHibernate(sql.toString(), deliveryModel);
     return delivery.isEmpty() ? null : delivery.get(0);
   }
 
@@ -63,22 +61,12 @@ public class DeliveryDAO extends AbstractDAO<DeliveryModel> implements IDelivery
     saveDelivery(deliveryModel);
   }
 
-  @Override
-  public List<DeliveryModel> PageDelivery(int page) {
-    if (page < 1) {
-      page = 1;
-    }
-    int offset = (page - 1) * 5;
-    StringBuilder sql = new StringBuilder("select * from Delivery LIMIT 5 OFFSET ?");
-    return query(sql.toString(), new DeliveryMapper(), offset);
-  }
 
   @Override
   public int getTotalItem() {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Query query = session.createSQLQuery("select count(*) from Delivery d");
-    List<BigInteger> count1 =query.list();
-    int count=count1.get(0).intValue();
-    return count;
+    List<BigInteger> count1 = query.list();
+    return count1.get(0).intValue();
   }
 }

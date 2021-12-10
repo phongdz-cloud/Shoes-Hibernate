@@ -7,7 +7,6 @@ public class PathUtil extends HttpServlet {
 
   public static String[] pathInf(HttpServletRequest request) {
     String path = request.getPathInfo();
-    String[] pathInfo = path.split("/");
-    return pathInfo;
+    return path.split("/");
   }
 }

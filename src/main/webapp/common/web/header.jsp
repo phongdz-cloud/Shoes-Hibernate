@@ -18,27 +18,11 @@
                             </li>
                             <li class="dropdown">
                                 <span class="opener plus"></span>
-                                <a href="<c:url value="/error-page"/> ">Pages</a>
-                                <div class="megamenu">
-                                    <div class="megamenu-inner">
-                                        <ul>
-                                            <li><a href="<c:url value="/error-page"/>">About Us</a>
-                                            </li>
-                                            <li><a href="<c:url value="/error-page"/>">Shop List</a>
-                                            </li>
-                                            <li><a href="<c:url value="/error-page"/>">Product
-                                                Detail</a>
-                                            </li>
-                                            <li><a href="<c:url value="/error-page"/>">Wishlist</a>
-                                            </li>
-                                            <li><a href="<c:url value="/error-page"/>">404</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <a href="<c:url value="/contact"/>">Contact</a>
                             </li>
                             <li class="dropdown">
                                 <span class="opener plus"></span>
-                                <a href="<c:url value="/contact"/>">Shop</a>
+                                <a href="<c:url value="#"/>">Shop</a>
                                 <div class="megamenu full">
                                     <div class="megamenu-inner">
                                         <div class="row">
@@ -54,53 +38,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-12">
-                                                <a href="<c:url value="/error-page"/>"
-                                                   class="megamenu-title">Chap
-                                                    Shoes</a>
-                                                <ul>
-                                                    <li><a href="<c:url value="/error-page"/>">Hessian
-                                                        Shoes</a></li>
-                                                    <li><a href="<c:url value="/error-page"/>">Postillion
-                                                        Shoes</a>
-                                                    </li>
-                                                    <li><a href="<c:url value="/error-page"/>">Cowboy
-                                                        Shoes</a></li>
-                                                    <li><a href="<c:url value="/error-page"/>">Paddock
-                                                        Shoes</a></li>
-                                                    <li><a href="<c:url value="/error-page"/>">Postillion
-                                                        Shoes</a>
-                                                    </li>
-                                                    <li><a href="<c:url value="/error-page"/>">Cowboy
-                                                        Shoes</a></li>
-                                                    <li><a href="<c:url value="/error-page"/>">Paddock
-                                                        Shoes</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-12">
-                                                <a href="<c:url value="/error-page"/>"
-                                                   class="megamenu-title">Fashion
-                                                    Shoes</a>
-                                                <ul>
-                                                    <li><a href="<c:url value="/error-page"/>">Opinga</a>
-                                                    </li>
-                                                    <li><a href="<c:url value="/error-page"/>">Rocker
-                                                        Bottom</a></li>
-                                                    <li>
-                                                        <a href="<c:url value="/error-page"/>">Clog</a>
-                                                    </li>
-                                                    <li><a href="<c:url value="/error-page"/>">Driving
-                                                        Moccasins</a>
-                                                    </li>
-                                                    <li><a href="<c:url value="/error-page"/>">High
-                                                        Heeled</a></li>
-                                                    <li><a href="<c:url value="/error-page"/>">Rocker
-                                                        Bottom</a></li>
-                                                    <li>
-                                                        <a href="<c:url value="/error-page"/>">Clog</a>
-                                                    </li>
-                                                </ul>
                                             </div>
                                             <div class="col-xl-3 col-lg-3 col-md-12">
                                                 <a href="<c:url value="/shop?page=1&&maxPageItem=16"/>"
@@ -133,22 +70,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="dropdown">
-                                <span class="opener plus"></span>
-                                <a href="<c:url value="/error-page"/>">Blog</a>
-                                <div class="megamenu">
-                                    <div class="megamenu-inner">
-                                        <ul>
-                                            <li><a href="<c:url value="/error-page"/>">Blog Left</a>
-                                            </li>
-                                            <li><a href="<c:url value="/error-page"/>">Blog
-                                                Right</a></li>
-                                            <li><a href="<c:url value="/error-page"/>">Blog
-                                                Detail</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
                             <c:if test="${not empty sessionScope.get('USERMODEL')}">
                                 <li class="dropdown">
                                     <span class="opener plus"></span>
@@ -160,8 +81,6 @@
                                                     profile</a>
                                                 </li>
                                                 <li><a href="<c:url value="/list-receipt"/>">Receipts</a>
-                                                </li>
-                                                <li><a href="<c:url value="/error-page"/>">Blog</a>
                                                 </li>
                                                 <li>
                                                     <a href='<c:url value="/thoat?action=logout"/>'>Logout</a>
@@ -177,8 +96,8 @@
                 <div class="search-right">
                     <div class="menu-toggle"><span></span></div>
                     <div class="search-menu">
-                        <input id="myInput" type="text" name="search" class="search-input"
-                               placeholder="Search text" value="">
+                        <label for="myInput"></label><input id="myInput" type="text" name="search" class="search-input"
+                                                            placeholder="Search text" value="">
                         <input type="submit" name="submit" class="search-btn" onclick="Search()">
                         <div class="search-button-i transition">
                             <img src="<c:url value='/template/web/images/search.png'/>"
@@ -294,7 +213,7 @@
     <script>
       function Search() {
         var input = document.getElementById("key").value;
-        if (input == "") {
+        if (input === "") {
           window.location.href = "http://localhost:8080/shop?page=1&&maxPageItem=16";
         } else {
           window.location.href = "http://localhost:8080/shop?page=1&&maxPageItem=16&&key=" + input;

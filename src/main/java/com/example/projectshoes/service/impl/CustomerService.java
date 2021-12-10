@@ -1,12 +1,9 @@
 package com.example.projectshoes.service.impl;
 
-import com.example.projectshoes.constant.SystemQueries;
-import com.example.projectshoes.dao.ICacheDAO;
 import com.example.projectshoes.dao.impl.CustomerDAO;
 import com.example.projectshoes.model.CustomerModel;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.ICustomerService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.sql.Timestamp;
 import java.util.List;
 import javax.inject.Inject;
@@ -14,38 +11,18 @@ import org.apache.commons.lang3.StringUtils;
 
 public class CustomerService implements ICustomerService {
 
-  private final ObjectMapper objectMapper = new ObjectMapper();
 
   @Inject
   private CustomerDAO customerDAO;
-  @Inject
-  private ICacheDAO cacheDAO;
 
   @Override
   public CustomerModel findCustomerByUser(UserModel user) {
-    CustomerModel customerModel = (CustomerModel) cacheDAO.getObject(
-        SystemQueries.FINDCUSTOMERBYUSER + user.getUsername());
-    if (customerModel == null) {
-      customerModel = customerDAO.findCustomerByUser(user);
-      cacheDAO.setObject(SystemQueries.FINDCUSTOMERBYUSER + user.getUsername(), customerModel);
-    }
-    return customerModel;
+    return customerDAO.findCustomerByUser(user);
   }
 
   @Override
   public CustomerModel findCustomerById(Long id) {
-    CustomerModel customerModel = (CustomerModel) cacheDAO.getObject(
-        SystemQueries.FINDCUSTOMERBYID + id);
-    if (customerModel == null) {
-      customerModel = customerDAO.findCustomerById(id);
-      cacheDAO.setObject(SystemQueries.FINDCUSTOMERBYID + id, customerModel);
-    }
     return customerDAO.findCustomerById(id);
-  }
-
-  @Override
-  public List<CustomerModel> findAllCustomer() {
-    return customerDAO.findAllCustomer();
   }
 
   @Override
@@ -57,8 +34,6 @@ public class CustomerService implements ICustomerService {
   public Long insert(CustomerModel customerModel) {
     Long id = customerDAO.insert(customerModel);
     customerModel.setId(id);
-    cacheDAO.updateFindALL(SystemQueries.FINDALLCUSTOMER, customerDAO.findAllCustomer());
-    cacheDAO.updateFindBy(SystemQueries.FINDCUSTOMERBYID + id, customerModel);
     return id;
   }
 
@@ -99,16 +74,10 @@ public class CustomerService implements ICustomerService {
       customerModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
       customerDAO.insert(customerModel);
     }
-    cacheDAO.updateFindALL(SystemQueries.FINDALLCUSTOMER, customerDAO.findAllCustomer());
-    cacheDAO.updateFindBy(SystemQueries.FINDCUSTOMERBYUSER + newCustomer.getUser().getUsername(),
-        newCustomer);
   }
 
   @Override
   public void remove(CustomerModel customerModel) {
     customerDAO.delete(customerModel);
-    cacheDAO.deleteCache(SystemQueries.FINDCUSTOMERBYID + customerModel.getId());
-    cacheDAO.deleteCache(SystemQueries.FINDCUSTOMERBYUSER + customerModel.getUser().getUsername());
-    cacheDAO.updateFindALL(SystemQueries.FINDALLUSER, customerDAO.findAllCustomer());
   }
 }

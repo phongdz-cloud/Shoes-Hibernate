@@ -1,6 +1,5 @@
 package com.example.projectshoes.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,13 +15,21 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.NaturalId;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity(name = "User")
 @Table(name = "user")
-public class UserModel extends AbstractModel<UserModel> implements Serializable {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserModel extends AbstractModel<UserModel> {
 
   @Column(name = "username")
   @NaturalId
@@ -59,79 +66,11 @@ public class UserModel extends AbstractModel<UserModel> implements Serializable 
   @Transient
   private RoleModel role = new RoleModel();
 
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public Long getRoleId() {
-    return roleId;
-  }
-
-  public void setRoleId(Long roleId) {
-    this.roleId = roleId;
-  }
-
-  public RoleModel getRole() {
-    return role;
-  }
-
-  public void setRole(RoleModel role) {
-    this.role = role;
-  }
-
-  public String getRepassword() {
-    return repassword;
-  }
-
-  public void setRepassword(String repassword) {
-    this.repassword = repassword;
-  }
-
-  public String getAvatar() {
-    return avatar;
-  }
-
-  public void setAvatar(String avatar) {
-    this.avatar = avatar;
-  }
-
   public Set<RoleModel> getRoles() {
     if (roles == null) {
       roles = new HashSet<RoleModel>();
     }
     return roles;
-  }
-
-  public void setRoles(Set<RoleModel> roles) {
-    this.roles = roles;
-  }
-
-  public CustomerModel getCustomer() {
-    return customer;
-  }
-
-  public void setCustomer(CustomerModel customer) {
-    this.customer = customer;
   }
 
   public List<SaledetailModel> getSaleDetails() {
@@ -141,30 +80,4 @@ public class UserModel extends AbstractModel<UserModel> implements Serializable 
     return saleDetails;
   }
 
-  public void setSaleDetails(List<SaledetailModel> saleDetails) {
-    this.saleDetails = saleDetails;
-  }
-
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  @Override
-  public String toString() {
-    return "UserModel{" +
-        "username='" + username + '\'' +
-        ", password='" + password + '\'' +
-        ", repassword='" + repassword + '\'' +
-        ", email='" + email + '\'' +
-        ", avatar='" + avatar + '\'' +
-        ", roleId=" + roleId +
-        ", customer=" + customer +
-        ", roles=" + roles +
-        ", role=" + role +
-        '}';
-  }
 }

@@ -98,18 +98,19 @@
                 </div>
             </form>
             <div class="text-center">
-                <div class="fb-login-button" data-width="" data-size="large"
-                     data-button-type="login_with" data-layout="default"
-                     data-auto-logout-link="false" data-use-continue-as="false"
-                     data-scope="public_profile,email" data-onlogin="checkLoginState"></div>
-            </div>
-            <br>
-            <div class="text-center">
                 <div class="g-signin2" data-onsuccess="onSignIn" id="myP"
                      onclick="checkLoginGmail()"
                      style="display: inline-block; height: 40px; width: calc(231.200px); border-radius: 100%; padding-top: calc(0.6px)">
                 </div>
                 <div id="statusG">
+                </div>
+            </div>
+            <br>
+            <div class="text-center">
+                <div class="fb-login-button" data-width="" data-size="large"
+                     data-button-type="login_with" data-layout="default"
+                     data-auto-logout-link="false" data-use-continue-as="false"
+                     data-scope="public_profile,email" data-onlogin="checkLoginState">
                 </div>
             </div>
             <br>
@@ -148,7 +149,7 @@
 
   window.fbAsyncInit = function () {
     FB.init({
-      appId: '<%=System.getenv("appIdFacebook")%>',
+      appId: '585165199352568',
       cookie: true,                     // Enable cookies to allow the server to access the session.
       xfbml: true,                     // Parse social plugins on this webpage.
       version: 'v12.0'           // Use this Graph API version for this call.

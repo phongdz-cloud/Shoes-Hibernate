@@ -1,4 +1,5 @@
 <%@include file="/common/taglib.jsp" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <section class="page-banner">
     <div class="container">
         <div class="page-banner-in">
@@ -31,7 +32,7 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="aa-contact-map">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4842318813353!2d106.76973361462129!3d10.85072666078536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752763f23816ab%3A0x282f711441b6916f!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTxrAgcGjhuqFtIEvhu7kgdGh14bqtdCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1636705454227!5m2!1svi!2s" width="900" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4842318813353!2d106.76973361462129!3d10.85072666078536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752763f23816ab%3A0x282f711441b6916f!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTxrAgcGjhuqFtIEvhu7kgdGh14bqtdCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1636705454227!5m2!1svi!2s" width="800" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                 </div>
                             </div>
                             <div class="col-md-5">

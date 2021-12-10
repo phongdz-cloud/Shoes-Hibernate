@@ -33,66 +33,57 @@ public class CartController extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
-    String url = "";
+    String url;
     if (userModel == null) {
       url = "/views/web/login.jsp";
     } else {
       Long id = Long.parseLong(req.getParameter("productId"));
       String action = req.getParameter("action");
-      if (id == null) {
-        RequestDispatcher rd = req.getRequestDispatcher("/views/web/Cart.jsp");
-        rd.forward(req, resp);
-      } else {
-        ProductModel productModel = new ProductModel();
-        productModel = productService.findOne(id);
-        String quantityString = req.getParameter("quantity");
-        double total;
-        CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
-        LineItemModel lineItemModel = new LineItemModel();
-        int quantity;
-        try {
-          quantity = Integer.parseInt(quantityString);
-          if (quantity < 0) {
-            quantity = 1;
-          }
-        } catch (NumberFormatException nfe) {
+      ProductModel productModel = new ProductModel();
+      productModel = productService.findOne(id);
+      String quantityString = req.getParameter("quantity");
+      double total;
+      CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
+      LineItemModel lineItemModel = new LineItemModel();
+      int quantity;
+      try {
+        quantity = Integer.parseInt(quantityString);
+        if (quantity < 0) {
           quantity = 1;
         }
-        if (cart == null) {
-          cart = new CartModel();
-          lineItemModel.setProduct(productModel);
-          lineItemModel.setQuantity(quantity);
-          cart.addItem(lineItemModel);
-        } else {
-          List<LineItemModel> lineItemModelList = cart.getItems();
-          boolean check = false;
-          for (LineItemModel item : lineItemModelList) {
-            if (item.getProduct().getId().equals(productModel.getId()) && quantity != 0
-                && action != null) {
-              if (productModel.getQuantity() < item.getQuantity() + quantity) {
-                item.setQuantity(productModel.getQuantity());
-              } else {
-                item.setQuantity(item.getQuantity() + quantity);
-              }
-              check = true;
-              break;
-            }
-          }
-          if (check == false) {
-            lineItemModel.setQuantity(quantity);
-            lineItemModel.setProduct(productModel);
-            if (quantity > 0) {
-              cart.addItem(lineItemModel);
-            } else if (quantity == 0) {
-              cart.removeItem(lineItemModel);
-            }
+      } catch (NumberFormatException nfe) {
+        quantity = 1;
+      }
+      if (cart == null) {
+        cart = new CartModel();
+        lineItemModel.setProduct(productModel);
+        lineItemModel.setQuantity(quantity);
+        cart.addItem(lineItemModel);
+      } else {
+        List<LineItemModel> lineItemModelList = cart.getItems();
+        boolean check = false;
+        for (LineItemModel item : lineItemModelList) {
+          if (item.getProduct().getId().equals(productModel.getId()) && quantity != 0
+              && action != null) {
+            item.setQuantity(Math.min(productModel.getQuantity(), item.getQuantity() + quantity));
+            check = true;
+            break;
           }
         }
-        total = cart.totalPrice(lineItemModel);
-        SessionUtil.getInstance().putValue(req, "cart", cart);
-        SessionUtil.getInstance().putValue(req, "total", total);
-        url = "/views/web/Cart.jsp";
+        if (!check) {
+          lineItemModel.setQuantity(quantity);
+          lineItemModel.setProduct(productModel);
+          if (quantity > 0) {
+            cart.addItem(lineItemModel);
+          } else {
+            cart.removeItem(lineItemModel);
+          }
+        }
       }
+      total = cart.totalPrice(lineItemModel);
+      SessionUtil.getInstance().putValue(req, "cart", cart);
+      SessionUtil.getInstance().putValue(req, "total", total);
+      url = "/views/web/Cart.jsp";
     }
     RequestDispatcher rd = req.getRequestDispatcher(url);
     rd.forward(req, resp);

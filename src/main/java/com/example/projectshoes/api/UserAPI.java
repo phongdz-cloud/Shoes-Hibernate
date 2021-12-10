@@ -55,7 +55,6 @@ public class UserAPI extends HttpServlet {
       } catch (Exception e) {
         e.printStackTrace();
       }
-//      userService.save(userModel);
     } else {
       userModel.setMessage(ResponseMessage.getResponseMessage().getMessage());
     }

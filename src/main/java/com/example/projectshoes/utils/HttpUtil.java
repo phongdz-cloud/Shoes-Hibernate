@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 public class HttpUtil {
-    private String value;
+    private final String value;
 
     public HttpUtil(String value) {
         this.value = value;

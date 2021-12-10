@@ -11,7 +11,6 @@ public interface ICustomerService {
 
   CustomerModel findCustomerById(Long id);
 
-  List<CustomerModel> findAllCustomer();
 
   List<CustomerModel> findAllCustomer(int pageIndex);
 

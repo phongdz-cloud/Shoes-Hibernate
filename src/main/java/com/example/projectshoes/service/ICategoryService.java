@@ -7,6 +7,4 @@ import java.util.List;
 public interface ICategoryService {
     List<CategoryModel> findAll();
     Long saveCategory(CategoryModel categoryModel);
-    CategoryModel findByCategoryName(String code);
-    CategoryModel findByCategoryID(Long id);
 }

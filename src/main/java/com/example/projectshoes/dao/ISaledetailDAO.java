@@ -28,7 +28,6 @@ public interface ISaledetailDAO extends GenericDAO<SaledetailModel> {
 
   void update(SaledetailModel saledetailModel);
 
-  List<SaledetailModel> PageSaledetail(int page);
 
   int getTotalItem();
 

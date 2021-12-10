@@ -1,9 +1,12 @@
 package com.example.projectshoes.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-public class CartModel implements Serializable {
+@Data
+@AllArgsConstructor
+public class CartModel {
 
   private ArrayList<LineItemModel> items;
 

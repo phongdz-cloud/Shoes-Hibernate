@@ -23,10 +23,9 @@ public class CustomerDAO extends AbstractDAO<CustomerModel> implements ICustomer
 
   @Override
   public List<CustomerModel> findAllCustomer(int pageIndex) {
-    StringBuilder hql = new StringBuilder("from Customer c");
     List customerModels;
     Session session = HibernateUtil.getSessionFactory().openSession();
-    Query query = session.createQuery(hql.toString());
+    Query query = session.createQuery("from Customer c");
     SystemConstant.totalCustomers = findAllCustomer().size();
     query.setFirstResult((5 * (pageIndex - 1)));
     query.setMaxResults(5);
@@ -44,8 +43,7 @@ public class CustomerDAO extends AbstractDAO<CustomerModel> implements ICustomer
   public CustomerModel findCustomerByUser(UserModel userModel) {
     CustomerModel customerModel = new CustomerModel();
     customerModel.setUser(userModel);
-    StringBuilder hql = new StringBuilder("from Customer c where c.user = :user");
-    List<CustomerModel> customers = queryHibernate(hql.toString(), customerModel);
+    List<CustomerModel> customers = queryHibernate("from Customer c where c.user = :user", customerModel);
     return customers.isEmpty() ? null : customers.get(0);
   }
 

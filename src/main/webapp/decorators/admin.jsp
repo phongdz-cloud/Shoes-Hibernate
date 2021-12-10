@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,7 @@
     <%@include file="/common/admin/menu.jsp" %>
     <div class="page-holder bg-gray-100">
         <div class="container-fluid px-lg-4 px-xl-5">
-            <dec:body></dec:body>
+            <dec:body/>
         </div>
     </div>
 </div>

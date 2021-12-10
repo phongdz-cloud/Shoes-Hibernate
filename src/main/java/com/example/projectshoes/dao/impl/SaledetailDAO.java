@@ -2,7 +2,6 @@ package com.example.projectshoes.dao.impl;
 
 import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.dao.ISaledetailDAO;
-import com.example.projectshoes.mapper.SaledetailMapper;
 import com.example.projectshoes.model.SaledetailModel;
 import com.example.projectshoes.utils.HibernateUtil;
 import java.math.BigInteger;
@@ -18,10 +17,9 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
 
   @Override
   public SaledetailModel findOne(Long id) {
-    StringBuilder sql = new StringBuilder("FROM Saledetail s Where s.id=:id");
     SaledetailModel saledetailModel = new SaledetailModel();
     saledetailModel.setId(id);
-    List<SaledetailModel> saledetailModels = queryHibernate(sql.toString(), saledetailModel);
+    List<SaledetailModel> saledetailModels = queryHibernate("FROM Saledetail s Where s.id=:id", saledetailModel);
     return saledetailModels.isEmpty() ? null : saledetailModels.get(0);
   }
 
@@ -38,10 +36,9 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
 
   @Override
   public List findAll(int pageIndex) {
-    StringBuilder hql = new StringBuilder("FROM Saledetail s ORDER BY s.product.name DESC");
     List saledetailModels;
     Session session = HibernateUtil.getSessionFactory().openSession();
-    Query query = session.createQuery(hql.toString());
+    Query query = session.createQuery("FROM Saledetail s ORDER BY s.product.name DESC");
     SystemConstant.totalSaledetail = findAll().size();
     query.setFirstResult((5 * (pageIndex - 1) + 1));
     query.setMaxResults(5);
@@ -51,11 +48,10 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
 
   @Override
   public List<SaledetailModel> findAllbyUserID(Long id, int pageIndex) {
-    StringBuilder hql = new StringBuilder(
-        "From Saledetail s Where s.user.id=" + id + " ORDER BY s.product.name DESC");
     List saledetailModels;
     Session session = HibernateUtil.getSessionFactory().openSession();
-    Query query = session.createQuery(hql.toString());
+    Query query = session.createQuery(
+        "From Saledetail s Where s.user.id=" + id + " ORDER BY s.product.name DESC");
     SystemConstant.totalPageReceipt = findAllByUserIdTotal(id).size();
     query.setFirstResult((5 * (pageIndex - 1) + 1));
     query.setMaxResults(5);
@@ -65,10 +61,9 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
 
   @Override
   public List<SaledetailModel> findAllByUserIdTotal(Long id) {
-    StringBuilder hql = new StringBuilder("From Saledetail s Where s.user.id=" + id);
     List saledetailModels;
     Session session = HibernateUtil.getSessionFactory().openSession();
-    Query query = session.createQuery(hql.toString());
+    Query query = session.createQuery("From Saledetail s Where s.user.id=" + id);
     saledetailModels = query.list();
     return saledetailModels;
   }
@@ -96,30 +91,18 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
   }
 
   @Override
-  public List<SaledetailModel> PageSaledetail(int page) {
-    if (page < 1) {
-      page = 1;
-    }
-    int offset = (page - 1) * 5;
-    StringBuilder sql = new StringBuilder("select * from Saledetail LIMIT 5 OFFSET ?");
-    return query(sql.toString(), new SaledetailMapper(), offset);
-  }
-
-  @Override
   public int getTotalItem() {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Query query = session.createSQLQuery("select count(*) from Saledetail s");
     List<BigInteger> count1 = query.list();
-    int count = count1.get(0).intValue();
-    return count;
+    return count1.get(0).intValue();
   }
 
   @Override
   public SaledetailModel findbyCode(String code) {
-    StringBuilder sql = new StringBuilder("FROM Saledetail s Where s.code=:code");
     SaledetailModel saledetailModel = new SaledetailModel();
     saledetailModel.setCode(code);
-    List<SaledetailModel> saledetailModels = queryHibernate(sql.toString(), saledetailModel);
+    List<SaledetailModel> saledetailModels = queryHibernate("FROM Saledetail s Where s.code=:code", saledetailModel);
     return saledetailModels.isEmpty() ? null : saledetailModels.get(0);
   }
 
@@ -127,9 +110,8 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
   public List<SaledetailModel> gettop3() {
     Session session = HibernateUtil.getSessionFactory().openSession();
     SaledetailModel saledetailModel = new SaledetailModel();
-    StringBuilder sql = new StringBuilder(
+    Query q = session.createQuery(
         "select u.product From Saledetail u group by u.product order by sum(u.quantity) desc");
-    Query q = session.createQuery(sql.toString());
     q.setFirstResult(0);
     q.setMaxResults(3);
     saledetailModel.setListResult(q.getResultList());

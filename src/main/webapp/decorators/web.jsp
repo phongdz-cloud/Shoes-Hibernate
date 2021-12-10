@@ -42,7 +42,6 @@
           href="<c:url value='/template/web/css/responsive.css'/> ">
     <script src="<c:url value="/ckeditor/ckeditor.js"/>"></script>
     <script src="<c:url value='/template/paging/jquery.twbsPagination.js'/>"></script>
-    <script src="<c:url value='/template/sort/jquery.sortElements.js'/>"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 

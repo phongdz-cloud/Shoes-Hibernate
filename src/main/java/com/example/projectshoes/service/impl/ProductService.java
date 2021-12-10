@@ -1,7 +1,5 @@
 package com.example.projectshoes.service.impl;
 
-import com.example.projectshoes.constant.SystemQueries;
-import com.example.projectshoes.dao.ICacheDAO;
 import com.example.projectshoes.dao.IDeliveryDAO;
 import com.example.projectshoes.dao.IProductDAO;
 import com.example.projectshoes.dao.ISaledetailDAO;
@@ -16,6 +14,7 @@ import com.example.projectshoes.service.IProductService;
 import com.example.projectshoes.utils.SessionUtil;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -28,8 +27,6 @@ public class ProductService implements IProductService {
   ISaledetailDAO saledetailDAO;
   @Inject
   IDeliveryDAO deliveryDAO;
-  @Inject
-  ICacheDAO cacheDAO;
 
   @Override
   public List<ProductModel> findAll(Pageble pageble, String key) {
@@ -47,25 +44,18 @@ public class ProductService implements IProductService {
   public void deleteProduct(long[] ids) {
     for (long id : ids) {
       productDAO.deleteProduct(id);
-      cacheDAO.deleteCache(SystemQueries.FINDPRODUCTBYID + id);
     }
   }
 
   @Override
   public ProductModel findOne(Long id) {
-    ProductModel product = (ProductModel) cacheDAO.getObject(SystemQueries.FINDALLPRODUCT);
-    if (product == null) {
-      product = productDAO.findOne(id);
-      cacheDAO.setObject(SystemQueries.FINDPRODUCTBYID + id, product);
-    }
-    return product;
+    return productDAO.findOne(id);
   }
 
   @Override
   public void update(ProductModel productModel) {
     productModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
     productDAO.update(productModel);
-    cacheDAO.updateFindBy(SystemQueries.FINDPRODUCTBYID + productModel.getId(), productModel);
 
   }
 
@@ -83,9 +73,9 @@ public class ProductService implements IProductService {
   @Override
   public List<ProductModel> Sort(String sql, String categorycode) {
     StringBuilder query = new StringBuilder();
-    if (categorycode != "") {
+    if (!Objects.equals(categorycode, "")) {
       query.append("select p From Product p inner join p.category t");
-      query.append(" where t.code='" + categorycode + "'");
+      query.append(" where t.code='").append(categorycode).append("'");
     } else {
       query.append("FROM Product p");
     }
@@ -143,18 +133,8 @@ public class ProductService implements IProductService {
           (random.nextFloat() * (rightLimit - leftLimit + 1));
       buffer.append((char) randomLimitedInt);
     }
-    String generatedString = buffer.toString();
 
-    return generatedString;
+    return buffer.toString();
   }
 
-  @Override
-  public ProductModel findByProductID(Long id) {
-    ProductModel product = (ProductModel) cacheDAO.getObject(SystemQueries.FINDALLPRODUCT);
-    if (product == null) {
-      product = productDAO.findByProductID(id);
-      cacheDAO.setObject(SystemQueries.FINDPRODUCTBYID + id, product);
-    }
-    return product;
-  }
 }
