@@ -21,7 +21,6 @@ public class ProductModel extends AbstractModel<ProductModel> implements Seriali
   private String name;
   @Column(name = "price")
   private Float price;
-  //  @Column(name = "category_id")
   @Transient
   private Long categoryId;
   @Column(name = "size")
@@ -52,7 +51,6 @@ public class ProductModel extends AbstractModel<ProductModel> implements Seriali
   @OneToMany(mappedBy = "product")
   private List<SaledetailModel> saleDetails;
 
-
   public CategoryModel getCategory() {
     return category;
   }
@@ -76,7 +74,6 @@ public class ProductModel extends AbstractModel<ProductModel> implements Seriali
   public void setQuantity(int quantity) {
     this.quantity = quantity;
   }
-
 
   public String getName() {
     return name;

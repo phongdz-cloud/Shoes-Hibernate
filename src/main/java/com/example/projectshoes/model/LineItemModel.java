@@ -1,9 +1,10 @@
 package com.example.projectshoes.model;
 
 import com.example.projectshoes.model.ProductModel;
+import java.io.Serializable;
 import java.text.NumberFormat;
 
-public class LineItemModel {
+public class LineItemModel implements Serializable {
 
   private ProductModel product;
 

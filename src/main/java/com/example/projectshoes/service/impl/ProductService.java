@@ -1,16 +1,17 @@
 package com.example.projectshoes.service.impl;
 
-import com.example.projectshoes.model.CartModel;
-import com.example.projectshoes.model.LineItemModel;
+import com.example.projectshoes.constant.SystemQueries;
+import com.example.projectshoes.dao.ICacheDAO;
 import com.example.projectshoes.dao.IDeliveryDAO;
 import com.example.projectshoes.dao.IProductDAO;
 import com.example.projectshoes.dao.ISaledetailDAO;
+import com.example.projectshoes.model.CartModel;
 import com.example.projectshoes.model.DeliveryModel;
+import com.example.projectshoes.model.LineItemModel;
 import com.example.projectshoes.model.ProductModel;
 import com.example.projectshoes.model.SaledetailModel;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.paging.Pageble;
-import com.example.projectshoes.service.ICategoryService;
 import com.example.projectshoes.service.IProductService;
 import com.example.projectshoes.utils.SessionUtil;
 import java.sql.Timestamp;
@@ -24,11 +25,11 @@ public class ProductService implements IProductService {
   @Inject
   IProductDAO productDAO;
   @Inject
-  ICategoryService categoryService;
-  @Inject
   ISaledetailDAO saledetailDAO;
   @Inject
   IDeliveryDAO deliveryDAO;
+  @Inject
+  ICacheDAO cacheDAO;
 
   @Override
   public List<ProductModel> findAll(Pageble pageble, String key) {
@@ -46,18 +47,26 @@ public class ProductService implements IProductService {
   public void deleteProduct(long[] ids) {
     for (long id : ids) {
       productDAO.deleteProduct(id);
+      cacheDAO.deleteCache(SystemQueries.FINDPRODUCTBYID + id);
     }
   }
 
   @Override
   public ProductModel findOne(Long id) {
-    return productDAO.findOne(id);
+    ProductModel product = (ProductModel) cacheDAO.getObject(SystemQueries.FINDALLPRODUCT);
+    if (product == null) {
+      product = productDAO.findOne(id);
+      cacheDAO.setObject(SystemQueries.FINDPRODUCTBYID + id, product);
+    }
+    return product;
   }
 
   @Override
   public void update(ProductModel productModel) {
     productModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
     productDAO.update(productModel);
+    cacheDAO.updateFindBy(SystemQueries.FINDPRODUCTBYID + productModel.getId(), productModel);
+
   }
 
   @Override
@@ -67,6 +76,7 @@ public class ProductService implements IProductService {
 
   @Override
   public List<ProductModel> findbyCategory(Pageble pageble, String code) {
+
     return productDAO.findbyCategory(pageble, code);
   }
 
@@ -140,6 +150,11 @@ public class ProductService implements IProductService {
 
   @Override
   public ProductModel findByProductID(Long id) {
-    return productDAO.findByProductID(id);
+    ProductModel product = (ProductModel) cacheDAO.getObject(SystemQueries.FINDALLPRODUCT);
+    if (product == null) {
+      product = productDAO.findByProductID(id);
+      cacheDAO.setObject(SystemQueries.FINDPRODUCTBYID + id, product);
+    }
+    return product;
   }
 }

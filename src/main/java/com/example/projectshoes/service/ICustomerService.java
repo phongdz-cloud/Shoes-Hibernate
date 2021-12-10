@@ -13,6 +13,9 @@ public interface ICustomerService {
 
   List<CustomerModel> findAllCustomer();
 
+  List<CustomerModel> findAllCustomer(int pageIndex);
+
+
   Long insert(CustomerModel customerModel);
 
   void update(CustomerModel customerModel);

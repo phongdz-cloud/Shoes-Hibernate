@@ -18,7 +18,7 @@ import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-  public class AbstractDAO<T> implements GenericDAO<T> {
+public class AbstractDAO<T> implements GenericDAO<T> {
 
   ResourceBundle myBundle = ResourceBundle.getBundle("config");
 
@@ -166,6 +166,7 @@ import org.hibernate.Transaction;
       System.out.println(ex.getMessage());
       return null;
     }
+
   }
 
   @Override
@@ -201,6 +202,7 @@ import org.hibernate.Transaction;
     }
     return 0;
   }
+
 
 
   public Class<T> getType() {

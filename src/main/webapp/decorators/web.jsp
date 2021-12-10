@@ -43,11 +43,14 @@
     <script src="<c:url value="/ckeditor/ckeditor.js"/>"></script>
     <script src="<c:url value='/template/paging/jquery.twbsPagination.js'/>"></script>
     <script src="<c:url value='/template/sort/jquery.sortElements.js'/>"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+
       <div id="fb-root"></div>
       <script async defer crossorigin="anonymous"
               src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=585165199352568&autoLogAppEvents=1"
               nonce="ZdUbvRBT"></script>
+
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id"
           content="945852596576-qdpeq7msdshcetuudjfqfe3svda8rljk.apps.googleusercontent.com">
@@ -55,7 +58,7 @@
 
 </head>
 <body>
-<%--<div id="preloader"></div>--%>
+<div id="preloader"></div>
 <div class="sidebar-search-wrap">
     <div class="sidebar-table-container">
         <div class="sidebar-align-container">

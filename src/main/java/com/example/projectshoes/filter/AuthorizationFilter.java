@@ -35,6 +35,7 @@ public class AuthorizationFilter implements Filter {
         if (user.getRole().getCode().equals(SystemConstant.ADMIN)) {
           filterChain.doFilter(servletRequest, servletResponse);
         } else if (user.getRole().getCode().equals(SystemConstant.USER)) {
+          SessionUtil.getInstance().removeValue(request, "USERMODEL");
           response.sendRedirect(request.getContextPath()
               + "/dang-nhap?action=login&message=not_permission&alert=warning");
         }

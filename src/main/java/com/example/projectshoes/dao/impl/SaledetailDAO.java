@@ -30,13 +30,23 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
     return save(saledetailModel);
   }
 
-
   @Override
   public List<SaledetailModel> findAll() {
-    StringBuilder sql = new StringBuilder("FROM Saledetail s");
-    SaledetailModel saledetailModel = new SaledetailModel();
-    return queryHibernate(sql.toString(), saledetailModel);
+    return queryHibernate("FROM Saledetail", null);
+  }
 
+
+  @Override
+  public List findAll(int pageIndex) {
+    StringBuilder hql = new StringBuilder("FROM Saledetail s ORDER BY s.product.name DESC");
+    List saledetailModels;
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Query query = session.createQuery(hql.toString());
+    SystemConstant.totalSaledetail = findAll().size();
+    query.setFirstResult((5 * (pageIndex - 1) + 1));
+    query.setMaxResults(5);
+    saledetailModels = query.list();
+    return saledetailModels;
   }
 
   @Override

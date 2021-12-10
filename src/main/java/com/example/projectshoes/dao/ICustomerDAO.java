@@ -9,6 +9,9 @@ public interface ICustomerDAO extends GenericDAO<CustomerModel> {
 
   List<CustomerModel> findAllCustomer();
 
+  List<CustomerModel> findAllCustomer(int pageIndex);
+
+
   CustomerModel findCustomerById(Long id);
 
   CustomerModel findCustomerByUser(UserModel userModel);

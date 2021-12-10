@@ -1,42 +1,47 @@
 <%@include file="/common/taglib.jsp" %>
+<c:url var="APIReceipt" value="/api-receipt/"/>
+
 <html>
 <header>
 
 </header>
 <body>
-<form id="formSubmit">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">code</th>
-            <th scope="col">name</th>
-            <th scope="col">size</th>
-            <th scope="col">price</th>
-            <th scope="col">quantity</th>
-            <th scope="col">total</th>
-        </tr>
-        </thead>
-        <tbody id="myTable">
-        <c:forEach var="item" items="${receipts}">
+<form id="formSubmit" >
+    <div id="receiptsDatatable">
+        <table class="table">
+            <thead>
             <tr>
-                <td>${item.code}</td>
-                <td>${item.product.name}</td>
-                <td>${item.product.size}</td>
-                <td>${item.product.price}$</td>
-                <td>${item.quantity}</td>
-                <td>${item.total}</td>
+                <th scope="col">code</th>
+                <th scope="col">name</th>
+                <th scope="col">size</th>
+                <th scope="col">price</th>
+                <th scope="col">quantity</th>
+                <th scope="col">total</th>
             </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+            </thead>
+            <tbody id="myTable">
+            <c:forEach var="item" items="${receipts}">
+                <tr>
+                    <td>${item.code}</td>
+                    <td>${item.product.name}</td>
+                    <td>${item.product.size}</td>
+                    <td>${item.product.price}$</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.total}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
     <nav aria-label="Page navigation">
         <input type="hidden" value="" id="page" name="page"/>
         <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
     </nav>
+    <div style="margin-left: 415px">
+        <ul class="pagination" id="pagination"></ul>
+    </div>
 </form>
-<div style="margin-left: 415px">
-    <ul class="pagination" id="pagination"></ul>
-</div>
+
 
 <script>
   var totalPages = ${model.totalPage};
@@ -52,13 +57,32 @@
         if (currentPage !== page) {
           $('#maxPageItem').val(limit);
           $('#page').val(page);
-          $('#formSubmit').submit();  //Dùng jquery để gọi tới đối tượng form
+          $('#formSubmit').submit(getReceiptPage());  //Dùng jquery để gọi tới đối tượng form
         }
       }
     }).on('page', function (event, page) {
       console.info(page + ' (from event listening)');
     });
   });
+
+  $('#formSubmit').submit(function (e) {
+    e.preventDefault(); // submit về 1 API
+    getReceiptPage();
+  })
+
+  function getReceiptPage() {
+    $.ajax({
+      url: '${APIReceipt}?page=' + $('#page').val() + '&maxPageItem=' + $('#maxPageItem').val(),
+      type: 'GET',
+      contentType: 'application/json',
+      dataType: 'json',
+      success: function (result) {
+        $('#receiptsDatatable').html(result.renderHtml)
+        totalPages = result.totalPage;
+        currentPage = result.currentPage;
+      }
+    })
+  }
 </script>
 
 <script>
@@ -72,47 +96,5 @@
   });
 </script>
 
-<script>
-  var th = jQuery('th'),
-      li = jQuery('li'),
-      inverse = false;
-
-  th.click(function () {
-
-    var header = $(this),
-        index = header.index();
-
-    header
-    .closest('table')
-    .find('td')
-    .filter(function () {
-      return $(this).index() === index;
-    })
-    .sortElements(function (a, b) {
-
-      a = $(a).text();
-      b = $(b).text();
-
-      return (
-          isNaN(a) || isNaN(b) ?
-              a > b : +a > +b
-      ) ?
-          inverse ? -1 : 1 :
-          inverse ? 1 : -1;
-
-    }, function () {
-      return this.parentNode;
-    });
-
-    inverse = !inverse;
-
-  });
-
-  $('button').click(function () {
-    li.sortElements(function (a, b) {
-      return $(a).text() > $(b).text() ? 1 : -1;
-    });
-  });
-</script>
 </body>
 </html>

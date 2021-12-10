@@ -1,12 +1,11 @@
 package com.example.projectshoes.service.impl;
 
 import com.example.projectshoes.constant.SystemQueries;
-import com.example.projectshoes.model.CartModel;
-import com.example.projectshoes.model.LineItemModel;
 import com.example.projectshoes.dao.ICacheDAO;
 import com.example.projectshoes.dao.IRoleDAO;
 import com.example.projectshoes.dao.IUserDAO;
-import com.example.projectshoes.dao.impl.CacheDAO;
+import com.example.projectshoes.model.CartModel;
+import com.example.projectshoes.model.LineItemModel;
 import com.example.projectshoes.model.RoleModel;
 import com.example.projectshoes.model.UserModel;
 import com.example.projectshoes.service.IUserService;
@@ -21,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 
 public class UserService implements IUserService {
 
-  private final ICacheDAO cacheDAO = new CacheDAO();
 
   private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -29,6 +27,8 @@ public class UserService implements IUserService {
   IUserDAO userDAO;
   @Inject
   IRoleDAO roleDAO;
+  @Inject
+  ICacheDAO cacheDAO;
 
 
   @Override
@@ -41,12 +41,13 @@ public class UserService implements IUserService {
         if (userModel != null && HashingUtil.verifyAndUpdateHash(password,
             userModel.getPassword())) {
           cacheDAO.setObject(SystemQueries.FINDUSERBYUSERNAME + username, userModel);
+          return userModel;
         }
       }
     } catch (Exception ex) {
       ex.printStackTrace();
     }
-    return userModel;
+    return null;
   }
 
   @Override
@@ -109,7 +110,6 @@ public class UserService implements IUserService {
     try {
       String jsonString = (String) cacheDAO.getObject(SystemQueries.FINDALLUSER);
       if (jsonString == null) {
-        System.out.println("Không chạm cache server!");
         results = userDAO.findAll();
         cacheDAO.setObject(SystemQueries.FINDALLUSER, objectMapper.writeValueAsBytes(results));
       } else {

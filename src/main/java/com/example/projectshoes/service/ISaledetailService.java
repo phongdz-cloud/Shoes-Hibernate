@@ -6,7 +6,7 @@ import com.example.projectshoes.paging.Pageble;
 import java.util.List;
 
 public interface ISaledetailService {
-    List<SaledetailModel> findAll();
+    List<SaledetailModel> findAll(int pageIndex);
     Long saveSaledetail(SaledetailModel saledetailModel);
     List<SaledetailModel> findAllbyUserID(Long id,int pageIndex);
     void deleteSaledetail(long[] ids);

@@ -8,6 +8,7 @@ import com.example.projectshoes.utils.FormUtil;
 import com.example.projectshoes.utils.SessionUtil;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,4 +45,5 @@ public class ReceiptController extends HttpServlet {
     RequestDispatcher rq = req.getRequestDispatcher("/views/web/listReceipt.jsp");
     rq.forward(req, resp);
   }
+
 }

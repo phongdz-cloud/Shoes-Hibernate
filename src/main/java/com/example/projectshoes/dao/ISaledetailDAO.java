@@ -11,6 +11,9 @@ public interface ISaledetailDAO extends GenericDAO<SaledetailModel> {
 
   List<SaledetailModel> findAll();
 
+
+  List<SaledetailModel> findAll(int pageIndex);
+
   List<SaledetailModel> findAllbyUserID(Long id, int pageIndex);
 
   List<SaledetailModel> findAllByUserIdTotal(Long id);

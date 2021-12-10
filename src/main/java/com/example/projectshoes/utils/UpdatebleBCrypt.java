@@ -15,10 +15,11 @@ public class UpdatebleBCrypt {
     return BCrypt.hashpw(password, BCrypt.gensalt(logRounds));
   }
 
-  public boolean verifyAndUpdateHash(String passwrod, String hash) {
-    if (BCrypt.checkpw(passwrod, hash)) {
+  public boolean verifyAndUpdateHash(String password, String hash) {
+    if (BCrypt.checkpw(password, hash)) {
       int rounds = getRounds(hash);
       if (rounds != logRounds) {
+
       }
       return true;
     }

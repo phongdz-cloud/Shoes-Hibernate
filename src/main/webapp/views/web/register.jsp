@@ -5,7 +5,6 @@
 <c:url var="RegisterUrl" value="/dang-ky"/>
 <head>
     <title>Forgot password</title>
-    <meta charset="utf-8">
 </head>
 <body>
 <section class="page-banner">

@@ -1,7 +1,9 @@
 package com.example.projectshoes.controller.admin;
 
+import com.example.projectshoes.constant.SystemConstant;
 import com.example.projectshoes.model.CustomerModel;
 import com.example.projectshoes.service.ICustomerService;
+import com.example.projectshoes.utils.FormUtil;
 import java.io.IOException;
 import java.util.List;
 import javax.inject.Inject;
@@ -27,8 +29,11 @@ public class CustomerController extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    List<CustomerModel> customerModels = customerService.findAllCustomer();
-    req.setAttribute("customers", customerModels);
+    CustomerModel customerModel = FormUtil.toModel(CustomerModel.class, req);
+    if (customerModel.getPage() == null) {
+      customerModel.setPage(1);
+    }
+    List<CustomerModel> customerModels = customerService.findAllCustomer(customerModel.getPage());
     for (CustomerModel c : customerModels) {
       if (c.getUser().getStatus().equals("Active")) {
         c.setBadge("success");
@@ -36,6 +41,10 @@ public class CustomerController extends HttpServlet {
         c.setBadge("danger");
       }
     }
+    customerModel.setTotalItem(SystemConstant.totalCustomers);
+    customerModel.setTotalPage((SystemConstant.totalCustomers / 5) + 1);
+    req.setAttribute("model", customerModel);
+    req.setAttribute("customers", customerModels);
     RequestDispatcher rd = req.getRequestDispatcher("/views/admin/LIST/ListCustomer.jsp");
     rd.forward(req, resp);
   }

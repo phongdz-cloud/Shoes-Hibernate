@@ -1,9 +1,8 @@
 <%@include file="/common/taglib.jsp" %>
-<c:url var="APICustomer" value="/api-customer"/>
+<c:url var="APICustomer" value="/api-customer/"/>
 <c:url var="loadProfile" value="/change-profile"/>
 <head>
     <title>Update profile</title>
-    <meta charset="utf-8">
 </head>
 <body>
 <section class="page-banner">
