@@ -77,36 +77,30 @@
                        href="<c:url value="/dang-nhap?action=login"/>">Login Here</a>
                 </div>
             </form>
-            <div id="loaded"></div>
         </div>
     </div>
+    <div id="loaded"></div>
 </section>
 <script>
   $('#btnAddUser').click(function (e) {
     if ($('#username').val() === '' || $('#username').val().length < 5) {
       document.getElementById(
           'user_username').innerHTML = 'username length is greater than or equal to 6 characters'
-      return;
     } else if ($('#password').val() === '' || $('#password').val().length < 5) {
       document.getElementById(
           'user_password').innerHTML = 'password length is greater than or equal to 6 characters'
-      return;
     } else if ($('#repassword').val() === '' || $('#repassword').val().length < 5) {
       document.getElementById(
           'user_password').innerHTML = 'password length is greater than or equal to 6 characters'
-      return;
     } else if ($('#repassword').val().localeCompare($('#password').val()) != 0) {
       document.getElementById(
           'user_repassword').innerHTML = 'password and repassword is not the same'
-      return;
     } else if ($('#email').val().length < 5) {
       document.getElementById(
           'user_email').innerHTML = 'Email length is greater than or equal to 6 characters'
-      return;
     } else if (!isValidEmailAddress($('#email').val())) {
       document.getElementById(
           'user_email').innerHTML = 'Email is not correct! example pattern: nguyenvana@gmail.com'
-      return;
     } else {
       clearError();
       e.preventDefault(); // submit về 1 API
@@ -135,7 +129,7 @@
     var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
     // alert( pattern.test(emailAddress) );
     return pattern.test(emailAddress);
-  };
+  }
 
   function addUser(data) {
     $.ajax({

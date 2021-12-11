@@ -53,7 +53,7 @@ public class UserService implements IUserService {
 
   @Override
   public Long save(UserModel userModel) {
-    RoleModel roleModel = roleDAO.findRoleById(1L);
+    RoleModel roleModel = roleDAO.findRoleById(2L);
     userModel.setRoleId(2L);
     userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
     userModel.setCreatedBy(userModel.getUsername());

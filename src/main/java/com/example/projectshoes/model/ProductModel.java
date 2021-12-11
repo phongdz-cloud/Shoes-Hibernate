@@ -2,6 +2,7 @@ package com.example.projectshoes.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,12 +15,14 @@ import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity(name = "Product")
 @Table(name = "product")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductModel extends AbstractModel<ProductModel> {
@@ -45,7 +48,8 @@ public class ProductModel extends AbstractModel<ProductModel> {
 
   @ManyToOne(fetch = FetchType.LAZY)
   private StockModel stock;
-  @OneToMany(mappedBy = "product")
+
+  @OneToMany(cascade = CascadeType.ALL,mappedBy = "product")
   private List<SaledetailModel> saleDetails;
 
   public List<SaledetailModel> getSaleDetails() {

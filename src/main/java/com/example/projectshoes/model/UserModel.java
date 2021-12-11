@@ -16,17 +16,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.NaturalId;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity(name = "User")
 @Table(name = "user")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserModel extends AbstractModel<UserModel> {
@@ -51,7 +51,7 @@ public class UserModel extends AbstractModel<UserModel> {
   @OneToOne(mappedBy = "user")
   private CustomerModel customer;
 
-  @OneToMany(mappedBy = "user")
+  @OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "user")
   private List<SaledetailModel> saleDetails;
 
 
@@ -59,8 +59,7 @@ public class UserModel extends AbstractModel<UserModel> {
   @JoinTable(name = "user_role",
       joinColumns = @JoinColumn(name = "user_id"),
       inverseJoinColumns = @JoinColumn(name = "role_id"))
-  @Cascade(value = {CascadeType.REMOVE, CascadeType.PERSIST})
-
+  @Cascade(value = {CascadeType.PERSIST})
   Set<RoleModel> roles = null;
 
   @Transient

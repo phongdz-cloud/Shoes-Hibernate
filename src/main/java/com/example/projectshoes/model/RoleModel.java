@@ -6,9 +6,12 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-@EqualsAndHashCode(callSuper = true)
-@Data
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity(name = "Role")
 @Table(name = "role")
 @AllArgsConstructor

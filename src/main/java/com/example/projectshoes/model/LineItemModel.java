@@ -1,10 +1,13 @@
 package com.example.projectshoes.model;
 
+import java.text.NumberFormat;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class LineItemModel {
@@ -17,4 +20,8 @@ public class LineItemModel {
     return product.getPrice() * quantity;
   }
 
+  public String getTotalCurrencyFormat(){
+    NumberFormat currency = NumberFormat.getCurrencyInstance();
+    return currency.format(this.getTotal());
+  }
 }

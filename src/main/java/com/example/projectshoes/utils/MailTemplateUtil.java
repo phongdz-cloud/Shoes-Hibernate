@@ -234,7 +234,7 @@ public class MailTemplateUtil {
         + "                                            password has been generated for you. To reset your password, click the\n"
         + "                                            following link and follow the instructions.\n"
         + "                                        </p>\n"
-        + "                                        <a href=\"http://localhost:8080/set-password\"\n"
+        + "                                        <a href=\"https://shoesteam.herokuapp.com/set-password\"\n"
         + "                                            style=\"background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;\">Reset\n"
         + "                                            Password</a>\n"
         + "                                    </td>\n"

@@ -60,7 +60,7 @@ public class ProductAPI extends HttpServlet {
     req.setCharacterEncoding("UTF-8");
     resp.setContentType("application/json");
     ProductModel productModel = HttpUtil.of(req.getReader()).toModel(ProductModel.class);
-    saledetailService.deletebyProductId(productModel.getIds());
+//    saledetailService.deletebyProductId(productModel.getIds());
     productService.deleteProduct(productModel.getIds());
     mapper.writeValue(resp.getOutputStream(), "{}");
   }

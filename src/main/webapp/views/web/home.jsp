@@ -1,4 +1,5 @@
 <%@include file="/common/taglib.jsp" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <body>
 <section class="home-banner">
@@ -18,7 +19,8 @@
                                 <h2 class="banner-title">men <span>shoes</span></h2>
                                 <p class="banner-sub">Lorem ipsum dolor sit amet, consectetuer
                                     adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>
-                                <a href="<c:url value="/shop?page=1&&maxPageItem=16"/>" class="btn">Shop now</a>
+                                <a href="<c:url value="/shop?page=1&&maxPageItem=16"/>" class="btn">Shop
+                                    now</a>
                             </div>
                         </div>
                     </div>
@@ -29,17 +31,17 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 align-flax">
                             <div class="banner-img"><img
-                                    src="<c:url value='/template/web/images/banner.jpg'/>"
+                                    src="<c:url value='/template/web/images/banner-2.png'/>"
                                     alt="banner">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 align-flax">
                             <div class="banner-heading w-100">
-                                <label class="banner-top">Get UP To <span>40%</span> Off</label>
+                                <label class="banner-top">Get UP To <span>65%</span> Off</label>
                                 <h2 class="banner-title">season <span>sale</span></h2>
                                 <p class="banner-sub">Lorem ipsum dolor sit amet, consectetuer
                                     adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>
-                                <a href="<c:url value="/error-page"/>" class="btn">Shop now</a>
+                                <a href="<c:url value="/shop?page=1&&maxPageItem=16"/>" class="btn">Shop now</a>
                             </div>
                         </div>
                     </div>
@@ -89,12 +91,14 @@
                                 <span class="text-uppercase">New</span>
                             </div>
                             <div class="product-details-btn text-uppercase text-center transition">
-                                <a href="<c:url value="/product?productid=${item.id}"/>" class="quick-popup mfp-iframe">Quick
+                                <a href="<c:url value="/product?productid=${item.id}"/>"
+                                   class="quick-popup mfp-iframe">Quick
                                     View</a>
                             </div>
                         </div>
                         <div class="product-desc">
-                            <a href="<c:url value="/product?productid=${item.id}"/>" class="product-name text-uppercase">${item.name}</a>
+                            <a href="<c:url value="/product?productid=${item.id}"/>"
+                               class="product-name text-uppercase">${item.name}</a>
                             <span class="product-pricce">$${item.price}"</span>
                         </div>
                     </div>
@@ -134,7 +138,8 @@
                             <div class="seller">
                                 <div class="seller-box align-flax w-100 pb-20">
                                     <div class="seller-img">
-                                        <a href="<c:url value="/product?productid=${item.id}"/>" class="display-b">
+                                        <a href="<c:url value="/product?productid=${item.id}"/>"
+                                           class="display-b">
                                             <img src="${item.avatar}"
                                                  alt="shoes"
                                                  class="transition">
@@ -278,41 +283,36 @@
         <div class="team-inner owl-carousel">
             <div class="team-slide text-center">
                 <div class="team-img position-r">
-                    <img src="<c:url value='/template/web/images/team-1.jpg'/>" alt="team">
+                    <img src="<c:url value='/template/web/images/thanhtuyen.jpg'/>" alt="team">
                     <span class="quote-c"><i class="fa fa-quote-left" aria-hidden="true"></i></span>
                 </div>
                 <div class="team-desc">
-                    <p class="member-detail">make a type specimen book. It has survived not only
-                        five centuries, but also the leap into electronic typesetting, remaining
-                        essentially unchanged. It was make a type specimen book. It has survived not
-                        only five centuries.</p>
-                    <h3 class="member-name text-uppercase">john Doe</h3>
+                    <p class="member-detail">U là trời, nói cho mà nghe XPOGE luôn là lựa chọn hàng
+                        đầu mỗi khi tôi có nhu cầu về mua sắm</p>
+                    <h3 class="member-name text-uppercase">Thanh Tuyền</h3>
                 </div>
             </div>
             <div class="team-slide text-center">
                 <div class="team-img position-r">
-                    <img src="<c:url value='/template/web/images/team-1.jpg'/>" alt="team">
+                    <img src="<c:url value='/template/web/images/husky.jpg'/>" alt="team">
                     <span class="quote-c"><i class="fa fa-quote-left" aria-hidden="true"></i></span>
                 </div>
                 <div class="team-desc">
-                    <p class="member-detail">make a type specimen book. It has survived not only
-                        five centuries, but also the leap into electronic typesetting, remaining
-                        essentially unchanged. It was make a type specimen book. It has survived not
-                        only five centuries.</p>
-                    <h3 class="member-name text-uppercase">john Doe</h3>
+                    <p class="member-detail">Nhờ có bạn Thanh tuyền mà tôi mới biết tới XPOGE. thật
+                        vui vì góp phần là thành viên ở XPOGE</p>
+                    <h3 class="member-name text-uppercase">Hoài Phong</h3>
                 </div>
             </div>
             <div class="team-slide text-center">
                 <div class="team-img position-r">
-                    <img src="<c:url value='/template/web/images/team-1.jpg'/>" alt="team">
+                    <img src="<c:url value='/template/web/images/giang.jpg'/>" alt="team">
                     <span class="quote-c"><i class="fa fa-quote-left" aria-hidden="true"></i></span>
                 </div>
                 <div class="team-desc">
-                    <p class="member-detail">make a type specimen book. It has survived not only
-                        five centuries, but also the leap into electronic typesetting, remaining
-                        essentially unchanged. It was make a type specimen book. It has survived not
-                        only five centuries.</p>
-                    <h3 class="member-name text-uppercase">john Doe</h3>
+                    <p class="member-detail">Giày ở đây thì cực kì ưng ý với nhiều mẫu mã để các bạn
+                        có thể chọn. Mình rất vui và xem XPOGE là lựa chọn tốt nhất mỗi khi muốn mua
+                        giày</p>
+                    <h3 class="member-name text-uppercase">Trường Giang</h3>
                 </div>
             </div>
         </div>

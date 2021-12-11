@@ -125,10 +125,11 @@ public class CustomerAPI extends HttpServlet {
     CustomerModel customerModel = HttpUtil.of(req.getReader()).toModel(CustomerModel.class);
     for (Long id : customerModel.getIds()) {
       CustomerModel customer = customerService.findCustomerById(id);
-      customer.getUser().setStatus("Inactive");
-      customer.getUser().setBadge("danger");
-      customerService.update(customer);
+//      customer.getUser().setStatus("Inactive");
+//      customer.getUser().setBadge("danger");
+      customerService.remove(customer);
     }
+//    doGet(req, resp);
     mapper.writeValue(resp.getOutputStream(), true);
   }
 }

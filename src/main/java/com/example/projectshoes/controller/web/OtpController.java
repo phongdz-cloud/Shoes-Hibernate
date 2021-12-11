@@ -50,7 +50,7 @@ public class OtpController extends HttpServlet {
         try {
           userService.save(SystemConstant.userVerify);
           JavaMailUtil.sendMail(SystemConstant.userVerify.getEmail(),
-              MailTemplateUtil.templateMailCongratulation(), "Conratulation!");
+              MailTemplateUtil.templateMailCongratulation(), "Congratulations!");
           SystemConstant.Otp = null;
           this.message = resourceBundle.getString("register_success");
           this.alert = "success";
@@ -59,7 +59,7 @@ public class OtpController extends HttpServlet {
           e.printStackTrace();
         }
       } else {
-        this.message = resourceBundle.getString("otpUncorrect");
+        this.message = resourceBundle.getString("otpUncorrected");
         this.alert = "danger";
         this.url = "/views/web/otp.jsp";
       }

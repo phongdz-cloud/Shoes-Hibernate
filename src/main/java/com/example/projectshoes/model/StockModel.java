@@ -11,12 +11,15 @@ import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@EqualsAndHashCode(callSuper = true)
+
 @Entity(name = "Stock")
 @Table(name = "stock")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class StockModel extends AbstractModel<StockModel> {

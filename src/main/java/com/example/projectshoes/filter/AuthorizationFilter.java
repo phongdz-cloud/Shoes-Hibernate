@@ -16,11 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AuthorizationFilter implements Filter {
 
-  private ServletContext context;
-
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {
-    this.context = filterConfig.getServletContext();
+    ServletContext context = filterConfig.getServletContext();
   }
 
   @Override

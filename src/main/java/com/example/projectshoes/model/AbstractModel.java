@@ -10,10 +10,13 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @MappedSuperclass
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class AbstractModel<T> {

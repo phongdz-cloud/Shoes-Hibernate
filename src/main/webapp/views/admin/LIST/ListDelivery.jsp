@@ -1,5 +1,7 @@
 <%@include file="/common/taglib.jsp"%>
 <c:url var="APIDeliveries" value="/api-delivery"/>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <html>
 <body>
 <div class="page-breadcrumb">

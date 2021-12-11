@@ -1,6 +1,7 @@
 <%@include file="/common/taglib.jsp" %>
 <c:url var="APICustomer" value="/api-customer/"/>
 <c:url var="loadCustomer" value="/admin-customers"/>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="page-holder bg-gray-100">
     <div class="container-fluid px-lg-4 px-xl-5">
         <!-- Breadcrumbs -->
@@ -14,9 +15,9 @@
         <div class="page-header">
             <h1 class="page-heading">Customers</h1>
             <ul class="list-inline text-sm">
-                <li class="list-inline-item"><a class="text-gray-600" href="#!"><i
+                <li class="list-inline-item"><a class="text-gray-600" href="#"><i
                         class="fas fa-upload me-2"> </i>Import</a></li>
-                <li class="list-inline-item"><a class="text-gray-600" href="#!"><i
+                <li class="list-inline-item"><a class="text-gray-600" href="#"><i
                         class="fas fa-download me-2"> </i>Export</a></li>
             </ul>
         </div>
@@ -77,14 +78,14 @@
                     </div>
                 </div>
             </div>
-            <nav aria-label="Page navigation">
-                <input type="hidden" value="" id="page" name="page"/>
-                <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
-            </nav>
-            <div style="margin-left: 415px">
-                <ul class="pagination" id="pagination"></ul>
-            </div>
         </form>
+        <nav aria-label="Page navigation">
+            <input type="hidden" value="" id="page" name="page"/>
+            <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
+        </nav>
+        <div style="margin-left: 415px">
+            <ul class="pagination" id="pagination"></ul>
+        </div>
     </div>
 </div>
 <script>

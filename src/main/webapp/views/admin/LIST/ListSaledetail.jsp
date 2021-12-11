@@ -1,5 +1,6 @@
 <%@include file="/common/taglib.jsp" %>
 <c:url var="APISaledetail" value="/api-saledetail/"/>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>
 <body>

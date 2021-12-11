@@ -63,8 +63,8 @@ public class PaymentServices implements IPaymentServices {
 
   private RedirectUrls getRedirectUrls() {
     RedirectUrls redirectUrls = new RedirectUrls();
-    redirectUrls.setCancelUrl("http://localhost:8080/cart?action=addtocart");
-    redirectUrls.setReturnUrl("http://localhost:8080/review_payment");
+    redirectUrls.setCancelUrl("https://shoesteam.herokuapp.com/cart?action=addtocart");
+    redirectUrls.setReturnUrl("https://shoesteam.herokuapp.com/review_payment");
     return redirectUrls;
   }
 

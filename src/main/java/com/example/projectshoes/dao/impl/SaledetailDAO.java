@@ -53,7 +53,7 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
     Query query = session.createQuery(
         "From Saledetail s Where s.user.id=" + id + " ORDER BY s.product.name DESC");
     SystemConstant.totalPageReceipt = findAllByUserIdTotal(id).size();
-    query.setFirstResult((5 * (pageIndex - 1) + 1));
+    query.setFirstResult((5 * (pageIndex - 1)));
     query.setMaxResults(5);
     saledetailModels = query.list();
     return saledetailModels;

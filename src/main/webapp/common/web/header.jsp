@@ -214,9 +214,9 @@
       function Search() {
         var input = document.getElementById("key").value;
         if (input === "") {
-          window.location.href = "http://localhost:8080/shop?page=1&&maxPageItem=16";
+          window.location.href = "https://shoesteam.herokuapp.com/shop?page=1&&maxPageItem=16";
         } else {
-          window.location.href = "http://localhost:8080/shop?page=1&&maxPageItem=16&&key=" + input;
+          window.location.href = "https://shoesteam.herokuapp.com/shop?page=1&&maxPageItem=16&&key=" + input;
         }
       }
     </script>

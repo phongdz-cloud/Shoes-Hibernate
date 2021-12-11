@@ -100,7 +100,7 @@ public class ProductService implements IProductService {
     CartModel cart = (CartModel) SessionUtil.getInstance().getValue(req, "cart");
     SessionUtil.getInstance().putValue(req, "cart", cart);
     List<LineItemModel> lineItemModelList = cart.getItems();
-    DeliveryModel deliveryModel = deliveryDAO.findOne(1L);
+    DeliveryModel deliveryModel = deliveryDAO.findOne(5L);
     SaledetailModel saledetailModel = null;
     String code = generateCode();
     for (LineItemModel item : lineItemModelList) {

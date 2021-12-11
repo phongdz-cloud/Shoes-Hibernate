@@ -1,6 +1,7 @@
 <%@include file="/common/taglib.jsp" %>
 <c:url var="APILogin" value="/api-login"/>
 <c:url var="APIHome" value="/trang-chu-api"/>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script>
   <c:if test="${not empty type}">
   localStorage.setItem("jsessionid", ${cookie.jsessionid})

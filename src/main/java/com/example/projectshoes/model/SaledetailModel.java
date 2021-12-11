@@ -1,5 +1,6 @@
 package com.example.projectshoes.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,12 +10,15 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@EqualsAndHashCode(callSuper = true)
+
 @Entity(name = "Saledetail")
 @Table(name = "saledetail")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class SaledetailModel extends AbstractModel<SaledetailModel> {

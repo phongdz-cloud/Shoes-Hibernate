@@ -11,7 +11,6 @@ import org.apache.commons.lang3.StringUtils;
 
 public class CustomerService implements ICustomerService {
 
-
   @Inject
   private CustomerDAO customerDAO;
 

@@ -61,5 +61,4 @@ public class UserAPI extends HttpServlet {
     mapper.writeValue(resp.getOutputStream(), userModel);
   }
 
-
 }
