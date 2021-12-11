@@ -54,7 +54,6 @@ public class UserModel extends AbstractModel<UserModel> {
   @OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "user")
   private List<SaledetailModel> saleDetails;
 
-
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "user_role",
       joinColumns = @JoinColumn(name = "user_id"),

@@ -37,5 +37,4 @@ public class CustomerModel extends AbstractModel<CustomerModel> {
   @JoinColumn(name = "user_id", referencedColumnName = "id")
   private UserModel user;
 
-
 }

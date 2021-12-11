@@ -33,7 +33,6 @@ public class SaledetailDAO extends AbstractDAO<SaledetailModel> implements ISale
     return queryHibernate("FROM Saledetail", null);
   }
 
-
   @Override
   public List findAll(int pageIndex) {
     List saledetailModels;
